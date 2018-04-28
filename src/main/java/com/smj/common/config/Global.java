@@ -19,13 +19,4 @@ public class Global {
  String adminPath="/smj";
 		return adminPath;
 	}
-
-	/**
-	 * 获取上传文件的根目录
-	 * @return
-	 */
-	public static String getUserfilesBaseDir() {
-
-		return "";
-	}
 }

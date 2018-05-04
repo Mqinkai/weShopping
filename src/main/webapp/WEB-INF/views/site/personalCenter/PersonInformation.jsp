@@ -267,7 +267,7 @@ $("#img").click(function () {
  $(window).on('resize', centerModals);
 
  function centerModals() {
-     console.log(111)
+
      $('#myModal').each(function(i) {
          var $clone = $(this).clone().css('display','block').appendTo('body');
          var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
@@ -330,6 +330,9 @@ $("#img").click(function () {
                 }
             });
         }
+    }
+    function test() {
+
     }
 </script>
 </body>

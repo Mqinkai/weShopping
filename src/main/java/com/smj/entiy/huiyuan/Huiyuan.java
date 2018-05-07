@@ -13,6 +13,9 @@ public class Huiyuan {
     private String tel;
     private String tx;
     private String carNum;//购物车数量
+    private String xingming;
+    private String sr;
+    private String address;
 
     public String getId() {
         return id;
@@ -84,5 +87,29 @@ public class Huiyuan {
 
     public void setCarNum(String carNum) {
         this.carNum = carNum;
+    }
+
+    public String getXingming() {
+        return xingming;
+    }
+
+    public void setXingming(String xingming) {
+        this.xingming = xingming;
+    }
+
+    public String getSr() {
+        return sr;
+    }
+
+    public void setSr(String sr) {
+        this.sr = sr;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

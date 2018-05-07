@@ -109,7 +109,7 @@
 
                     <div class="filePic">
                        <%-- <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="/static/img/*">--%>
-                        <img id="img" class="am-circle am-img-thumbnail" src="${huiyuan.tx}" alt="" />
+                        <img id="picImg" class="am-circle am-img-thumbnail" src="${huiyuan.tx}" alt="" />
 
                     </div>
                     <div class="info-m">
@@ -223,30 +223,35 @@
 
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <form>
-                <div class="form-group" id="uploadForm" enctype='multipart/form-data'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="upload-form"   method="post" enctype="multipart/form-data" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <div class="h4">图片预览</div>
                     <div class="fileinput fileinput-new" data-provides="fileinput"  id="exampleInputUpload">
                         <div class="fileinput-new thumbnail" style="width: 200px;height: auto;max-height:150px;">
-                            <img id='picImg' style="width: 100%;height: auto;max-height: 140px;" src="${huiyuan.tx}" alt="" />
+                            <img id='picImg' style="width: 100%;height: auto;max-height: 180px;" src="${huiyuan.tx}" alt="" />
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                         <div>
                         <span class="btn btn-primary btn-file">
                             <span class="fileinput-new">选择文件</span>
                             <span class="fileinput-exists">换一张</span>
-                            <input type="file" name="pic1" id="picID" accept="image/gif,image/jpeg,image/x-png"/>
+                            <input type="file" name="file" id="tx" accept="image/gif,image/jpeg,image/x-png"/>
                         </span>
                             <a href="javascript:;" class="btn btn-warning fileinput-exists" data-dismiss="fileinput">移除</a>
                         </div>
                     </div>
                 </div>
-                <button type="button" id="uploadSubmit" class="btn btn-info">提交</button>
+                <button type="button" id="uploadSubmit" onclick="up()" class="btn btn-info">提交</button>
             </form>
-</div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+        </div>
 <script type="text/javascript">
  var path="";
-$("#img").click(function () {
+$("#picImg").click(function () {
    /* var pop=new Popup({ contentType:1,isReloadOnClose:false,width:400,height:200});
     pop.setContent("contentUrl","${ctx}/common/upFile.jsp");
     pop.setContent("title","文件上传");
@@ -305,14 +310,12 @@ $("#img").click(function () {
             $.ajaxFileUpload({
                 url: "${ctx}/personCenter/upFile",
                 secureuri:false,
+                async:false,
                 fileElementId:"tx",    //上传文件选择框的id属性
                 dataType: 'json',   //json，与后台对应，text和json
                 success: function (data) {        // var readdata =  eval('(' + data.substring(59,data.length-6) + ')');    //text 格式自动加载标签，使用及去字符串
                     if (data.code=='1'){
-                        path = data.message;
-                        console.log(path);
-                        $("#img").attr("src",path);  //添加到回显的img标签上，同时该标签自动发送该图片的url
-                        //$("#img").val(readdata.message)    //要保存的图片地址
+                        window.location.reload();
                     }
                    else {
                         $("").dailog({

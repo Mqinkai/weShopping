@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .mymetadata
 .checkstyle
 .classpath
@@ -19,6 +19,6 @@ weShopping.iml
 /target/*
 target/*
 target/
-=======
+
 .idea
->>>>>>> e065e560d736c2593c06aeaf47927103e5b84af6
+

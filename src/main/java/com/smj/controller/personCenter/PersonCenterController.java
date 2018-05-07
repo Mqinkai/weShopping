@@ -78,9 +78,10 @@ public class PersonCenterController {
     public String PersonInformation(HttpServletRequest request, Model model){
     Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
     if (huiyuan!=null){
+        Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
         Date date = new Date();
         model.addAttribute("date",date);
-        model.addAttribute("huiyuan",huiyuan);
+        model.addAttribute("huiyuan",huiyuan1);
         model.addAttribute("login","1");
         return "site/personalCenter/PersonInformation";
     }else{
@@ -92,7 +93,7 @@ public class PersonCenterController {
 }
     @RequestMapping(value = "upFile")
     @ResponseBody
-    public ResultDto upFile(@RequestParam MultipartFile file, HttpSession session){
+    public ResultDto upFile(@RequestParam MultipartFile file, HttpSession session,HttpServletRequest request){
         ResultDto resultDto = new ResultDto();
         //获得原来文件名(含后缀名)
         String originalFilename = file.getOriginalFilename();
@@ -102,7 +103,7 @@ public class PersonCenterController {
         //保存文件
         //ServletContext application = session.getServletContext();
         //String realPath = application.getRealPath("D:\\workspace111\\ycpolice-web\\web\\static\\updownload");
-        String realPath = "E:\\webShop\\Shopping\\weShopping\\src\\main\\webapp\\static\\images";
+        String realPath = "E:\\my_project\\weShopping\\src\\main\\webapp\\static\\images";
         //产生一个uuid随机文件名
         String uuid = UUID.randomUUID().toString();
         String fullPath = realPath + File.separator + uuid + suffix;
@@ -124,8 +125,10 @@ public class PersonCenterController {
         }
         //获取修改后头像地址
         String rePath = "/static/images/"+ uuid + suffix;
+        //保存
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        huiyuanCenterService.saveImage(rePath,huiyuan.getId());
         resultDto.setCode("1");
-       resultDto.setMessage(rePath);
         return resultDto;
     }
     /**

@@ -57,28 +57,25 @@
         <aside class="menu" style="margin-top: 35px">
             <ul>
                 <li class="person">
-                    <a href="index.html">个人中心</a>
+                    <a href="${ctx}/personCenter/PersonalCenter">个人中心</a>
                 </li>
                 <li class="person">
                     <a href="#">个人资料</a>
                     <ul>
                         <li class="active"> <a href="${ctx}/personCenter/PersonInformation">个人信息</a></li>
                         <li> <a href="${ctx}/personCenter/Safety">安全设置</a></li>
-                        <li> <a href="address.html">收货地址</a></li>
+                        <li> <a href="${ctx}/personCenter/address">收货地址</a></li>
                     </ul>
                 </li>
                 <li class="person">
                     <a href="#">我的交易</a>
                     <ul>
-                        <li><a href="order.html">订单管理</a></li>
-                        <li> <a href="change.html">退款售后</a></li>
+                        <li><a href="${ctx}/personCenter/order">订单管理</a></li>
                     </ul>
                 </li>
                 <li class="person">
                     <a href="#">我的资产</a>
                     <ul>
-                        <li> <a href="coupon.html">优惠券 </a></li>
-                        <li> <a href="bonus.html">红包</a></li>
                         <li> <a href="bill.html">账单明细</a></li>
                     </ul>
                 </li>
@@ -86,10 +83,8 @@
                 <li class="person">
                     <a href="#">我的小窝</a>
                     <ul>
-                        <li> <a href="collection.html">收藏</a></li>
-                        <li> <a href="foot.html">足迹</a></li>
-                        <li> <a href="comment.html">评价</a></li>
-                        <li> <a href="news.html">消息</a></li>
+                        <li> <a href="${ctx}/personCenter/omment">评价</a></li>
+                        <li> <a href="${ctx}/personCenter/news">消息</a></li>
                     </ul>
                 </li>
 
@@ -109,7 +104,7 @@
 
                     <div class="filePic">
                        <%-- <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="/static/img/*">--%>
-                        <img id="picImg" class="am-circle am-img-thumbnail" src="${huiyuan.tx}" alt="" />
+                        <img id="img" class="am-circle am-img-thumbnail" src="${huiyuan.tx}" alt="" />
 
                     </div>
                     <div class="info-m">
@@ -196,6 +191,7 @@
                 </div>
 
             </div>
+            <!--底部-->
             <div class="footer"  style="margin-top: 50px">
                 <div class="footer-hd">
                     <p>
@@ -215,7 +211,6 @@
                 </div>
             </div>
         </div>
-        <!--底部-->
 
     </div>
 
@@ -249,9 +244,14 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
         </div>
+<div id="load-layout" style="position:fixed;width:100%;height:100%;top:0px;left:0px;opacity:0.4;background:#000;display:none;">
+    <div style="position:absolute;left:49%;top:200px;">
+        <img src="/static/img/load.gif">
+    </div>
+</div>
 <script type="text/javascript">
  var path="";
-$("#picImg").click(function () {
+$("#img").click(function () {
    /* var pop=new Popup({ contentType:1,isReloadOnClose:false,width:400,height:200});
     pop.setContent("contentUrl","${ctx}/common/upFile.jsp");
     pop.setContent("title","文件上传");
@@ -264,10 +264,10 @@ $("#picImg").click(function () {
  //设置模态框居中
  $('#myModal').on('show.bs.modal', centerModals);
  //禁用空白处点击关闭
- $('#myModal').modal({
+/* $('#myModal').modal({
      backdrop: 'static',
      show:false
- });
+ });*/
  //页面大小变化是仍然保证模态框水平垂直居中
  $(window).on('resize', centerModals);
 
@@ -306,8 +306,39 @@ $("#picImg").click(function () {
             });
              return false;
              }else {
+            $('#load-layout').show();
             var formData = new FormData(document.getElementById("upload-form"));
-            $.ajaxFileUpload({
+            $.ajax({
+                url:"${ctx}/personCenter/upFile",
+                method: 'POST',
+                data: formData,
+                async: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.code=='1'){
+                        setTimeout(function(){
+                            $('load-layout').hide();
+                            window.location.reload();
+                        },4000);
+
+                    }
+                    else {
+                        $("").dailog({
+                            type: 'danger',
+                            showBoxShadow: true,
+                            animateStyle: 'none',
+                            bottons: ['确定'],
+                            discription: '上传失败，请稍后重试。'
+                        });
+                    }
+                    $('#myModal').modal('hide')
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+/*            $.ajaxFileUpload({
                 url: "${ctx}/personCenter/upFile",
                 secureuri:false,
                 async:false,
@@ -331,7 +362,7 @@ $("#picImg").click(function () {
                 error: function (data) {
                     console.log(data);
                 }
-            });
+            });*/
         }
     }
     function test() {

@@ -5,22 +5,16 @@
   Time: 14:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<!DOCTYPE html>
-<html>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/views/common/taglib.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" pageEncoding="UTF-8"%>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
     <title>安全设置</title>
-
-    <link href="/static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-    <link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-
-    <link href="/static/css/personal.css" rel="stylesheet" type="text/css">
-    <link href="/static/css/infstyle.css" rel="stylesheet" type="text/css">
+  <%--  <link href="/static/css/infstyle.css" rel="stylesheet" type="text/css">--%>
 </head>
 
 <body>
@@ -29,29 +23,7 @@
     <article>
         <div class="mt-logo">
             <!--顶部导航条 -->
-            <div class="am-container header">
-                <ul class="message-l">
-                    <div class="topMessage">
-                        <div class="menu-hd">
-                            <a href="#" target="_top" class="h">亲，请登录</a>
-                            <a href="#" target="_top">免费注册</a>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="message-r">
-                    <div class="topMessage home">
-                        <div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
-                    </div>
-                    <div class="topMessage my-shangcheng">
-                        <div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-                    </div>
-                    <div class="topMessage mini-cart">
-                        <div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-                    </div>
-                    <div class="topMessage favorite">
-                        <div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-                </ul>
-            </div>
+            <jsp:include flush="true" page="/WEB-INF/views/site/daohang.jsp"></jsp:include>
 
             <!--悬浮搜索框-->
 
@@ -74,26 +46,47 @@
         </div>
     </article>
 </header>
-<div class="nav-table">
-    <div class="long-title"><span class="all-goods">全部分类</span></div>
-    <div class="nav-cont">
-        <ul>
-            <li class="index"><a href="#">首页</a></li>
-            <li class="qc"><a href="#">闪购</a></li>
-            <li class="qc"><a href="#">限时抢</a></li>
-            <li class="qc last"><a href="#">大包装</a></li>
-        </ul>
-        <div class="nav-extra">
-            <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-            <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-        </div>
-    </div>
-</div>
 <b class="line"></b>
 <div class="center">
     <div class="col-main">
-        <div class="main-wrap">
+        <aside class="menu" style="margin-top: 35px">
+            <ul>
+                <li class="person">
+                    <a href="${ctx}/personCenter/PersonalCenter">个人中心</a>
+                </li>
+                <li class="person">
+                    <a href="#">个人资料</a>
+                    <ul>
+                        <li> <a href="${ctx}/personCenter/PersonInformation">个人信息</a></li>
+                        <li class="active"> <a href="${ctx}/personCenter/Safety">安全设置</a></li>
+                        <li> <a href="${ctx}/personCenter/address">收货地址</a></li>
+                    </ul>
+                </li>
+                <li class="person">
+                    <a href="#">我的交易</a>
+                    <ul>
+                        <li><a href="${ctx}/personCenter/order">订单管理</a></li>
+                    </ul>
+                </li>
+                <li class="person">
+                    <a href="#">我的资产</a>
+                    <ul>
+                        <li> <a href="bill.html">账单明细</a></li>
+                    </ul>
+                </li>
 
+                <li class="person">
+                    <a href="#">我的小窝</a>
+                    <ul>
+                        <li> <a href="${ctx}/personCenter/comment">评价</a></li>
+                        <li> <a href="${ctx}/personCenter/news">消息</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </aside>
+        ain-<div class="mwrap">
             <!--标题 -->
             <div class="user-safety">
                 <div class="am-cf am-padding">
@@ -111,7 +104,7 @@
                     <p class="am-form-help">头像</p>
 
                     <div class="info-m">
-                        <div><b>用户名：<i>${huiyuan.uesrName}</i></b></div>
+                        <div>用户名：</div>
                         <div class="u-level">
 									<span class="rank r2">
 							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
@@ -204,70 +197,29 @@
                 </div>
 
             </div>
-        </div>
-        <!--底部-->
-        <div class="footer"  style="margin-top: 50px">
-            <div class="footer-hd">
-                <p>
-                    <a href="# ">青岛理工</a>
-                    <b>|</b>
-                    <a href="# ">商城首页</a>
-                    <b>|</b>
-                    <a href="# ">支付宝</a>
-                    <b>|</b>
-                    <a href="# ">物流</a>
-                </p>
+            <!--底部-->
+            <div class="footer"  style="margin-top: 50px">
+                <div class="footer-hd">
+                    <p>
+                        <a href="# ">青岛理工</a>
+                        <b>|</b>
+                        <a href="# ">商城首页</a>
+                        <b>|</b>
+                        <a href="# ">支付宝</a>
+                        <b>|</b>
+                        <a href="# ">物流</a>
+                    </p>
+                </div>
+                <div class="footer-bd ">
+                    <p>
+                        <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
+                    </p>
+                </div>
             </div>
-            <div class="footer-bd ">
-                <p>
-                    <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
-                </p>
-            </div>
         </div>
+
     </div>
 
-    <aside class="menu">
-        <ul>
-            <li class="person">
-                <a href="index.html">个人中心</a>
-            </li>
-            <li class="person">
-                <a href="#">个人资料</a>
-                <ul>
-                    <li> <a href="information.html">个人信息</a></li>
-                    <li class="active"> <a href="safety.html">安全设置</a></li>
-                    <li> <a href="address.html">收货地址</a></li>
-                </ul>
-            </li>
-            <li class="person">
-                <a href="#">我的交易</a>
-                <ul>
-                    <li><a href="order.html">订单管理</a></li>
-                    <li> <a href="change.html">退款售后</a></li>
-                </ul>
-            </li>
-            <li class="person">
-                <a href="#">我的资产</a>
-                <ul>
-                    <li> <a href="coupon.html">优惠券 </a></li>
-                    <li> <a href="bonus.html">红包</a></li>
-                    <li> <a href="bill.html">账单明细</a></li>
-                </ul>
-            </li>
-
-            <li class="person">
-                <a href="#">我的小窝</a>
-                <ul>
-                    <li> <a href="collection.html">收藏</a></li>
-                    <li> <a href="foot.html">足迹</a></li>
-                    <li> <a href="comment.html">评价</a></li>
-                    <li> <a href="news.html">消息</a></li>
-                </ul>
-            </li>
-
-        </ul>
-
-    </aside>
 </div>
 
 </body>

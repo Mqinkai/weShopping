@@ -20,6 +20,10 @@
 <link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/hmstyle.css" rel="stylesheet" type="text/css"/>
 <link href="/static/css/skin.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/addstyle.css" rel="stylesheet" type="text/css">
+<link href="/static/css/orstyle.css" rel="stylesheet" type="text/css">
+<link href="/static/css/cmstyle.css" rel="stylesheet" type="text/css">
+<link href="/static/css/newstyle.css" rel="stylesheet" type="text/css">
 
 
 

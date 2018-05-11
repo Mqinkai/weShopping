@@ -53,7 +53,6 @@
                 <li class="index"><a href="#">首页</a></li>
                 <li class="qc"><a href="#">校园二手</a></li>
                 <li class="qc"><a href="#">同城交易</a></li>
-                <li class="qc"><a href="#">人气商品</a></li>
                 <li class="qc last"><a href="#">超低价</a></li>
             </ul>
             <%-- <div class="nav-extra">

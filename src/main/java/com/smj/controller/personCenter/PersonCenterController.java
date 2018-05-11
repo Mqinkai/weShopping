@@ -99,10 +99,12 @@ public class PersonCenterController {
         String originalFilename = file.getOriginalFilename();
         int pos = originalFilename.lastIndexOf(".");
         //原文件后缀名
-        String suffix = originalFilename.substring(pos);
+        String suffix1 = originalFilename.substring(pos);
+        String suffix= suffix1.toLowerCase();
         //保存文件
         //ServletContext application = session.getServletContext();
         //String realPath = application.getRealPath("D:\\workspace111\\ycpolice-web\\web\\static\\updownload");
+        //String realPath = "E:\\my_project\\weShopping\\src\\main\\webapp\\static\\images";
         String realPath = "E:\\my_project\\weShopping\\src\\main\\webapp\\static\\images";
         //产生一个uuid随机文件名
         String uuid = UUID.randomUUID().toString();
@@ -162,4 +164,39 @@ public class PersonCenterController {
             e.printStackTrace();
         }
     }
+
+    //跳转到个人中心
+    @RequestMapping(value = "PersonalCenter")
+    public String toPersonalCenter(HttpServletRequest request, Model model){
+        return "site/personalCenter/PersonalCenter";
+    }
+
+    //跳转到安全设置
+    @RequestMapping(value = "safety")
+    public String toSafety(HttpServletRequest request, Model model){
+        return "site/personalCenter/Safety";
+    }
+
+    //跳转到收货地址
+    @RequestMapping(value = "address")
+    public String toaddress(HttpServletRequest request, Model model){
+        return "site/personalCenter/address";
+    }
+
+    //跳转到订单管理
+    @RequestMapping(value = "order")
+    public String toorder(HttpServletRequest request, Model model){
+        return "site/personalCenter/order";
+    }
+
+    //跳转到评价
+    @RequestMapping(value = "comment")
+    public String tocomment(HttpServletRequest request, Model model){
+        return "site/personalCenter/comment";
+    }
+
+    //跳转到消息
+    @RequestMapping(value = "news")
+    public String tonews(HttpServletRequest request, Model model) { return "site/personalCenter/news"; }
+
 }

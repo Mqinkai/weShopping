@@ -52,13 +52,13 @@
         <aside class="menu" style="margin-top: 35px">
             <ul>
                 <li class="person">
-                    <a href="${ctx}/personCenter/PersonalCenter">个人中心</a>
+                    <a href="${ctx}/personCenter/">个人中心</a>
                 </li>
                 <li class="person">
                     <a href="#">个人资料</a>
                     <ul>
                         <li> <a href="${ctx}/personCenter/PersonInformation">个人信息</a></li>
-                        <li class="active"> <a href="${ctx}/personCenter/Safety">安全设置</a></li>
+                        <li class="active"> <a href="${ctx}/personCenter/safety">安全设置</a></li>
                         <li> <a href="${ctx}/personCenter/address">收货地址</a></li>
                     </ul>
                 </li>
@@ -66,12 +66,6 @@
                     <a href="#">我的交易</a>
                     <ul>
                         <li><a href="${ctx}/personCenter/order">订单管理</a></li>
-                    </ul>
-                </li>
-                <li class="person">
-                    <a href="#">我的资产</a>
-                    <ul>
-                        <li> <a href="bill.html">账单明细</a></li>
                     </ul>
                 </li>
 
@@ -86,7 +80,7 @@
             </ul>
 
         </aside>
-        ain-<div class="mwrap">
+        <div class="mwrap">
             <!--标题 -->
             <div class="user-safety">
                 <div class="am-cf am-padding">
@@ -100,20 +94,25 @@
                     <div class="filePic">
                         <img class="am-circle am-img-thumbnail" src=${huiyuan.tx} alt="" />
                     </div>
-
-                    <p class="am-form-help">头像</p>
-
                     <div class="info-m">
-                        <div>用户名：</div>
+                        <div>${huiyuan.userName}：</div>
                         <div class="u-level">
 									<span class="rank r2">
-							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
+							             <s class="vip1"></s><a class="classes" href="#">${huiyuan.code}</a>
 						            </span>
                         </div>
                         <div class="u-safety">
                             <a href="safety.html">
                                 账户安全
-                                <span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">60分</i></span>
+                                <c:choose>
+                                    <c:when test="${ huiyuan.email != null && huiyuan.tel != null} ">
+                                        <span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">100分</i></span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">50分</i></span>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </a>
                         </div>
                     </div>
@@ -129,19 +128,7 @@
                             </div>
                             <div class="fore3">
                                 <a href="password.html">
-                                    <div class="am-btn am-btn-secondary">修改</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="i-safety-wallet"></i>
-                            <div class="m-left">
-                                <div class="fore1">支付密码</div>
-                                <div class="fore2"><small>启用支付密码功能，为您资产账户安全加把锁。</small></div>
-                            </div>
-                            <div class="fore3">
-                                <a href="setpay.html">
-                                    <div class="am-btn am-btn-secondary">立即启用</div>
+                                    <div class="am-btn am-btn-secondary"><a style="color: white" href="${ctx}/safety/password">修改</a></div>
                                 </a>
                             </div>
                         </li>
@@ -149,11 +136,26 @@
                             <i class="i-safety-iphone"></i>
                             <div class="m-left">
                                 <div class="fore1">手机验证</div>
-                                <div class="fore2"><small>您验证的手机：186XXXXXXXX 若已丢失或停用，请立即更换</small></div>
+                                <c:choose>
+                                    <c:when test="${huiyuan.tel != null and huiyuan.tel != ''}">
+                                        <div class="fore2"><small>您验证的手机：${huiyuan.tel} 若已丢失或停用，请立即更换</small></div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="fore2"><small>为了安全，请绑定手机号</small></div>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </div>
                             <div class="fore3">
                                 <a href="bindphone.html">
-                                    <div class="am-btn am-btn-secondary">换绑</div>
+                                    <c:choose>
+                                        <c:when test="${huiyuan.tel != null and huiyuan.tel != ''}">
+                                            <div class="am-btn am-btn-secondary"><a style="color: white" href="${ctx}/safety/bindphone">更改</a></div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="am-btn am-btn-secondary"><a style="color: white" href="${ctx}/safety/bindphone">绑定</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </a>
                             </div>
                         </li>
@@ -161,35 +163,25 @@
                             <i class="i-safety-mail"></i>
                             <div class="m-left">
                                 <div class="fore1">邮箱验证</div>
-                                <div class="fore2"><small>您验证的邮箱：5831XXX@qq.com 可用于快速找回登录密码</small></div>
+                                <c:choose>
+                                    <c:when test="${huiyuan.email != null and huiyuan.email != ''}">
+                                        <div class="fore2"><small>您验证的邮箱：${huiyuan.email} 若已丢失或停用，请立即更换</small></div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="fore2"><small>为了安全，请绑定邮箱</small></div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div class="fore3">
                                 <a href="email.html">
-                                    <div class="am-btn am-btn-secondary">换绑</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="i-safety-idcard"></i>
-                            <div class="m-left">
-                                <div class="fore1">实名认证</div>
-                                <div class="fore2"><small>用于提升账号的安全性和信任级别，认证后不能修改认证信息。</small></div>
-                            </div>
-                            <div class="fore3">
-                                <a href="idcard.html">
-                                    <div class="am-btn am-btn-secondary">认证</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="i-safety-security"></i>
-                            <div class="m-left">
-                                <div class="fore1">安全问题</div>
-                                <div class="fore2"><small>保护账户安全，验证您身份的工具之一。</small></div>
-                            </div>
-                            <div class="fore3">
-                                <a href="question.html">
-                                    <div class="am-btn am-btn-secondary">认证</div>
+                                    <c:choose>
+                                        <c:when test="${huiyuan.email != null and huiyuan.email != ''}">
+                                            <div class="am-btn am-btn-secondary"><a style="color: white" href="${ctx}/safety/email">更改</a></div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="am-btn am-btn-secondary"><a style="color: white" href="${ctx}/safety/email">绑定</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </a>
                             </div>
                         </li>

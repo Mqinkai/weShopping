@@ -49,9 +49,6 @@ String path = request.getContextPath();
           <div class="topMessage mini-cart">
               <div class="menu-hd"><a style="font: '微软雅黑', 'Microsoft Yahei';font-size: 14px;" id="mc-menu-hd" href="javascript:void(0);" onclick="grzx()" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">${huiyuan.carNum}￥</strong></a></div>
           </div>
-          <div class="topMessage favorite">
-              <div class="menu-hd"><a style="font: '微软雅黑', 'Microsoft Yahei';font-size: 14px;" href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-          </div>
       </ul>
   </div>
   <script type="text/javascript">

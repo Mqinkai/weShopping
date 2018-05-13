@@ -57,13 +57,13 @@
         <aside class="menu" style="margin-top: 35px">
             <ul>
                 <li class="person">
-                    <a href="${ctx}/personCenter/PersonalCenter">个人中心</a>
+                    <a href="${ctx}/personCenter/">个人中心</a>
                 </li>
                 <li class="person">
                     <a href="#">个人资料</a>
                     <ul>
                         <li class="active"> <a href="${ctx}/personCenter/PersonInformation">个人信息</a></li>
-                        <li> <a href="${ctx}/personCenter/Safety">安全设置</a></li>
+                        <li> <a href="${ctx}/personCenter/safety">安全设置</a></li>
                         <li> <a href="${ctx}/personCenter/address">收货地址</a></li>
                     </ul>
                 </li>
@@ -71,12 +71,6 @@
                     <a href="#">我的交易</a>
                     <ul>
                         <li><a href="${ctx}/personCenter/order">订单管理</a></li>
-                    </ul>
-                </li>
-                <li class="person">
-                    <a href="#">我的资产</a>
-                    <ul>
-                        <li> <a href="bill.html">账单明细</a></li>
                     </ul>
                 </li>
 
@@ -111,19 +105,19 @@
                         <div><b>用户名：<i>${huiyuan.userName}</i></b></div>
                         <div class="u-level">
 									<span class="rank r2">
-							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
+							             <s class="vip1"></s><a class="classes" href="#">${huiyuan.code}</a>
 						            </span>
                         </div>
                     </div>
                 </div>
                 <!--个人信息 -->
                 <div class="info-main">
-                    <form class="am-form am-form-horizontal">
-
+                    <form class="am-form am-form-horizontal" id="form">
+                       <input id="id" name="id" value="${huiyuan.id}" type="hidden">
                         <div class="am-form-group">
-                            <label for="user-name2" class="am-form-label">昵称</label>
+                            <label class="am-form-label">昵称</label>
                             <div class="am-form-content">
-                                <input type="text" id="user-name2" placeholder="">
+                                <input type="text" name="userName" id="userName" placeholder="" value="${huiyuan.userName}">
 
                             </div>
                         </div>
@@ -131,7 +125,7 @@
                         <div class="am-form-group">
                             <label  class="am-form-label">姓名</label>
                             <div class="am-form-content">
-                                <input type="text" id="user-name2" placeholder="">
+                                <input type="text" name="xingming" id="xingming" placeholder="" value="${huiyuan.xingming}">
 
                             </div>
                         </div>
@@ -139,15 +133,52 @@
                         <div class="am-form-group">
                             <label class="am-form-label">性别</label>
                             <div class="am-form-content sex">
-                                <label class="am-radio-inline">
-                                    <input type="radio" name="radio10" value="male" data-am-ucheck> 男
-                                </label>
-                                <label class="am-radio-inline">
-                                    <input type="radio" name="radio10" value="female" data-am-ucheck> 女
-                                </label>
-                                <label class="am-radio-inline">
-                                    <input type="radio" name="radio10" value="secret" data-am-ucheck> 保密
-                                </label>
+                                <c:choose>
+                                    <c:when test="${huiyuan.xingbie ==''}">
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="1" data-am-ucheck> 男
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="2" data-am-ucheck> 女
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="0" data-am-ucheck> 保密
+                                        </label>
+                                    </c:when>
+                                    <c:when test="${huiyuan.xingbie =='1'}">
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" checked value="1" data-am-ucheck> 男
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="2" data-am-ucheck> 女
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="0" data-am-ucheck> 保密
+                                        </label>
+                                    </c:when>
+                                    <c:when test="${huiyuan.xingbie =='2'}">
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="1" data-am-ucheck> 男
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" checked value="2" data-am-ucheck> 女
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="0" data-am-ucheck> 保密
+                                        </label>
+                                    </c:when>
+                                    <c:when test="${huiyuan.xingbie =='0'}">
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="1" data-am-ucheck> 男
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" value="2" data-am-ucheck> 女
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="xingbie" checked value="0" data-am-ucheck> 保密
+                                        </label>
+                                    </c:when>
+                                </c:choose>
                             </div>
                         </div>
 
@@ -155,36 +186,16 @@
                             <label class="am-form-label">生日</label>
                             <div class="am-form-content birth">
                                 <div class="birth-select">
-                                    <input type="text" id="jssj" name="jssj" readonly="readonly" maxlength="20" class="cursorpointer datainput"
-                                           value="<fmt:formatDate value="${date}" pattern="yyyy-MM-dd"/>"
+                                    <input type="text" id="srup" name="srup" readonly="readonly" maxlength="20" class="cursorpointer datainput"
+                                           value="<fmt:formatDate value="${huiyuan.sr}" pattern="yyyy-MM-dd"/>"
                                            onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true});">
                                 </div>
                             </div>
 
                         </div>
-                        <div class="am-form-group">
-                            <label for="user-phone" class="am-form-label">电话</label>
-                            <div class="am-form-content">
-                                <input id="user-phone" placeholder="" type="text">
-
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="user-email" class="am-form-label">电子邮件</label>
-                            <div class="am-form-content">
-                                <input id="user-email" placeholder="" type="text">
-
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label  class="am-form-label">收货地址</label>
-                            <div class="am-form-content">
-                                <input id="user-email" placeholder="" type="text">
-                            </div>
-                        </div>
 
                         <div class="info-btn">
-                            <div class="am-btn am-btn-danger">保存修改</div>
+                            <div class="am-btn am-btn-danger" onclick="saveInfo()">保存修改</div>
                         </div>
 
                     </form>
@@ -195,7 +206,7 @@
             <div class="footer"  style="margin-top: 50px">
                 <div class="footer-hd">
                     <p>
-                        <a href="# ">青岛理工</a>
+                        <a href="http://www.qtech.edu.cn/">青岛理工</a>
                         <b>|</b>
                         <a href="# ">商城首页</a>
                         <b>|</b>
@@ -365,8 +376,24 @@ $("#img").click(function () {
             });*/
         }
     }
-    function test() {
-
+    function saveInfo() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "${ctx}/personCenter/save" ,//url
+            data: $('#form').serialize(),
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.code == '1') {
+                    window.location.reload();
+                }
+                ;
+            },
+            error : function() {
+                alert("异常！");
+            }
+        });
     }
 </script>
 </body>

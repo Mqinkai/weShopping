@@ -4,7 +4,19 @@
  <update id="save">
   UPDATE t_huiyuan SET tx=#{rePath} where id=#{id}
  </update>
- <select id="findOrder" resultType="com.smj.entiy.huiyuan.Order">
+    <update id="savePassword">
+        UPDATE t_huiyuan SET password = #{password} where id = #{id}
+    </update>
+    <update id="savePhone">
+        UPDATE t_huiyuan SET tel = #{tel} where id =#{id}
+    </update>
+    <update id="saveEmail">
+         UPDATE t_huiyuan SET email = #{yx} where id =#{id}
+    </update>
+    <update id="saveinfo">
+        UPDATE t_huiyuan SET  xingming = #{xingming},user_name = #{userName},xingbie = #{xingbie},sr = #{sr}  where id = #{id}
+    </update>
+    <select id="findOrder" resultType="com.smj.entiy.huiyuan.Order">
         SELECT
       sum( CASE
        WHEN zt='1'
@@ -48,8 +60,16 @@
         sr,
         tel,
         email,
-        address
+        address,
+        xingbie
+
         FROM t_huiyuan
 WHERE id=#{id}
  </select>
+    <select id="findThisUser" resultType="java.lang.String">
+        SELECT id FROM t_huiyuan WHERE user_name = #{userName} and password = #{password}
+    </select>
+    <select id="findAddress" resultType="com.smj.entiy.Address">
+        SELECT  * FROM t_address WHERE user_id=#{id} and del_flag = '0'
+    </select>
 </mapper>

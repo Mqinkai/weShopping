@@ -1,5 +1,7 @@
 package com.smj.entiy.huiyuan;
 
+import java.util.Date;
+
 /**
  * Created on 2018/2/22.
  */
@@ -14,8 +16,43 @@ public class Huiyuan {
     private String tx;
     private String carNum;//购物车数量
     private String xingming;
-    private String sr;
+    private Date sr;
+    private String srup; //上传用的时间
     private String address;
+    private String xingbie = "";
+    private String csrq;
+
+    public String getSrup() {
+        return srup;
+    }
+
+    public void setSrup(String srup) {
+        this.srup = srup;
+    }
+
+    public Date getSr() {
+        return sr;
+    }
+
+    public void setSr(Date sr) {
+        this.sr = sr;
+    }
+
+    public String getCsrq() {
+        return csrq;
+    }
+
+    public void setCsrq(String csrq) {
+        this.csrq = csrq;
+    }
+
+    public String getXingbie() {
+        return xingbie;
+    }
+
+    public void setXingbie(String xingbie) {
+        this.xingbie = xingbie;
+    }
 
     public String getId() {
         return id;
@@ -97,13 +134,6 @@ public class Huiyuan {
         this.xingming = xingming;
     }
 
-    public String getSr() {
-        return sr;
-    }
-
-    public void setSr(String sr) {
-        this.sr = sr;
-    }
 
     public String getAddress() {
         return address;

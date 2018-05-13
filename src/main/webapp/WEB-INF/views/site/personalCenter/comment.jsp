@@ -53,13 +53,13 @@
         <aside class="menu" style="margin-top: 35px">
             <ul>
                 <li class="person">
-                    <a href="${ctx}/personCenter/PersonalCenter">个人中心</a>
+                    <a href="${ctx}/personCenter/">个人中心</a>
                 </li>
                 <li class="person">
                     <a href="#">个人资料</a>
                     <ul>
                         <li> <a href="${ctx}/personCenter/PersonInformation">个人信息</a></li>
-                        <li> <a href="${ctx}/personCenter/Safety">安全设置</a></li>
+                        <li> <a href="${ctx}/personCenter/safety">安全设置</a></li>
                         <li> <a href="${ctx}/personCenter/address">收货地址</a></li>
                     </ul>
                 </li>
@@ -67,12 +67,6 @@
                     <a href="#">我的交易</a>
                     <ul>
                         <li><a href="${ctx}/personCenter/order">订单管理</a></li>
-                    </ul>
-                </li>
-                <li class="person">
-                    <a href="#">我的资产</a>
-                    <ul>
-                        <li> <a href="bill.html">账单明细</a></li>
                     </ul>
                 </li>
 

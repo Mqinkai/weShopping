@@ -48,7 +48,7 @@
         <aside class="menu">
             <ul>
                 <li class="person active">
-                    <a href="${ctx}/personCenter/PersonalCenter">个人中心</a>
+                    <a href="${ctx}/personCenter/">个人中心</a>
                 </li>
                 <li class="person">
                     <a href="#">个人资料</a>
@@ -64,12 +64,6 @@
                         <li><a href="${ctx}/personCenter/order">订单管理</a></li>
                     </ul>
                 </li>
-                <li class="person">
-                    <a href="#">我的资产</a>
-                    <ul>
-                        <li> <a href="bill.html">账单明细</a></li>
-                    </ul>
-                </li>
 
                 <li class="person">
                     <a href="#">我的小窝</a>
@@ -83,7 +77,7 @@
 
         </aside>
         <div class="main-wrap">
-            <div class="wrap-left" style="height: 1200px;overflow:auto;!important;">
+            <div class="wrap-left" style="height: 800px;overflow:auto;!important;">
                 <div class="wrap-list">
                     <div class="m-user">
                         <!--个人信息 -->
@@ -91,7 +85,7 @@
                         <div class="m-userinfo" style="height: 110px;">
                             <div class="m-baseinfo">
                                 <a href="information.html">
-                                    <img src="${huiyuan.tx}">
+                                   <img src="${huiyuan.tx}">
                                 </a>
                                 <em class="s-name">${huiyuan.userName}<span class="vip2"></span></em>
 
@@ -217,127 +211,6 @@
 
                     </div>
 
-                    <!--收藏夹 -->
-                    <div class="you-like">
-                        <div class="s-bar">我的收藏
-                            <a class="am-badge am-badge-danger am-round">降价</a>
-                            <a class="am-badge am-badge-danger am-round">下架</a>
-                            <a class="i-load-more-item-shadow" href="#"><i class="am-icon-refresh am-icon-fw"></i>换一组</a>
-                        </div>
-                        <div class="s-content">
-                            <div class="s-item-wrap">
-                                <div class="s-item">
-
-                                    <div class="s-pic">
-                                        <a href="#" class="s-pic-link">
-                                            <img src="/static/images/0-item_pic.jpg_220x220.jpg" alt="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" class="s-pic-img s-guess-item-img">
-                                        </a>
-                                    </div>
-                                    <div class="s-price-box">
-                                        <span class="s-price"><em class="s-price-sign">yen</em><em class="s-value">42.50</em></span>
-                                        <span class="s-history-price"><em class="s-price-sign">yen</em><em class="s-value">68.00</em></span>
-
-                                    </div>
-                                    <div class="s-title"><a href="#" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰">包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰</a></div>
-
-                                </div>
-                            </div>
-
-                            <div class="s-item-wrap">
-                                <div class="s-item">
-
-                                    <div class="s-pic">
-                                        <a href="#" class="s-pic-link">
-                                            <img src="/static/images/1-item_pic.jpg_220x220.jpg" alt="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" class="s-pic-img s-guess-item-img">
-                                        </a>
-                                    </div>
-                                    <div class="s-price-box">
-                                        <span class="s-price"><em class="s-price-sign">yen</em><em class="s-value">49.90</em></span>
-                                        <span class="s-history-price"><em class="s-price-sign">yen</em><em class="s-value">88.00</em></span>
-
-                                    </div>
-                                    <div class="s-title"><a href="#" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰">s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰</a></div>
-
-                                </div>
-                            </div>
-
-                            <div class="s-item-wrap">
-                                <div class="s-item">
-
-                                    <div class="s-pic">
-                                        <a href="#" class="s-pic-link">
-                                            <img src="/static/images/-0-saturn_solar.jpg_220x220.jpg" alt="4折抢购!十二生肖925银女戒指,时尚开口女戒" title="4折抢购!十二生肖925银女戒指,时尚开口女戒" class="s-pic-img s-guess-item-img">
-                                        </a>
-                                    </div>
-                                    <div class="s-price-box">
-                                        <span class="s-price"><em class="s-price-sign">yen</em><em class="s-value">378.00</em></span>
-                                        <span class="s-history-price"><em class="s-price-sign">yen</em><em class="s-value">1888.00</em></span>
-
-                                    </div>
-                                    <div class="s-title"><a href="#" title="4折抢购!十二生肖925银女戒指,时尚开口女戒">4折抢购!十二生肖925银女戒指,时尚开口女戒</a></div>
-
-                                </div>
-                            </div>
-
-                            <div class="s-item-wrap">
-                                <div class="s-item">
-
-                                    <div class="s-pic">
-                                        <a href="#" class="s-pic-link">
-                                            <img src="/static/images/0-item_pic.jpg_220x220.jpg" alt="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" class="s-pic-img s-guess-item-img">
-                                        </a>
-                                    </div>
-                                    <div class="s-price-box">
-                                        <span class="s-price"><em class="s-price-sign">yen</em><em class="s-value">42.50</em></span>
-                                        <span class="s-history-price"><em class="s-price-sign">yen</em><em class="s-value">68.00</em></span>
-
-                                    </div>
-                                    <div class="s-title"><a href="#" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰">包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰</a></div>
-
-                                </div>
-                            </div>
-
-                            <div class="s-item-wrap">
-                                <div class="s-item">
-
-                                    <div class="s-pic">
-                                        <a href="#" class="s-pic-link">
-                                            <img src="/static/images/1-item_pic.jpg_220x220.jpg" alt="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" class="s-pic-img s-guess-item-img">
-                                        </a>
-                                    </div>
-                                    <div class="s-price-box">
-                                        <span class="s-price"><em class="s-price-sign">yen</em><em class="s-value">49.90</em></span>
-                                        <span class="s-history-price"><em class="s-price-sign">yen</em><em class="s-value">88.00</em></span>
-
-                                    </div>
-                                    <div class="s-title"><a href="#" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰">s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰</a></div>
-
-                                </div>
-                            </div>
-
-                            <div class="s-item-wrap">
-                                <div class="s-item">
-
-                                    <div class="s-pic">
-                                        <a href="#" class="s-pic-link">
-                                            <img src="/static/images/-0-saturn_solar.jpg_220x220.jpg" alt="4折抢购!十二生肖925银女戒指,时尚开口女戒" title="4折抢购!十二生肖925银女戒指,时尚开口女戒" class="s-pic-img s-guess-item-img">
-                                        </a>
-                                    </div>
-                                    <div class="s-price-box">
-                                        <span class="s-price"><em class="s-price-sign">yen</em><em class="s-value">378.00</em></span>
-                                        <span class="s-history-price"><em class="s-price-sign">yen</em><em class="s-value">1888.00</em></span>
-
-                                    </div>
-                                    <div class="s-title"><a href="#" title="4折抢购!十二生肖925银女戒指,时尚开口女戒">4折抢购!十二生肖925银女戒指,时尚开口女戒</a></div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="s-more-btn i-load-more-item" data-screen="0"><i class="am-icon-refresh am-icon-fw"></i>更多</div>
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -358,7 +231,7 @@
                 </div>
             </div>
         <!--底部-->
-            <div class="footer"  style="margin-top: 1210px">
+            <div class="footer"  style="margin-top: 800px">
                 <div class="footer-hd">
                     <p>
                         <a href="# ">青岛理工</a>

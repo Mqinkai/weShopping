@@ -1,10 +1,12 @@
 package com.smj.controller.personCenter;
 
 import com.smj.common.dto.ResultDto;
+import com.smj.entiy.Address;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
 import com.smj.service.goods.GoodsService;
 import com.smj.service.huiyuan.HuiyuanCenterService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +19,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -79,8 +83,13 @@ public class PersonCenterController {
     Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
     if (huiyuan!=null){
         Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
+        //查询购物车
+        String num = goodsService.findCar(huiyuan.getId());
+        huiyuan1.setCarNum(num);  //购物车金额
         Date date = new Date();
-        model.addAttribute("date",date);
+        if (huiyuan1.getSr() ==null || huiyuan1.getSr().equals("")){
+            huiyuan1.setSr(date);
+        }
         model.addAttribute("huiyuan",huiyuan1);
         model.addAttribute("login","1");
         return "site/personalCenter/PersonInformation";
@@ -105,7 +114,7 @@ public class PersonCenterController {
         //ServletContext application = session.getServletContext();
         //String realPath = application.getRealPath("D:\\workspace111\\ycpolice-web\\web\\static\\updownload");
         //String realPath = "E:\\my_project\\weShopping\\src\\main\\webapp\\static\\images";
-        String realPath = "E:\\my_project\\weShopping\\src\\main\\webapp\\static\\images";
+        String realPath = "E:\\touxiang";
         //产生一个uuid随机文件名
         String uuid = UUID.randomUUID().toString();
         String fullPath = realPath + File.separator + uuid + suffix;
@@ -126,9 +135,10 @@ public class PersonCenterController {
             e.printStackTrace();
         }
         //获取修改后头像地址
-        String rePath = "/static/images/"+ uuid + suffix;
+        String rePath = "http://localhost:9999/personCenter/readImage?name="+ uuid + suffix;
         //保存
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        huiyuan.setTx(rePath);
         huiyuanCenterService.saveImage(rePath,huiyuan.getId());
         resultDto.setCode("1");
         return resultDto;
@@ -139,54 +149,92 @@ public class PersonCenterController {
      */
     @RequestMapping(value = "readImage", produces = "text/plain;charset=UTF-8")
     public void readImage(HttpServletRequest request,
-                          HttpServletResponse response) {
+                          HttpServletResponse response,String name) {
 
-        String imgUrl = request.getParameter("imgUrl");
-
-        String imagePath = imgUrl.replace("http://localhost:9999/static/images/", "E:\\webShop\\Shopping\\weShopping\\src\\main\\webapp\\static\\images");
-
+        //读取本地图片输入流
+        FileInputStream inputStream = null;
         try {
-            File file = new File(imagePath);
-            if (file.exists()) {
-                DataOutputStream temps = new DataOutputStream(
-                        response.getOutputStream());
-                DataInputStream in = new DataInputStream(new FileInputStream(
-                        imagePath));
-                byte[] b = new byte[2048];
-                while ((in.read(b)) != -1) {
-                    temps.write(b);
-                    temps.flush();
-                }
-                in.close();
-                temps.close();
-            }
+            inputStream = new FileInputStream("E:/touxiang/"+name);
+
+        int i = inputStream.available();
+        //byte数组用于存放图片字节数据
+        byte[] buff = new byte[i];
+        inputStream.read(buff);
+        //记得关闭输入流
+        inputStream.close();
+        //设置发送到客户端的响应内容类型
+        response.setContentType("image/*");
+        OutputStream out = response.getOutputStream();
+        out.write(buff);
+        //关闭响应输出流
+        out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    //跳转到个人中心
-    @RequestMapping(value = "PersonalCenter")
-    public String toPersonalCenter(HttpServletRequest request, Model model){
-        return "site/personalCenter/PersonalCenter";
-    }
 
     //跳转到安全设置
     @RequestMapping(value = "safety")
     public String toSafety(HttpServletRequest request, Model model){
-        return "site/personalCenter/Safety";
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        if (huiyuan!=null){
+            //查询购物车
+            String num = goodsService.findCar(huiyuan.getId());
+            Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
+            huiyuan1.setCarNum(num);  //购物车金额
+            model.addAttribute("huiyuan",huiyuan1);
+            model.addAttribute("login","1");
+            return "site/personalCenter/Safety";
+        }else{
+            String message = "找不到您的登陆信息,请重新登陆!";
+            model.addAttribute("message",message);
+            return "common/fail";
+        }
+
     }
 
     //跳转到收货地址
     @RequestMapping(value = "address")
     public String toaddress(HttpServletRequest request, Model model){
-        return "site/personalCenter/address";
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        if (huiyuan!=null){
+            //查询购物车
+            String num = goodsService.findCar(huiyuan.getId());
+            Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
+            huiyuan1.setCarNum(num);  //购物车金额
+            model.addAttribute("huiyuan",huiyuan1);
+            model.addAttribute("login","1");
+            //获取收货地址
+            List<Address> addressList = huiyuanCenterService.findAddress(huiyuan1.getId());
+            model.addAttribute("address",addressList);
+            return "site/personalCenter/address";
+        }else{
+            String message = "找不到您的登陆信息,请重新登陆!";
+            model.addAttribute("message",message);
+            return "common/fail";
+        }
+
     }
 
     //跳转到订单管理
     @RequestMapping(value = "order")
     public String toorder(HttpServletRequest request, Model model){
-        return "site/personalCenter/order";
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        if (huiyuan!=null){
+            //查询购物车
+            String num = goodsService.findCar(huiyuan.getId());
+            Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
+            huiyuan1.setCarNum(num);  //购物车金额
+            model.addAttribute("huiyuan",huiyuan1);
+            model.addAttribute("login","1");
+            return "site/personalCenter/order";
+        }else{
+            String message = "找不到您的登陆信息,请重新登陆!";
+            model.addAttribute("message",message);
+            return "common/fail";
+        }
+
     }
 
     //跳转到评价
@@ -199,4 +247,15 @@ public class PersonCenterController {
     @RequestMapping(value = "news")
     public String tonews(HttpServletRequest request, Model model) { return "site/personalCenter/news"; }
 
+    @RequestMapping(value = "save")
+    @ResponseBody
+    public ResultDto save(Huiyuan huiyuan) throws ParseException {
+        ResultDto resultDto = new ResultDto();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        huiyuan.setSr(sdf.parse(huiyuan.getSrup()));
+        //调用service保存，根据id修改
+        huiyuanCenterService.save(huiyuan);
+        resultDto.setCode("1");
+        return resultDto;
+    }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smj.dao.huiyuan.AddressDao">
+    <insert id="save">
+INSERT INTO t_address(
+     user_id,
+     sh_name,
+     sh_tel,
+     ssq,
+     xxdz
+)VALUES (
+#{userId},
+#{shName},
+#{shTel},
+#{ssq},
+#{xxdz}
+)
+    </insert>
+    <update id="updata">
+        UPDATE t_address SET sh_name = #{shName},sh_tel = #{shTel},ssq =#{ssq},xxdz=#{xxdz} where id=#{id}
+    </update>
+    <update id="updataDel">
+        UPDATE t_address set del_flag = '1' WHERE id = #{id}
+    </update>
+    <update id="updataMoren">
+        UPDATE t_address SET moren='0' WHERE moren='1'
+    </update>
+    <update id="ChangeMoren">
+          UPDATE t_address SET moren='2' WHERE id=#{id}
+    </update>
+    <update id="updateUser">
+        UPDATE t_huiyuan set user_bz='1' WHERE id = #{userId}
+    </update>
+</mapper>

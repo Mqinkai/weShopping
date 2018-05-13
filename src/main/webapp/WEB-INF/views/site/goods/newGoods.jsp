@@ -6,7 +6,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>首页</title>
-
+<style type="text/css">
+    .member-logout .btn{
+        line-height:10px;!important;
+    }
+</style>
 
 </head>
 <body>
@@ -170,8 +174,7 @@
                                 <a href="/static/person/index.html">
                                     <img src="${huiyuan.tx}"/>
                                 </a>
-                                <em>
-                                    Hi,<span class="s-name">${huiyuan.userName}</span>
+                                <em><span>Hi,${huiyuan.userName}</span>
                                     <c:choose>
                                         <c:when test="${huiyuan.userBz=='1'}">
                                             <a href="#"><p>个人信息还未完善</p></a>
@@ -187,8 +190,7 @@
                                      <img src="/static/images/getAvatar.do.jpg"/>
                                  </a>
                                  <em>
-                                     Hi,<span class="s-name">小叮当</span>
-
+                                     <span>Hi,小叮当</span>
                                  </em>
                              </div>
                              <div class="member-logout">
@@ -230,108 +232,12 @@
 <div class="shopMainbg">
     <div class="shopMain" id="shopmain">
 
-        <!--今日推荐 -->
 
-        <div class="am-g am-g-fixed recommendation">
-            <div class="clock am-u-sm-3">
-                <img src="/static/images/2016.png "></img>
-                <p>今日<br>推荐</p>
-            </div>
-            <div class="am-u-sm-4 am-u-lg-3 ">
-                <div class="info ">
-                    <h3>真的有鱼</h3>
-                    <h4>开年福利篇</h4>
-                </div>
-                <div class="recommendationMain one">
-                    <a href="introduction.html"><img src="/static/images/tj.png "></img></a>
-                </div>
-            </div>
-            <div class="am-u-sm-4 am-u-lg-3 ">
-                <div class="info ">
-                    <h3>囤货过冬</h3>
-                    <h4>让爱早回家</h4>
-                </div>
-                <div class="recommendationMain two">
-                    <img src="/static/images/tj1.png "></img>
-                </div>
-            </div>
-            <div class="am-u-sm-4 am-u-lg-3 ">
-                <div class="info ">
-                    <h3>浪漫情人节</h3>
-                    <h4>甜甜蜜蜜</h4>
-                </div>
-                <div class="recommendationMain three">
-                    <img src="/static/images/tj2.png "></img>
-                </div>
-            </div>
-
-        </div>
-        <div class="clear "></div>
-        <!--热门活动 -->
-
-        <div class="am-container activity ">
-            <div class="shopTitle ">
-                <h4>活动</h4>
-                <h3>每期活动 优惠享不停 </h3>
-							<span class="more ">
-                              <a href="# ">全部活动<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                        </span>
-            </div>
-            <div class="am-g am-g-fixed ">
-                <div class="am-u-sm-3 ">
-                    <div class="icon-sale one "></div>
-                    <h4>秒杀</h4>
-                    <div class="activityMain ">
-                        <img src="/static/images/activity1.jpg "></img>
-                    </div>
-                    <div class="info ">
-                        <h3>春节送礼优选</h3>
-                    </div>
-                </div>
-
-                <div class="am-u-sm-3 ">
-                    <div class="icon-sale two "></div>
-                    <h4>特惠</h4>
-                    <div class="activityMain ">
-                        <img src="/static/images/activity2.jpg "></img>
-                    </div>
-                    <div class="info ">
-                        <h3>春节送礼优选</h3>
-                    </div>
-                </div>
-
-                <div class="am-u-sm-3 ">
-                    <div class="icon-sale three "></div>
-                    <h4>团购</h4>
-                    <div class="activityMain ">
-                        <img src="/static/images/activity3.jpg "></img>
-                    </div>
-                    <div class="info ">
-                        <h3>春节送礼优选</h3>
-                    </div>
-                </div>
-
-                <div class="am-u-sm-3 last ">
-                    <div class="icon-sale "></div>
-                    <h4>超值</h4>
-                    <div class="activityMain ">
-                        <img src="/static/images/activity.jpg "></img>
-                    </div>
-                    <div class="info ">
-                        <h3>春节送礼优选</h3>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="clear "></div>
-
-
-        <div id="f1">
             <!--物品展示-->
 
             <c:forEach items="${leibieList}" var="leibieList" begin="0" end="3" varStatus="status">
             <c:if test="${status.count==1}">
+        <div id="f1">
             <div class="am-container ">
                 <div class="shopTitle ">
                     <h4>${leibieList.mingcheng}</h4>
@@ -366,6 +272,7 @@
                 </div>
                 </c:if>
                 <c:if test="${status.count==2}">
+                <div id="f2">
                 <div class="am-container ">
                     <div class="shopTitle ">
                         <h4>${leibieList.mingcheng}</h4>
@@ -400,6 +307,7 @@
                     </div>
                     </c:if>
                     <c:if test="${status.count==3}">
+                    <div id="f3">
                     <div class="am-container ">
                         <div class="shopTitle ">
                             <h4>${leibieList.mingcheng}</h4>
@@ -409,10 +317,9 @@
                         </span>
                         </div>
                     </div>
-                    <div class="am-g am-g-fixed floodFour">
-                        <div class="am-u-sm-5 am-u-md-4 text-one list ">
+                    <div class="am-g am-g-fixed floodFour" style="margin-left: 1px;!important;">
+                        <div class="am-u-sm-4 text-four list" >
                             <div class="word">
-
                                 <c:forEach items="${leibieList.leibieXiashus}" var="xiashu" varStatus="stus">
                                     <c:if test="${xiashu.leibieId==leibieList.id}">
                                         <a class="outer" href="#"><span class="inner"><b class="text">${xiashu.name}</b></span></a>
@@ -443,8 +350,8 @@
                         </span>
                             </div>
                         </div>
-                        <div class="am-g am-g-fixed floodThree ">
-                            <div class="am-u-sm-4 text-four list">
+                        <div class="am-g am-g-fixed floodFour">
+                            <div class="am-u-sm-5 am-u-md-4 text-one list" >
                                 <div class="word">
 
                                     <c:forEach items="${leibieList.leibieXiashus}" var="xiashu" varStatus="stus">

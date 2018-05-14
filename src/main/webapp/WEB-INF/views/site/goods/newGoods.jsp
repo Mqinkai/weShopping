@@ -528,55 +528,12 @@
                                 </p>
                                 <p class="cart_num ">${huiyuan.carNum}</p>
                             </div>
-                            <div id="asset " class="item ">
-                                <a href="# ">
-                                    <span class="view "></span>
-                                </a>
-                                <div class="mp_tooltip ">
-                                    我的资产
-                                    <i class="icon_arrow_right_black "></i>
-                                </div>
-                            </div>
-
-                            <div id="foot " class="item ">
-                                <a href="# ">
-                                    <span class="zuji "></span>
-                                </a>
-                                <div class="mp_tooltip ">
-                                    我的足迹
-                                    <i class="icon_arrow_right_black "></i>
-                                </div>
-                            </div>
-
-                            <div id="brand " class="item ">
-                                <a href="#">
-                                    <span class="wdsc "><img src="/static/images/wdsc.png " /></span>
-                                </a>
-                                <div class="mp_tooltip ">
-                                    我的收藏
-                                    <i class="icon_arrow_right_black "></i>
-                                </div>
-                            </div>
-
-                            <div id="broadcast " class="item ">
-                                <a href="# ">
-                                    <span class="chongzhi "><img src="/static/images/chongzhi.png " /></span>
-                                </a>
-                                <div class="mp_tooltip ">
-                                    我要充值
-                                    <i class="icon_arrow_right_black "></i>
-                                </div>
-                            </div>
 
                             <div class="quick_toggle ">
-                                <li class="qtitem ">
-                                    <a href="# "><span class="kfzx "></span></a>
-                                    <div class="mp_tooltip ">客服中心<i class="icon_arrow_right_black "></i></div>
-                                </li>
                                 <!--二维码 -->
                                 <li class="qtitem ">
                                     <a href="#none "><span class="mpbtn_qrcode "></span></a>
-                                    <div class="mp_qrcode " style="display:none; "><img src="/static/images/weixin_code_145.png " /><i class="icon_arrow_white "></i></div>
+                                    <div class="mp_qrcode " style="display:none; "><img src="/static/images/IMG_7162.png " /><i class="icon_arrow_white "></i></div>
                                 </li>
                                 <li class="qtitem ">
                                     <a href="#top " class="return_top "><span class="top "></span></a>
@@ -603,54 +560,6 @@
                         </div>
                         <div>
                             购物车
-                        </div>
-                    </div>
-                    <div id="asset-content " class="nav-content ">
-                        <div class="nav-con-close ">
-                            <i class="am-icon-angle-right am-icon-fw "></i>
-                        </div>
-                        <div>
-                            资产
-                        </div>
-
-                        <div class="ia-head-list ">
-                            <a href="# " target="_blank " class="pl ">
-                                <div class="num ">0</div>
-                                <div class="text ">优惠券</div>
-                            </a>
-                            <a href="# " target="_blank " class="pl ">
-                                <div class="num ">0</div>
-                                <div class="text ">红包</div>
-                            </a>
-                            <a href="# " target="_blank " class="pl money ">
-                                <div class="num ">￥0</div>
-                                <div class="text ">余额</div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div id="foot-content " class="nav-content ">
-                        <div class="nav-con-close ">
-                            <i class="am-icon-angle-right am-icon-fw "></i>
-                        </div>
-                        <div>
-                            足迹
-                        </div>
-                    </div>
-                    <div id="brand-content " class="nav-content ">
-                        <div class="nav-con-close ">
-                            <i class="am-icon-angle-right am-icon-fw "></i>
-                        </div>
-                        <div>
-                            收藏
-                        </div>
-                    </div>
-                    <div id="broadcast-content " class="nav-content ">
-                        <div class="nav-con-close ">
-                            <i class="am-icon-angle-right am-icon-fw "></i>
-                        </div>
-                        <div>
-                            充值
                         </div>
                     </div>
                 </div>

@@ -153,16 +153,16 @@
         <!--走马灯 -->
 
         <div class="marqueen">
-            <span class="marqueen-title">商城头条</span>
+            <span class="marqueen-title">低价出售</span>
             <div class="demo">
 
                 <ul>
                     <li class="title-first"><a target="_blank" href="#">
                         <img src="/static/images/TJ2.jpg"></img>
-                        <span>[特惠]</span>商城爆品1分秒
+                        <span>[特惠]</span>
                     </a></li>
                     <li class="title-first"><a target="_blank" href="#">
-                        <span>[公告]</span>商城与广州市签署战略合作协议
+                        <span>[公告]</span>
                         <img src="/static/images/TJ.jpg"></img>
                         <p>XXXXXXXXXXXXXXXXXX</p>
                     </a></li>
@@ -202,9 +202,9 @@
                         <div class="clear"></div>
                     </div>
 
-                    <li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
-                    <li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
-                    <li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
+                    <li><a target="_blank" href="#"><span>[特惠]</span></a></li>
+                    <li><a target="_blank" href="#"><span>[公告]</span></a></li>
+                    <li><a target="_blank" href="#"><span>[特惠]</span></a></li>
 
                 </ul>
                 <div class="advTip"><img src="/static/images/advTip.jpg"/></div>
@@ -470,13 +470,11 @@
                         <div class="footer ">
                             <div class="footer-hd ">
                                 <p>
-                                    <a href="# ">青岛理工</a>
+                                    <a href="http://www.qtech.edu.cn/">青岛理工</a>
                                     <b>|</b>
-                                    <a href="# ">商城首页</a>
+                                    <a href="${ctx}/message/show">平台首页</a>
                                     <b>|</b>
-                                    <a href="# ">支付宝</a>
-                                    <b>|</b>
-                                    <a href="# ">物流</a>
+                                    <a href="${ctx}/personCenter/">个人中心</a>
                                 </p>
                             </div>
                             <div class="footer-bd ">

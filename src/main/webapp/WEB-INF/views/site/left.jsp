@@ -41,8 +41,8 @@ String path = request.getContextPath();
        <div class="gadget">
           <h2 class="star">联系我们</h2><div class="clr"></div>
           <ul class="ex_menu">
-            <li><a href="#">地址：北京东环大厦1203</a></li>
-            <li><a href="#">电话：010-789564/102</a></li>
+            <li><a href="#">地址：青岛理工大学</a></li>
+            <li><a href="#">电话：183xxxxx520</a></li>
           </ul>
        </div>
   </body>

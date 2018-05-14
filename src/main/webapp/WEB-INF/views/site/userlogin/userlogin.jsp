@@ -54,14 +54,6 @@
 			<div class="am-cf">
 				<input type="submit" name="submit" id="submit" onclick="login()" value="登 录" class="am-btn am-btn-primary am-btn-sm">
 			</div>
-			<div class="partner">
-				<h3>合作账号</h3>
-				<div class="am-btn-group">
-					<li><a href="javascript:" onclick="openBox()"><i class="am-icon-qq am-icon-sm"></i><span>QQ登录</span></a></li>
-					<li><a href="javascript:;" onclick="openBox()"><i class="am-icon-weibo am-icon-sm"></i><span>微博登录</span> </a></li>
-					<li><a href="javascript:;" onclick="openBox()"><i class="am-icon-weixin am-icon-sm"></i><span>微信登录</span> </a></li>
-				</div>
-			</div>
 
 		</div>
 	</div>
@@ -71,13 +63,11 @@
 <div class="footer ">
 	<div class="footer-hd ">
 		<p>
-			<a href="# ">青岛理工</a>
+			<a href="http://www.qtech.edu.cn/">青岛理工</a>
 			<b>|</b>
-			<a href="# ">商城首页</a>
+			<a href="${ctx}/message/show">平台首页</a>
 			<b>|</b>
-			<a href="# ">支付宝</a>
-			<b>|</b>
-			<a href="# ">物流</a>
+			<a href="${ctx}/personCenter/">个人中心</a>
 		</p>
 	</div>
 	<div class="footer-bd ">

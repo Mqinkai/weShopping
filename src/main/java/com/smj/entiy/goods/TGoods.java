@@ -18,6 +18,15 @@ public class TGoods implements java.io.Serializable
 	private String shifoutejia;
 	
 	private String del;
+	private String fbid;
+
+	public String getFbid() {
+		return fbid;
+	}
+
+	public void setFbid(String fbid) {
+		this.fbid = fbid;
+	}
 
 	public Integer getId()
 	{

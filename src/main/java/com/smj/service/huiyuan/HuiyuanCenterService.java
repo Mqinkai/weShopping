@@ -2,6 +2,8 @@ package com.smj.service.huiyuan;
 
 import com.smj.dao.huiyuan.HuiyuanCenterDao;
 import com.smj.entiy.Address;
+import com.smj.entiy.OrderDto;
+import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +54,15 @@ public class HuiyuanCenterService {
 
     public void save(Huiyuan huiyuan) {
         huiyuanCenterDao.saveinfo(huiyuan);
+    }
+
+    public List<OrderDto> findOrderList(String id) {
+        List<OrderDto> list = huiyuanCenterDao.findOrderList(id);
+        for (OrderDto order:list){
+            List<TGoods> goodsList = huiyuanCenterDao.findOrderDetail(order.getId());
+            order.setGoodsList(goodsList);
+        }
+
+        return list;
     }
 }

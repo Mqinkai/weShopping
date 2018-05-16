@@ -19,27 +19,27 @@
     <select id="findOrder" resultType="com.smj.entiy.huiyuan.Order">
         SELECT
       sum( CASE
-       WHEN zt='1'
+       WHEN zt='待付款'
        THEN 1
        ELSE 0
        END ) AS dfksum,
        sum(
        CASE
-       WHEN zt='3'
+       WHEN zt='待发货'
        THEN 1
        ELSE 0
        END
        ) AS dfhsum,
          sum(
        CASE
-       WHEN zt='4'
+       WHEN zt='待收货'
        THEN 1
        ELSE 0
        END
        ) AS dshsum,
          sum(
        CASE
-       WHEN zt='6'
+       WHEN zt='待评价'
        THEN 1
        ELSE 0
        END
@@ -71,5 +71,37 @@ WHERE id=#{id}
     </select>
     <select id="findAddress" resultType="com.smj.entiy.Address">
         SELECT  * FROM t_address WHERE user_id=#{id} and del_flag = '0'
+    </select>
+    <select id="findOrderList" resultType="com.smj.entiy.OrderDto">
+        SELECT
+        id,
+        bianhao,
+        xiadanshi,
+        zt,
+        songhuodizhi,
+        fukuanfangshi,
+        zongjia,
+        huiyuan_id AS huiyuanId
+        FROM
+        t_order
+    </select>
+    <select id="findOrderDetail" resultType="com.smj.entiy.goods.TGoods">
+        SELECT
+        g.id,
+        g.leibieId,
+        g.mingcheng,
+        g.jieshao,
+        g.fujian,
+        g.jiage,
+        g.tejia,
+        g.shifoutejia,
+        g.del,
+        g.fbid
+
+        FROM
+        t_goods g
+        INNER JOIN t_order_detail tod ON tod.goods_id = g.id
+        WHERE tod.order_id = #{id}
+
     </select>
 </mapper>

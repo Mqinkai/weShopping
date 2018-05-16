@@ -2,6 +2,7 @@ package com.smj.controller.personCenter;
 
 import com.smj.common.dto.ResultDto;
 import com.smj.entiy.Address;
+import com.smj.entiy.OrderDto;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
 import com.smj.service.goods.GoodsService;
@@ -226,6 +227,9 @@ public class PersonCenterController {
             String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
             huiyuan1.setCarNum(num);  //购物车金额
+            // 获取订单
+           List<OrderDto> orderList = huiyuanCenterService.findOrderList(huiyuan1.getId());
+            model.addAttribute("orderList",orderList);
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/order";

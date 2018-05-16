@@ -2,6 +2,7 @@ package com.smj.dao;
 
 import com.smj.common.config.MyBatisDao;
 import com.smj.entiy.goods.TGoods;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ import java.util.List;
  */
 @MyBatisDao
 public interface TestDao {
-    List<TGoods> find();
+    List<TGoods> find(@Param("name") String name);
 }

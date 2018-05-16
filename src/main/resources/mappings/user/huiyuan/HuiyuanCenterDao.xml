@@ -84,6 +84,7 @@ WHERE id=#{id}
         huiyuan_id AS huiyuanId
         FROM
         t_order
+        WHERE del = '0'
     </select>
     <select id="findOrderDetail" resultType="com.smj.entiy.goods.TGoods">
         SELECT
@@ -101,7 +102,7 @@ WHERE id=#{id}
         FROM
         t_goods g
         INNER JOIN t_order_detail tod ON tod.goods_id = g.id
-        WHERE tod.order_id = #{id}
+        WHERE tod.order_id = #{id} and g.del = '0'
 
     </select>
 </mapper>

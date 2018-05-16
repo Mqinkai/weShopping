@@ -22,7 +22,7 @@ public class GoodsIndexController {
       /*  @Resource
         private MessageService messageService;*/
         @RequestMapping(value = "/show")
-        public String helloMvc(HttpServletRequest request, Model model){
+        public String helloMvc(HttpServletRequest request, Model model,String name){
             //判断是否登录
           Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
             if (huiyuan!=null){
@@ -40,7 +40,7 @@ public class GoodsIndexController {
             }
             //获取类别list
            List<Leibie> leibieList=goodsService.getLeibie();
-            List<TGoods> list=testService.find();
+            List<TGoods> list=testService.find(name);
             model.addAttribute("goodslist",list);
             model.addAttribute("leibieList",leibieList);
             return "site/goods/newGoods";

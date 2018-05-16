@@ -14,8 +14,8 @@ import java.util.List;
 public class TestService {
     @Autowired
     private TestDao testDao;
-    public List<TGoods> find() {
-         List<TGoods> list= testDao.find();
+    public List<TGoods> find(String name) {
+         List<TGoods> list= testDao.find(name);
         return list;
     }
 }

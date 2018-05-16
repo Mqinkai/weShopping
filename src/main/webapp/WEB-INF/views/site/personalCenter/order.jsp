@@ -547,7 +547,7 @@
 
                                                                     <c:when test="${order.zt == '待评价'}">
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="pj(${order.huiyuanId})">
                                                                                 评价</div>
                                                                         </li>
                                                                     </c:when>
@@ -595,7 +595,18 @@
     </div>
 
 </div>
+<script type="text/javascript">
+    function pj(id) {
 
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'post', //HTTP请求类型
+            url: "${ctx}/order/pj?id="+id,
+            success:function(result){
+                window.location.reload();
+            }})
+    }
+</script>
 </body>
 
 </html>

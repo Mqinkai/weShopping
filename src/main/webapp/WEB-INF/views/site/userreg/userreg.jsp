@@ -50,6 +50,12 @@
 								<label for="email"><i class="am-icon-envelope-o"></i></label>
 								<input type="email" name="email" id="email" placeholder="请输入邮箱账号">
 							</div>
+							<div class="verification">
+								<label for="code"><i class="am-icon-code-fork"></i></label>
+								<input type="email" name="code" id="emailCode" placeholder="请输入验证码">
+								<a class="btn" href="javascript:void(0);" onclick="sendEmailCode();" id="sendMEmailCode">
+									<span id="dyMobileButton">获取</span></a>
+							</div>
 							<div class="user-pass">
 								<label for="password"><i class="am-icon-lock"></i></label>
 								<input type="password" name="password" id="password" placeholder="设置密码">
@@ -119,13 +125,11 @@
 	<div class="footer ">
 		<div class="footer-hd ">
 			<p>
-				<a href="# ">青岛理工</a>
+				<a href="http://www.qtech.edu.cn/">青岛理工</a>
 				<b>|</b>
-				<a href="# ">商城首页</a>
+				<a href="${ctx}/message/show">平台首页</a>
 				<b>|</b>
-				<a href="# ">支付宝</a>
-				<b>|</b>
-				<a href="# ">物流</a>
+				<a href="${ctx}/personCenter/">个人中心</a>
 			</p>
 		</div>
 		<div class="footer-bd ">
@@ -144,6 +148,7 @@
 		var email = $("#email").val();
 		var password = $("#password").val();
 		var passwordRepeat = $("#passwordRepeat").val();
+		var emailcode = $("#emailCode").val();
 		if (email == '' || email == undefined) {
 			$("").dailog({
 				type: 'danger',
@@ -160,6 +165,25 @@
 				animateStyle: 'none',
 				bottons: ['确定'],
 				discription: '邮箱格式不正确!'
+			});
+			return false;
+		}
+		if (emailcode=='' || emailcode==undefined){
+			$("").dailog({
+				type: 'danger',
+				showBoxShadow: true,
+				animateStyle: 'none',
+				bottons: ['确定'],
+				discription: '请输入验证码!'
+			});
+			return false;
+		}else if (emailcode!=yzm){
+			$("").dailog({
+				type: 'danger',
+				showBoxShadow: true,
+				animateStyle: 'none',
+				bottons: ['确定'],
+				discription: '验证码错误!'
 			});
 			return false;
 		}
@@ -294,31 +318,82 @@
 	});
 	//获取验证码
 	function sendMobileCode() {
-		$.ajax({
-			dataType: 'json', //服务器返回json格式数据
-			type: 'post', //HTTP请求类型
-			contentType: "application/x-www-form-urlencoded; charset=utf-8",
-			url: "${ctx}/huiyuanreg/sendMobileCode",
-			success:function(result){
-				yzm=result.message;
-				$("").dailog({
-					type: 'primary',
-					showBoxShadow: true,
-					animateStyle: 'none',
-					bottons: ['确定'],
-					discription: '验证码：'+result.message
-				});
-			},
-			error:function(){
-				$("").dailog({
-					type: 'danger',
-					showBoxShadow: true,
-					animateStyle: 'none',
-					bottons: ['确定'],
-					discription: '获取失败'
-				});
-			}
-		});
+		var tel = $("#tel").val();
+		if (tel != null && tel != '' & isTel.test(tel)){
+			$.ajax({
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				url: "${ctx}/huiyuanreg/sendMobileCode",
+				success:function(result){
+					yzm=result.message;
+					$("").dailog({
+						type: 'primary',
+						showBoxShadow: true,
+						animateStyle: 'none',
+						bottons: ['确定'],
+						discription: '验证码：'+result.message
+					});
+				},
+				error:function(){
+					$("").dailog({
+						type: 'danger',
+						showBoxShadow: true,
+						animateStyle: 'none',
+						bottons: ['确定'],
+						discription: '获取失败'
+					});
+				}
+			});
+		}else {
+			$("").dailog({
+				type: 'danger',
+				showBoxShadow: true,
+				animateStyle: 'none',
+				bottons: ['确定'],
+				discription: '请输入手机号'
+			});
+		}
+
+	}
+	function sendEmailCode() {
+		var tel = $("#email").val();
+		if (tel != null && tel != '' & isEmail.test(tel)){
+			$.ajax({
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				url: "${ctx}/huiyuanreg/sendMobileCode",
+				success:function(result){
+					yzm=result.message;
+					$("").dailog({
+						type: 'primary',
+						showBoxShadow: true,
+						animateStyle: 'none',
+						bottons: ['确定'],
+						discription: '验证码：'+result.message
+					});
+				},
+				error:function(){
+					$("").dailog({
+						type: 'danger',
+						showBoxShadow: true,
+						animateStyle: 'none',
+						bottons: ['确定'],
+						discription: '获取失败'
+					});
+				}
+			});
+		}else {
+			$("").dailog({
+				type: 'danger',
+				showBoxShadow: true,
+				animateStyle: 'none',
+				bottons: ['确定'],
+				discription: '请输入邮箱'
+			});
+		}
+
 	}
 </script>
 </body>

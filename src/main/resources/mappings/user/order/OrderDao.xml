@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smj.dao.order.OrderDao">
+    <update id="qrsh">
+        UPDATE t_order SET zt='待评价' WHERE id = #{id}
+    </update>
+</mapper>

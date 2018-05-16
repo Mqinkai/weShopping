@@ -25,7 +25,7 @@ String path = request.getContextPath();
 <div class="main">
 	  <div class="header">
 		    <div class="header_resize">
-			      <div class="logo"><br/><h1 style="font-size: 26px;">校园二手物品交易网站<small>&nbsp;</small></h1></div>
+			      <div class="logo"><br/><h1 style="font-size: 26px;">二手物品交易网站<small>&nbsp;</small></h1></div>
 				      <jsp:include flush="true" page="/site/daohang.jsp"></jsp:include>
 			      <div class="clr"></div>
 		    </div>

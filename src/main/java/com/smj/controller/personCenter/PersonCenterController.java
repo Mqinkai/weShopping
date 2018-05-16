@@ -47,6 +47,9 @@ public class PersonCenterController {
             huiyuan.setCarNum(num);  //购物车金额
             //获取订单信息
             Order order = huiyuanCenterService.findOrder(huiyuan.getId());
+            // 获取订单
+            List<OrderDto> orderList = huiyuanCenterService.findOrderList(huiyuan.getId());
+            model.addAttribute("orderList",orderList);
             //获取日历
             Date dt = new Date(); //当前时间
             String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};

@@ -26,8 +26,8 @@
 
         <div class="search-bar pr">
             <a name="index_none_header_sysc" href="#"></a>
-            <form>
-                <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+            <form action="/message/show" method="get">
+                <input id="searchInput" name="name" type="text" placeholder="搜索" autocomplete="off">
                 <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
             </form>
         </div>
@@ -39,7 +39,7 @@
     <!--轮播 -->
     <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
         <ul class="am-slides">
-            <li class="banner1"><a href="introduction.html"><img src="/static/images/ad1.jpg" /></a></li>
+            <li class="banner1"><a><img src="/static/images/ad1.jpg" /></a></li>
             <li class="banner2"><a><img src="/static/images/ad2.jpg" /></a></li>
             <li class="banner3"><a><img src="/static/images/ad3.jpg" /></a></li>
             <li class="banner4"><a><img src="/static/images/ad4.jpg" /></a></li>
@@ -257,16 +257,16 @@
                             </c:if>
                         </c:forEach>
                     </div>
-                    <a href="# ">
+                    <a>
                         <div class="outer-con ">
                             <div class="title ">
-                                开抢啦！
+                                机虽可失，
                             </div>
-                            <div class="sub-title ">
-                                超值价格
+                            <div class="title ">
+                                物岂再来。
                             </div>
                         </div>
-                        <img src="/static/images/act1.png " />
+                        <img src="/static/images/002.png " />
                     </a>
                     <div class="triangle-topright"></div>
                 </div>
@@ -292,16 +292,16 @@
                                 </c:if>
                             </c:forEach>
                         </div>
-                        <a href="# ">
+                        <a>
                             <div class="outer-con ">
                                 <div class="title ">
-                                    开抢啦！
+                                    机虽可失，
                                 </div>
-                                <div class="sub-title ">
-                                    超值价格
+                                <div class="title ">
+                                    物岂再来。
                                 </div>
                             </div>
-                            <img src="/static/images/act1.png " />
+                            <img src="/static/images/002.png " />
                         </a>
                         <div class="triangle-topright"></div>
                     </div>
@@ -326,16 +326,16 @@
                                     </c:if>
                                 </c:forEach>
                             </div>
-                            <a href="# ">
+                            <a>
                                 <div class="outer-con ">
                                     <div class="title ">
-                                        开抢啦！
+                                        机虽可失，
                                     </div>
-                                    <div class="sub-title ">
-                                        超值价格
+                                    <div class="title ">
+                                        物岂再来。
                                     </div>
                                 </div>
-                                <img src="/static/images/act1.png " />
+                                <img src="/static/images/002.png " />
                             </a>
                             <div class="triangle-topright"></div>
                         </div>
@@ -360,16 +360,16 @@
                                         </c:if>
                                     </c:forEach>
                                 </div>
-                                <a href="# ">
+                                <a>
                                     <div class="outer-con ">
                                         <div class="title ">
-                                            开抢啦！
+                                            机虽可失，
                                         </div>
-                                        <div class="sub-title ">
-                                            超值价格
+                                        <div class="title ">
+                                            物岂再来。
                                         </div>
                                     </div>
-                                    <img src="/static/images/act1.png " />
+                                    <img src="/static/images/002.png " />
                                 </a>
                                 <div class="triangle-topright"></div>
                             </div>
@@ -486,13 +486,6 @@
 
                     </div>
                 </div>
-                <!--引导 -->
-                <div class="navCir">
-                    <li class="active"><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
-                    <li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-                    <li><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
-                    <li><a href="/static/person/index.html"><i class="am-icon-user"></i>我的</a></li>
-                </div>
 
 
                 <!--菜单 -->
@@ -513,7 +506,6 @@
                                     </div>
                                     <div class="login_btnbox ">
                                         <a href="# " class="login_order ">我的订单</a>
-                                        <a href="# " class="login_favorite ">我的收藏</a>
                                     </div>
                                     <i class="icon_arrow_white "></i>
                                 </div>

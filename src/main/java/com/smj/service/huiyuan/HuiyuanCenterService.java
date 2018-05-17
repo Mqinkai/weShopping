@@ -2,6 +2,7 @@ package com.smj.service.huiyuan;
 
 import com.smj.dao.huiyuan.HuiyuanCenterDao;
 import com.smj.entiy.Address;
+import com.smj.entiy.Notice;
 import com.smj.entiy.OrderDto;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
@@ -63,6 +64,22 @@ public class HuiyuanCenterService {
             order.setGoodsList(goodsList);
         }
 
+        return list;
+    }
+
+    public List<TGoods> findMyGoods(String id) {
+        List<TGoods> goodsList = huiyuanCenterDao.findMyGoods(id);
+        return goodsList;
+    }
+
+    public List<Notice> getNotice(String id) {
+        List<Notice> list = huiyuanCenterDao.getList(id);
+        for (Notice notice:list){
+            TGoods good = new TGoods();
+            good = huiyuanCenterDao.getGoods(notice.getGoodsId());
+            notice.setGood(good);
+        }
+        huiyuanCenterDao.updata(id); //把消息全部置已读
         return list;
     }
 }

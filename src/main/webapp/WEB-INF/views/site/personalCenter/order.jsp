@@ -89,10 +89,10 @@
                 </div>
                 <hr/>
 
-                <div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
+                <div class="am-tabs am-tabs-d2 am-margin" id="tabs" data-am-tabs>
 
                     <ul class="am-avg-sm-5 am-tabs-nav am-nav am-nav-tabs">
-                        <li class="am-active"><a href="#tab1">所有订单</a></li>
+                       <li class="am-active"><a href="#tab1">所有订单</a></li>
                         <li><a href="#tab2">待发货</a></li>
                         <li><a href="#tab3">待收货</a></li>
                         <li><a href="#tab4">待评价</a></li>
@@ -179,27 +179,27 @@
                                                         <c:choose>
                                                             <c:when test="${order.zt == '待发货'}">
                                                                 <li class="td td-change">
-                                                                    <div class="am-btn am-btn-danger anniu">
-                                                                        提醒发货</div>
+                                                                    <div class="am-btn am-btn-danger anniu" onclick="qxdd(${order.id})">
+                                                                        取消订单</div>
                                                                 </li>
                                                             </c:when>
                                                             <c:when test="${order.zt == '待收货'}">
                                                                 <li class="td td-change">
-                                                                    <div class="am-btn am-btn-danger anniu">
+                                                                    <div class="am-btn am-btn-danger anniu" onclick="qrsh(${order.id})">
                                                                         确认收货</div>
                                                                 </li>
                                                             </c:when>
 
                                                             <c:when test="${order.zt == '待评价'}">
                                                                 <li class="td td-change">
-                                                                    <div class="am-btn am-btn-danger anniu">
+                                                                    <div class="am-btn am-btn-danger anniu" onclick="pj(${order.id})">
                                                                         评价</div>
                                                                 </li>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <li class="td td-change">
-                                                                    <div class="am-btn am-btn-danger anniu">
-                                                                        删除订单</div>
+                                                                    <div class="am-btn am-btn-danger anniu" onclick="delorder(${order.id})">
+                                                                    删除订单</div>
                                                                 </li>
                                                             </c:otherwise>
                                                         </c:choose>
@@ -297,8 +297,8 @@
                                                                 <c:choose>
                                                                     <c:when test="${order.zt == '待发货'}">
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
-                                                                                提醒发货</div>
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="qxdd(${order.id})">
+                                                                                取消订单</div>
                                                                         </li>
                                                                     </c:when>
                                                                     <c:when test="${order.zt == '待收货'}">
@@ -316,7 +316,7 @@
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="delorder(${order.id})">
                                                                                 删除订单</div>
                                                                         </li>
                                                                     </c:otherwise>
@@ -416,13 +416,13 @@
                                                                 <c:choose>
                                                                     <c:when test="${order.zt == '待发货'}">
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
-                                                                                提醒发货</div>
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="qxdd(${order.id})">
+                                                                                取消订单</div>
                                                                         </li>
                                                                     </c:when>
                                                                     <c:when test="${order.zt == '待收货'}">
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="qrsh(${order.id})">
                                                                                 确认收货</div>
                                                                         </li>
                                                                     </c:when>
@@ -435,7 +435,7 @@
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="delorder(${order.id})">
                                                                                 删除订单</div>
                                                                         </li>
                                                                     </c:otherwise>
@@ -534,26 +534,26 @@
                                                                 <c:choose>
                                                                     <c:when test="${order.zt == '待发货'}">
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
-                                                                                提醒发货</div>
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="qxdd(${order.id})">
+                                                                                取消订单</div>
                                                                         </li>
                                                                     </c:when>
                                                                     <c:when test="${order.zt == '待收货'}">
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="qrsh(${order.id})">
                                                                                 确认收货</div>
                                                                         </li>
                                                                     </c:when>
 
                                                                     <c:when test="${order.zt == '待评价'}">
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu" onclick="pj(${order.huiyuanId})">
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="pj(${order.id})">
                                                                                 评价</div>
                                                                         </li>
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <li class="td td-change">
-                                                                            <div class="am-btn am-btn-danger anniu">
+                                                                            <div class="am-btn am-btn-danger anniu" onclick="delorder(${order.id})">
                                                                                 删除订单</div>
                                                                         </li>
                                                                     </c:otherwise>
@@ -596,14 +596,74 @@
 
 </div>
 <script type="text/javascript">
-    function pj(id) {
+    var i = ${type};
+    console.log(i)
+    var index = $('.am-tabs-nav a').eq(i);
+    $("#tabs").tabs('open', index)
 
+    function pj(id) {
+        var pj ="";
+        $("").dailog({
+            type: 'defalut',
+            title:'输入评价.',
+            isInput:true
+        },function(ret){
+            if(ret.index===0){
+                pj=ret.input.value;
+                if (pj != null && pj !=''){
+                    $.ajax({
+                        dataType: 'json', //服务器返回json格式数据
+                        type: 'get', //HTTP请求类型
+                        url: "${ctx}/order/pj?id="+id+"&pj="+pj,
+                        success:function(result){
+                            window.location.reload();
+                        }});
+                }else {
+                    $("").dailog({
+                        type: 'danger',
+                        showBoxShadow: true,
+                        animateStyle: 'none',
+                        bottons: ['确定'],
+                        discription: '未填写评价内容'
+                    });
+                }
+
+            }
+
+        });
+
+    }
+    function qrsh(id) {
         $.ajax({
             dataType: 'json', //服务器返回json格式数据
-            type: 'post', //HTTP请求类型
-            url: "${ctx}/order/pj?id="+id,
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/order/qrsh?id="+id,
             success:function(result){
                 window.location.reload();
+            }})
+    }
+    function delorder(id) {
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/order/delorder?id="+id,
+            success:function(result){
+                window.location.reload();
+            }})
+    }
+    function qxdd(id) {
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/order/qxdd?id="+id,
+            success:function(result){
+                $("").dailog({
+                    type: 'success',
+                    showBoxShadow: true,
+                    animateStyle: 'none',
+                    bottons: ['确定'],
+                    discription: '已发送通知给卖家，请与卖家商议关闭该订单'
+                });
             }})
     }
 </script>

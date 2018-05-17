@@ -3,9 +3,32 @@
 <mapper namespace="com.smj.dao.TestDao">
     <select id="find" resultType="com.smj.entiy.goods.TGoods">
         SELECT * FROM t_goods
-        WHERE 1=1
+        WHERE saleflag = '在售'
         <if test="name != null and name != ''">
              AND mingcheng LIKE concat('%',#{name},'%')
+        </if>
+    </select>
+    <select id="findSchool" resultType="java.lang.String">
+        SELECT school FROM t_huiyuan WHERE id = #{id}
+    </select>
+    <select id="findBySchool" resultType="com.smj.entiy.goods.TGoods">
+        SELECT tg.* FROM t_goods tg
+        WHERE (SELECT school FROM t_huiyuan th where th.id = tg.fbid ) LIKE concat('%',#{type},'%') and saleflag = '在售'
+        <if test="name != null and name != ''">
+            AND mingcheng LIKE concat('%',#{name},'%')
+        </if>
+    </select>
+    <select id="findByType" resultType="com.smj.entiy.goods.TGoods">
+        SELECT t.* FROM t_goods t
+        WHERE 1=1 AND saleflag = '在售'
+        <if test="name != null and name != ''">
+            AND t.mingcheng LIKE concat('%',#{name},'%')
+        </if>
+        <if test='type == 2'>
+            and (select address from t_huiyuan where id =#{id} )in (select address from t_huiyuan where id= t.fbid)
+        </if>
+        <if test='type == 3'>
+            and t.jiage &lt;= '10'
         </if>
     </select>
 </mapper>

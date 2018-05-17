@@ -101,24 +101,29 @@
                         <div class="am-tab-panel am-fade am-in am-active" id="tab1">
 
                                 <!--消息 -->
+                            <c:forEach items="${noticeList}" var="notice" varStatus="var">
                                 <div class="s-msg-item s-msg-temp i-msg-downup">
-                                    <h6 class="s-msg-bar"><span class="s-name">每日新鲜事</span></h6>
+                                    <h6 class="s-msg-bar"><span class="s-name">${notice.buyName}</span></h6>
                                     <div class="s-msg-content i-msg-downup-wrap">
-                                        <div class="i-msg-downup-con">
-                                            <a class="i-markRead" target="_blank" href="blog.html">
-                                                <p class="s-main-content">
-                                                    最特色的湖北年货都在这儿 ~快来囤年货啦！
-                                                </p>
-                                                <p class="s-row s-main-content">
-                                                    <a href="blog.html">
-                                                        回复 <i class="am-icon-angle-right"></i>
-                                                    </a>
-                                                </p>
-                                            </a>
+                                <div class="i-msg-downup-con">
+                                    <a class="i-markRead" target="_blank" onclick="hf(${notice.id})" href="javascript:void(0);">
+                                        <div class="m-item">
+                                            <div class="item-pic">
+                                                <img src="${notice.good.fujian}" class="itempic J_ItemImg">
+                                            </div>
+                                            <div class="item-info">
+                                                ${notice.message}</div>
                                         </div>
-                                    </div>
-                                    <a class="i-btn-forkout" href="#"><i class="am-icon-close am-icon-fw"></i></a>
+                                        <p class="s-row s-main-content">
+                                            回复 <i class="am-icon-angle-right"></i>
+                                        </p>
+                                    </a>
                                 </div>
+                            </div>
+                            <a class="i-btn-forkout" href="#"><i class="am-icon-close am-icon-fw"></i></a>
+                              </div>
+                            </c:forEach>
+
                             </div>
                         </div>
                              </div>
@@ -145,6 +150,40 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function hf(id) {
+        var pj ="";
+        $("").dailog({
+            type: 'defalut',
+            title:'输入内容.',
+            isInput:true
+        },function(ret){
+            if(ret.index===0){
+                pj=ret.input.value;
+                if (pj != null && pj !=''){
+                    $.ajax({
+                        dataType: 'json', //服务器返回json格式数据
+                        type: 'get', //HTTP请求类型
+                        url: "${ctx}/notice/hf?id="+id+"&message="+pj,
+                        success:function(result){
+
+                        }});
+                }else {
+                    $("").dailog({
+                        type: 'danger',
+                        showBoxShadow: true,
+                        animateStyle: 'none',
+                        bottons: ['确定'],
+                        discription: '未填写内容'
+                    });
+                }
+
+            }
+
+        });
+
+    }
+</script>
 </body>
 
 </html>

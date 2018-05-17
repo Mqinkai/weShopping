@@ -2,6 +2,7 @@ package com.smj.dao.huiyuan;
 
 import com.smj.common.config.MyBatisDao;
 import com.smj.entiy.Address;
+import com.smj.entiy.Notice;
 import com.smj.entiy.OrderDto;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
@@ -37,4 +38,12 @@ public interface HuiyuanCenterDao {
     List<OrderDto> findOrderList(String id);
 
     List<TGoods> findOrderDetail(String id);
+
+    List<TGoods> findMyGoods(String id);
+
+    List<Notice> getList(String id);
+
+    TGoods getGoods(String goodsId);
+
+    void updata(String id);
 }

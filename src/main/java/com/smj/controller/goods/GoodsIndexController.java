@@ -22,7 +22,8 @@ public class GoodsIndexController {
       /*  @Resource
         private MessageService messageService;*/
         @RequestMapping(value = "/show")
-        public String helloMvc(HttpServletRequest request, Model model,String name){
+        public String helloMvc(HttpServletRequest request, Model model,String name,String type){
+            String userid = "";
             //判断是否登录
           Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
             if (huiyuan!=null){
@@ -31,6 +32,7 @@ public class GoodsIndexController {
                 huiyuan.setCarNum(num);  //购物车金额
                 model.addAttribute("huiyuan",huiyuan);
                 model.addAttribute("login","1");
+                userid = huiyuan.getId();
             }
             else {
                 Huiyuan huiyuan1 = new Huiyuan();
@@ -40,7 +42,8 @@ public class GoodsIndexController {
             }
             //获取类别list
            List<Leibie> leibieList=goodsService.getLeibie();
-            List<TGoods> list=testService.find(name);
+            List<TGoods> list=testService.find(name,type,userid);
+            model.addAttribute("name",name);
             model.addAttribute("goodslist",list);
             model.addAttribute("leibieList",leibieList);
             return "site/goods/newGoods";

@@ -104,43 +104,48 @@
                     <div class="m-order">
                         <div class="s-bar">
                             <i class="s-icon"></i>我的订单
-                            <a class="i-load-more-item-shadow" href="${ctx}/personCenter/order">全部订单</a>
+                            <a class="i-load-more-item-shadow" href="${ctx}/personCenter/order?type='0'">全部订单</a>
                         </div>
                         <ul>
-                            <li><a href="order.html"><i><img src="/static/images/send.png"/></i><span>待发货<em class="m-num">${order.dfhsum}</em></span></a></li>
+                            <li><a href="${ctx}/personCenter/order?type='1'"><i><img src="/static/images/send.png"/></i><span>待发货<em class="m-num">${order.dfhsum}</em></span></a></li>
                             <li><a href="javascript:void(0);"></a></li>
-                            <li><a href="order.html"><i><img src="/static/images/receive.png"/></i><span>待收货<em class="m-num">${order.dshsum}</em></span></a></li>
+                            <li><a href="${ctx}/personCenter/order?type='2'"><i><img src="/static/images/receive.png"/></i><span>待收货<em class="m-num">${order.dshsum}</em></span></a></li>
                             <li><a href="javascript:void(0);"></a></li>
-                            <li><a href="order.html"><i><img src="/static/images/comment.png"/></i><span>待评价<em class="m-num">${order.dpj}</em></span></a></li>
+                            <li><a href="${ctx}/personCenter/order?type='3'"><i><img src="/static/images/comment.png"/></i><span>待评价<em class="m-num">${order.dpj}</em></span></a></li>
+
                         </ul>
                     </div>
                     <!--物流 -->
                     <div class="m-logistics">
 
                         <div class="s-bar">
-                            <i class="s-icon"></i>待收货订单
+                            <i class="s-icon"></i>我发布的商品
                         </div>
                         <div class="s-content">
                             <ul class="lg-list">
                                  <c:forEach items="${orderList}" var="order" varStatus="sta">
-                                     <c:if test="${order.zt=='待收货'}">
                                          <li class="lg-item">
                                              <div class="item-info">
-                                                 <c:forEach items="${order.goodsList}" var="goods" varStatus="var">
-                                                     <img src="${goods.fujian}" alt="${goods.jieshao}">
-                                                 </c:forEach>
+                                                     <img src="${order.fujian}" alt="${order.jieshao}">
                                              </div>
                                              <div class="lg-info">
 
-                                                 <p>商品已送出</p>
-                                                 <time>下单时间：${order.xiadanshi}</time>
+                                                 <p>${order.mingcheng}</p>
+                                                 <time>${order.saleflag}</time>
                                              </div>
+                                             <c:if test="${order.saleflag == '已完成'}">
                                              <div class="lg-confirm">
-                                                 <a class="i-btn-typical"  href="javascript:void(0);" onclick="qrsh(${order.id})">确认收货</a>
+                                                 <a class="i-btn-typical"  href="javascript:void(0);" onclick="del(${order.id})">删除记录</a>
                                              </div>
+                                             </c:if>
+                                             <c:if test="${order.saleflag == '待发货'}">
+                                                 <div class="lg-confirm">
+                                                     <a class="i-btn-typical"  href="javascript:void(0);" onclick="del(${order.id})">关闭交易</a>
+                                                 </div>
+                                             </c:if>
                                          </li>
                                          <div class="clear"></div>
-                                     </c:if>
+
                                  </c:forEach>
                             </ul>
                         </div>
@@ -185,11 +190,11 @@
     </div>
 </div>
 <script type="text/javascript">
-    function qrsh(id) {
+    function del(id) {
         $.ajax({
             dataType: 'json', //服务器返回json格式数据
             type: 'get', //HTTP请求类型
-            url: "${ctx}/order/qrsh?id="+id,
+            url: "${ctx}/order/delorder?id="+id,
             success:function(result){
                 window.location.reload();
             }})

@@ -19,6 +19,15 @@ public class TGoods implements java.io.Serializable
 	
 	private String del;
 	private String fbid;
+	private String saleflag;
+
+	public String getSaleflag() {
+		return saleflag;
+	}
+
+	public void setSaleflag(String saleflag) {
+		this.saleflag = saleflag;
+	}
 
 	public String getFbid() {
 		return fbid;

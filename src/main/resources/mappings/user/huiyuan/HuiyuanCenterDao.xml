@@ -16,7 +16,10 @@
     <update id="saveinfo">
         UPDATE t_huiyuan SET  xingming = #{xingming},user_name = #{userName},xingbie = #{xingbie},sr = #{sr}  where id = #{id}
     </update>
-    <select id="findOrder" resultType="com.smj.entiy.huiyuan.Order">
+   <update id="updata">
+      UPDATE t_xiaoxi SET code='1' WHERE sale_id = #{id}
+   </update>
+   <select id="findOrder" resultType="com.smj.entiy.huiyuan.Order">
         SELECT
       sum( CASE
        WHEN zt='待付款'
@@ -105,4 +108,22 @@ WHERE id=#{id}
         WHERE tod.order_id = #{id} and g.del = '0'
 
     </select>
+    <select id="findMyGoods" resultType="com.smj.entiy.goods.TGoods">
+        SELECT * FROM t_goods WHERE fbid=#{id} and del = '0'
+    </select>
+    <select id="getList" resultType="com.smj.entiy.Notice">
+       SELECT
+       id,
+       sale_id AS saleId,
+       buy_name AS buyName,
+       message,
+       good_id AS goodsId,
+       buy_id AS buyId
+       FROM
+       t_xiaoxi
+       WHERE del='0' AND sale_id = #{id}
+    </select>
+   <select id="getGoods" resultType="com.smj.entiy.goods.TGoods">
+      SELECT * FROM t_goods where del='0' AND id=#{goodsId}
+   </select>
 </mapper>

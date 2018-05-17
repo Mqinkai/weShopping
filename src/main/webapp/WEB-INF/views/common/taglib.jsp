@@ -15,7 +15,6 @@
 <script src="/static/Bootstrap/js/bootstrap-fileinput.js"></script>
 <link href="/static/Bootstrap/css/bootstrap-fileinput.css" rel="stylesheet">
 <script src="/static/js/My97DatePicker/WdatePicker.js"></script>
-<script src="/ckfinder/ckfinder.js"></script>
 <script src="/static/js/pcasunzip.js"></script>
 <link href="/static/AmazeUI-2.4.2/assets/css/amazeui.min.css" rel="stylesheet" />
 <link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />

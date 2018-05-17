@@ -54,10 +54,10 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="index"><a href="#">首页</a></li>
-                <li class="qc"><a href="#">校园二手</a></li>
-                <li class="qc"><a href="#">同城交易</a></li>
-                <li class="qc last"><a href="#">超低价</a></li>
+                <li class="index"><a href="${ctx}/message/show?type=0">首页</a></li>
+                <li class="qc"><a href="${ctx}/message/show?type=1">校园二手</a></li>
+                <li class="qc"><a href="${ctx}/message/show?type=2">同城交易</a></li>
+                <li class="qc last"><a href="${ctx}/message/show?type=3">超低价</a></li>
             </ul>
             <%-- <div class="nav-extra">
                  <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利

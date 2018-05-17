@@ -12,4 +12,10 @@ import java.util.List;
 @MyBatisDao
 public interface TestDao {
     List<TGoods> find(@Param("name") String name);
+
+    String findSchool(String id);
+
+    List<TGoods> findBySchool(@Param("name") String name, @Param("type") String type);
+
+    List<TGoods> findByType(@Param("id") String id, @Param("name") String name, @Param("type") int type);
 }

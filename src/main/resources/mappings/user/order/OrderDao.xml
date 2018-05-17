@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.smj.dao.order.OrderDao">
+    <insert id="insert">
+        INSERT INTO t_pingjia(
+
+        neirong,
+        pj_id,
+        shijian,
+        sale_id
+        )VALUES (
+        #{pj},
+        (select huiyuan_id from t_order where id = #{id} ),
+        now(),
+        (select tg.fbid from t_goods tg left join t_order_detail tod on tg.id = tod.goods_id left join t_order tor on tor.id = tod.order_id where tor.id = #{id} )
+        )
+    </insert>
+    <insert id="insertNotice">
+INSERT INTO t_xiaoxi(
+             sale_id,
+             buy_name,
+             message,
+             code,
+             date,
+             good_id,
+             buy_id
+             )VALUES (
+             #{saleid},
+             #{buyName},
+             #{message},
+             #{code},
+             #{date},
+             #{goodsId},
+             #{buyId}
+          )
+    </insert>
     <update id="qrsh">
         UPDATE t_order SET zt='待评价' WHERE id = #{id}
     </update>
+    <delete id="delorder">
+        UPDATE t_order SET zt='已删除', del= '1' WHERE id = #{id}
+    </delete>
+    <select id="findname" resultType="com.smj.entiy.Notice">
+        SELECT
+        tg.fbid AS saleId,
+        tg.id AS goodsId
+        FROM t_goods tg
+        LEFT JOIN t_order_detail tod ON tod.goods_id = tg.id
+        WHERE tod.order_id =#{id}
+    </select>
 </mapper>

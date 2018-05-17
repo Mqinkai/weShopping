@@ -2,7 +2,9 @@ package com.smj.controller.personCenter;
 
 import com.smj.common.dto.ResultDto;
 import com.smj.entiy.Address;
+import com.smj.entiy.Notice;
 import com.smj.entiy.OrderDto;
+import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
 import com.smj.service.goods.GoodsService;
@@ -48,7 +50,7 @@ public class PersonCenterController {
             //获取订单信息
             Order order = huiyuanCenterService.findOrder(huiyuan.getId());
             // 获取订单
-            List<OrderDto> orderList = huiyuanCenterService.findOrderList(huiyuan.getId());
+            List<TGoods> orderList = huiyuanCenterService.findMyGoods(huiyuan.getId());
             model.addAttribute("orderList",orderList);
             //获取日历
             Date dt = new Date(); //当前时间
@@ -223,7 +225,7 @@ public class PersonCenterController {
 
     //跳转到订单管理
     @RequestMapping(value = "order")
-    public String toorder(HttpServletRequest request, Model model){
+    public String toorder(HttpServletRequest request, Model model,String type){
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
             //查询购物车
@@ -235,6 +237,10 @@ public class PersonCenterController {
             model.addAttribute("orderList",orderList);
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
+            if (type == null || type.equals("")){
+                type="0";
+            }
+            model.addAttribute("type",type);
             return "site/personalCenter/order";
         }else{
             String message = "找不到您的登陆信息,请重新登陆!";
@@ -272,6 +278,9 @@ public class PersonCenterController {
             String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
             huiyuan1.setCarNum(num);  //购物车金额
+            //查询消息内容
+          List<Notice> noticeList = huiyuanCenterService.getNotice(huiyuan1.getId());
+            model.addAttribute("noticeList",noticeList);
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/news";

@@ -26,9 +26,30 @@ public class OrderController {
     }
     @RequestMapping(value = "pj",method = RequestMethod.GET)
     @ResponseBody
-    public ResultDto pj(String id){
+    public ResultDto pj(@RequestParam("id") String id,@RequestParam("pj") String pj){
         ResultDto resultDto = new ResultDto();
-        orderService.pj(id);
+        orderService.pj(id,pj);
+        resultDto.setMessage("成功");
+        resultDto.setCode("1");
+        return resultDto;
+    }
+
+    @RequestMapping(value = "delorder",method = RequestMethod.GET)
+    @ResponseBody
+    public ResultDto delorder(@RequestParam("id") String id){
+        ResultDto resultDto = new ResultDto();
+        orderService.delorder(id);
+        resultDto.setMessage("成功");
+        resultDto.setCode("1");
+        return resultDto;
+    }
+    @RequestMapping(value = "qxdd",method = RequestMethod.GET)
+    @ResponseBody
+    public ResultDto qxdd(@RequestParam("id") String id){
+        ResultDto resultDto = new ResultDto();
+        orderService.qxdd(id);
+        resultDto.setMessage("成功");
+        resultDto.setCode("1");
         return resultDto;
     }
 }

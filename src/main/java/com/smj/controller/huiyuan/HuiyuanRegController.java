@@ -6,10 +6,7 @@ import com.smj.service.huiyuan.HuiYuanRegService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -84,5 +81,18 @@ public class HuiyuanRegController {
         resultDto.setMessage(b);
         return resultDto;
     }
-
+    @RequestMapping(value = "/xgmm" ,method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public ResultDto regForm(Huiyuan huiyuan ){
+        ResultDto resultDto = new ResultDto();
+        resultDto = huiYuanRegService.xgmm(huiyuan);
+        return resultDto;
+    }
+    @RequestMapping(value = "/changPassword" ,method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public ResultDto changPassword(@RequestParam("id") String id, @RequestParam("password")String password ){
+        ResultDto resultDto = new ResultDto();
+        huiYuanRegService.changP(id,password);
+        return resultDto;
+    }
 }

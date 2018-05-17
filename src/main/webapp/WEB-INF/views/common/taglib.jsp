@@ -25,8 +25,10 @@
 <link href="/static/css/cmstyle.css" rel="stylesheet" type="text/css">
 <link href="/static/css/newstyle.css" rel="stylesheet" type="text/css">
 <link href="/static/css/stepstyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/static/css/global.css">
 
-
-
+<link href="/static/css/dlstyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/static/css/dialog.css">
+<script src="/static/js/dialog.js"></script>
 
 

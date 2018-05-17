@@ -24,10 +24,16 @@ NOW(),
 #{tel}
 )
     </insert>
+    <update id="changeP">
+        UPDATE t_huiyuan SET password = #{password} where id=#{id}
+    </update>
     <select id="findByEmail" resultType="java.lang.Integer">
         SELECT count(id) FROM t_huiyuan WHERE email=#{email}
     </select>
     <select id="findByTel" resultType="java.lang.Integer">
       SELECT count(id) FROM t_huiyuan WHERE tel=#{tel}
+    </select>
+    <select id="findByEorT" resultType="java.lang.String">
+        SELECT id FROM t_huiyuan WHERE user_name =#{userName} and ( tel=#{tel} or email = #{tel})
     </select>
 </mapper>

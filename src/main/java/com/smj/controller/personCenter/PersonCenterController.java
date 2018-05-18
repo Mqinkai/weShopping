@@ -302,4 +302,23 @@ public class PersonCenterController {
         resultDto.setCode("1");
         return resultDto;
     }
+    //跳转到消息
+    @RequestMapping(value = "fbsp")
+    public String fbsp(HttpServletRequest request, Model model) {
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        if (huiyuan!=null){
+            //查询购物车
+            String num = goodsService.findCar(huiyuan.getId());
+            Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
+            huiyuan1.setCarNum(num);  //购物车金额
+
+            model.addAttribute("huiyuan",huiyuan1);
+            model.addAttribute("login","1");
+            return "site/personalCenter/fbsp";
+        }else{
+            String message = "找不到您的登陆信息,请重新登陆!";
+            model.addAttribute("message",message);
+            return "common/fail";
+        }
+    }
 }

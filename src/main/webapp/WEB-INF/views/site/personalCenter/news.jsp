@@ -128,10 +128,12 @@
                         </div>
                              </div>
                     </div>
-                    </div>
-                </div>
-        </div>
+
+
+
         <!--底部-->
+
+    </div>
         <div class="footer"  style="margin-top: 50px">
             <div class="footer-hd">
                 <p>
@@ -148,8 +150,9 @@
                 </p>
             </div>
         </div>
-    </div>
+
 </div>
+    </div>
 <script type="text/javascript">
     function hf(id) {
         var pj ="";

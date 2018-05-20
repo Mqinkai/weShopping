@@ -79,6 +79,7 @@
                     <ul>
                         <li> <a href="${ctx}/personCenter/omment">评价</a></li>
                         <li> <a href="${ctx}/personCenter/news">消息</a></li>
+                        <li> <a href="${ctx}/personCenter/fbsp">发布二手</a></li>
                     </ul>
                 </li>
 
@@ -112,12 +113,12 @@
                 </div>
                 <!--个人信息 -->
                 <div class="info-main">
-                    <form class="am-form am-form-horizontal" id="form">
+                    <form class="am-form am-form-horizontal" id="form" action="${ctx}/personCenter/save" method="post">
                        <input id="id" name="id" value="${huiyuan.id}" type="hidden">
                         <div class="am-form-group">
                             <label class="am-form-label">昵称</label>
                             <div class="am-form-content">
-                                <input type="text" name="userName" id="userName" placeholder="" value="${huiyuan.userName}">
+                                <input type="text" name="userName" id="userName" placeholder="必填" value="${huiyuan.userName}" required>
 
                             </div>
                         </div>
@@ -125,7 +126,7 @@
                         <div class="am-form-group">
                             <label  class="am-form-label">姓名</label>
                             <div class="am-form-content">
-                                <input type="text" name="xingming" id="xingming" placeholder="" value="${huiyuan.xingming}">
+                                <input type="text" name="xingming" id="xingming" placeholder="必填" value="${huiyuan.xingming}" required>
 
                             </div>
                         </div>
@@ -167,7 +168,7 @@
                                             <input type="radio" name="xingbie" value="0" data-am-ucheck> 保密
                                         </label>
                                     </c:when>
-                                    <c:when test="${huiyuan.xingbie =='0'}">
+                                    <c:otherwise>
                                         <label class="am-radio-inline">
                                             <input type="radio" name="xingbie" value="1" data-am-ucheck> 男
                                         </label>
@@ -177,7 +178,7 @@
                                         <label class="am-radio-inline">
                                             <input type="radio" name="xingbie" checked value="0" data-am-ucheck> 保密
                                         </label>
-                                    </c:when>
+                                    </c:otherwise>
                                 </c:choose>
                             </div>
                         </div>
@@ -188,14 +189,30 @@
                                 <div class="birth-select">
                                     <input type="text" id="srup" name="srup" readonly="readonly" maxlength="20" class="cursorpointer datainput"
                                            value="<fmt:formatDate value="${huiyuan.sr}" pattern="yyyy-MM-dd"/>"
-                                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true});">
+                                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true});" required>
                                 </div>
                             </div>
 
                         </div>
 
+                        <div class="am-form-group">
+                            <label class="am-form-label">所在地</label>
+                            <div class="am-form-content address">
+                                <select name="province" id="province"></select>
+                                <select name="city" id="city"></select>
+                                <select name="area" id="area"></select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label  class="am-form-label">所在学校</label>
+                            <div class="am-form-content">
+                                <input type="text" name="school" id="school" placeholder="无学校可为空" value="${huiyuan.school}">
+
+                            </div>
+                        </div>
                         <div class="info-btn">
-                            <div class="am-btn am-btn-danger" onclick="saveInfo()">保存修改</div>
+                            <input class="am-btn am-btn-danger" type="submit" id="submit" value="保存修改"></input>
                         </div>
 
                     </form>
@@ -374,25 +391,33 @@ $("#img").click(function () {
             });*/
         }
     }
+/* $("#submit").submit(function(){
+     console.log("------");
+     console.log($('#form').serialize());
+     $.ajax({
+         //几个参数需要注意一下
+         type: "POST",//方法类型
+         dataType: "json",//预期服务器返回的数据类型
+         url: "${ctx}/personCenter/save" ,//url
+         data: $('#form').serialize(),
+         success: function (result) {
+             console.log(result);//打印服务端返回的数据(调试用)
+             if (result.code == '1') {
+                 window.location.reload();
+             }
+             ;
+         },
+         error : function() {
+             alert("异常！");
+         }
+     });
+ });*/
     function saveInfo() {
-        $.ajax({
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "${ctx}/personCenter/save" ,//url
-            data: $('#form').serialize(),
-            success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result.code == '1') {
-                    window.location.reload();
-                }
-                ;
-            },
-            error : function() {
-                alert("异常！");
-            }
-        });
+
     }
+</script>
+<script language="javascript" defer>
+    new PCAS("province","city","area","山东省","青岛市","黄岛区");
 </script>
 </body>
 

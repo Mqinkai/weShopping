@@ -14,7 +14,7 @@
          UPDATE t_huiyuan SET email = #{yx} where id =#{id}
     </update>
     <update id="saveinfo">
-        UPDATE t_huiyuan SET  xingming = #{xingming},user_name = #{userName},xingbie = #{xingbie},sr = #{sr}  where id = #{id}
+        UPDATE t_huiyuan SET  xingming = #{xingming},user_name = #{userName},xingbie = #{xingbie},sr = #{sr},school=#{school},address=#{address}  where id = #{id}
     </update>
    <update id="updata">
       UPDATE t_xiaoxi SET code='1' WHERE sale_id = #{id}
@@ -64,7 +64,8 @@
         tel,
         email,
         address,
-        xingbie
+        xingbie,
+        school
 
         FROM t_huiyuan
 WHERE id=#{id}

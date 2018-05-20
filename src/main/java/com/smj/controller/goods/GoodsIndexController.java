@@ -48,5 +48,29 @@ public class GoodsIndexController {
             model.addAttribute("leibieList",leibieList);
             return "site/goods/newGoods";
         }
+    @RequestMapping(value = "/search")
+    public String search(HttpServletRequest request, Model model,String name,String type){
+        String userid = "";
+        //判断是否登录
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        if (huiyuan!=null){
+            model.addAttribute("huiyuan",huiyuan);
+            model.addAttribute("login","1");
+            userid = huiyuan.getId();
+        }
+        else {
+            Huiyuan huiyuan1 = new Huiyuan();
+            huiyuan1.setCarNum("0");
+            model.addAttribute("huiyuan",huiyuan1);
+            model.addAttribute("login","0"); //未登录
+        }
+        //获取类别list
+        List<Leibie> leibieList=goodsService.getLeibie();
+        List<TGoods> list=testService.find(name,type,userid);
+        model.addAttribute("name",name);
+        model.addAttribute("goodslist",list);
+        model.addAttribute("leibieList",leibieList);
+        return "site/goods/goodsDetail";
+    }
 
 }

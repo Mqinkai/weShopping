@@ -75,6 +75,7 @@
                     <ul>
                         <li class="active"> <a href="${ctx}/personCenter/comment">评价</a></li>
                         <li> <a href="${ctx}/personCenter/news">消息</a></li>
+                        <li> <a href="${ctx}/personCenter/fbsp">发布二手</a></li>
                     </ul>
                 </li>
 

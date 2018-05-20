@@ -9,6 +9,7 @@ public class TGoods implements java.io.Serializable
 
 	private Integer id;
 	private Integer leibieId;
+	private String leibiexiashuId;
 	private String mingcheng;
 	private String jieshao;
 	
@@ -20,6 +21,14 @@ public class TGoods implements java.io.Serializable
 	private String del;
 	private String fbid;
 	private String saleflag;
+
+	public String getLeibiexiashuId() {
+		return leibiexiashuId;
+	}
+
+	public void setLeibiexiashuId(String leibiexiashuId) {
+		this.leibiexiashuId = leibiexiashuId;
+	}
 
 	public String getSaleflag() {
 		return saleflag;

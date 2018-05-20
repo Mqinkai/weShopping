@@ -26,7 +26,7 @@
 
         <div class="search-bar pr">
             <a name="index_none_header_sysc" href="#"></a>
-            <form action="/message/show" method="get">
+            <form action="/message/search" method="get">
                 <input id="searchInput" name="name" type="text" placeholder="搜索" autocomplete="off">
                 <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
             </form>
@@ -39,10 +39,10 @@
     <!--轮播 -->
     <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
         <ul class="am-slides">
-            <li class="banner1"><a><img src="/static/images/ad1.jpg" /></a></li>
-            <li class="banner2"><a><img src="/static/images/ad2.jpg" /></a></li>
-            <li class="banner3"><a><img src="/static/images/ad3.jpg" /></a></li>
-            <li class="banner4"><a><img src="/static/images/ad4.jpg" /></a></li>
+            <li class="banner1"><a><img src="/static/images/01.jpg" /></a></li>
+            <li class="banner2"><a><img src="/static/images/02.jpg" /></a></li>
+            <li class="banner3"><a><img src="/static/images/03.jpg" /></a></li>
+            <li class="banner4"><a><img src="/static/images/04.jpg" /></a></li>
 
         </ul>
     </div>
@@ -54,10 +54,10 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="index"><a href="${ctx}/message/show?type=0">首页</a></li>
-                <li class="qc"><a href="${ctx}/message/show?type=1">校园二手</a></li>
-                <li class="qc"><a href="${ctx}/message/show?type=2">同城交易</a></li>
-                <li class="qc last"><a href="${ctx}/message/show?type=3">超低价</a></li>
+                <li class="index"><a href="${ctx}/message/search?type=0">首页</a></li>
+                <li class="qc"><a href="${ctx}/message/search?type=1">校园二手</a></li>
+                <li class="qc"><a href="${ctx}/message/search?type=2">同城交易</a></li>
+                <li class="qc last"><a href="${ctx}/message/search?type=3">超低价</a></li>
             </ul>
             <%-- <div class="nav-extra">
                  <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
@@ -236,8 +236,9 @@
             <!--物品展示-->
 
             <c:forEach items="${leibieList}" var="leibieList" begin="0" end="3" varStatus="status">
+        <c:if test="${leibieList.tuijian== '1'}">
             <c:if test="${status.count==1}">
-        <div id="f1">
+            <div id="f1">
             <div class="am-container ">
                 <div class="shopTitle ">
                     <h4>${leibieList.mingcheng}</h4>
@@ -251,11 +252,6 @@
                 <div class="am-u-sm-5 am-u-md-4 text-one list ">
                     <div class="word">
 
-                        <c:forEach items="${leibieList.leibieXiashus}" var="xiashu" varStatus="stus">
-                            <c:if test="${xiashu.leibieId==leibieList.id}">
-                                <a class="outer" href="#"><span class="inner"><b class="text">${xiashu.name}</b></span></a>
-                            </c:if>
-                        </c:forEach>
                     </div>
                     <a>
                         <div class="outer-con ">
@@ -286,11 +282,6 @@
                     <div class="am-u-sm-4 text-four list ">
                         <div class="word">
 
-                            <c:forEach items="${leibieList.leibieXiashus}" var="xiashu" varStatus="stus">
-                                <c:if test="${xiashu.leibieId==leibieList.id}">
-                                    <a class="outer" href="#"><span class="inner"><b class="text">${xiashu.name}</b></span></a>
-                                </c:if>
-                            </c:forEach>
                         </div>
                         <a>
                             <div class="outer-con ">
@@ -320,11 +311,7 @@
                     <div class="am-g am-g-fixed floodFour" style="margin-left: 1px;!important;">
                         <div class="am-u-sm-4 text-four list" >
                             <div class="word">
-                                <c:forEach items="${leibieList.leibieXiashus}" var="xiashu" varStatus="stus">
-                                    <c:if test="${xiashu.leibieId==leibieList.id}">
-                                        <a class="outer" href="#"><span class="inner"><b class="text">${xiashu.name}</b></span></a>
-                                    </c:if>
-                                </c:forEach>
+
                             </div>
                             <a>
                                 <div class="outer-con ">
@@ -354,11 +341,6 @@
                             <div class="am-u-sm-5 am-u-md-4 text-one list" >
                                 <div class="word">
 
-                                    <c:forEach items="${leibieList.leibieXiashus}" var="xiashu" varStatus="stus">
-                                        <c:if test="${xiashu.leibieId==leibieList.id}">
-                                            <a class="outer" href="#"><span class="inner"><b class="text">${xiashu.name}</b></span></a>
-                                        </c:if>
-                                    </c:forEach>
                                 </div>
                                 <a>
                                     <div class="outer-con ">
@@ -465,6 +447,7 @@
                                     </c:if>
                                 </c:if>
                             </c:forEach>
+                            </c:if>
                             </c:forEach>
                         </div>
                         <div class="footer ">
@@ -483,44 +466,13 @@
                                 </p>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
 
                 <!--菜单 -->
                 <div class=tip>
                     <div id="sidebar">
                         <div id="wrap">
-                            <div id="prof" class="item ">
-                                <a href="# ">
-                                    <span class="setting "></span>
-                                </a>
-                                <div class="ibar_login_box status_login ">
-                                    <div class="avatar_box ">
-                                        <p class="avatar_imgbox "><img src="${huiyuan.tx} " /></p>
-                                        <ul class="user_info ">
-                                            <li>${huiyuan.userName}</li>
-                                            <li>${huiyuan.code}</li>
-                                        </ul>
-                                    </div>
-                                    <div class="login_btnbox ">
-                                        <a href="# " class="login_order ">我的订单</a>
-                                    </div>
-                                    <i class="icon_arrow_white "></i>
-                                </div>
-
-                            </div>
-                            <div id="shopCart " class="item ">
-                                <a href="# ">
-                                    <span class="message "></span>
-                                </a>
-                                <p>
-                                    购物车
-                                </p>
-                                <p class="cart_num ">${huiyuan.carNum}</p>
-                            </div>
-
                             <div class="quick_toggle ">
                                 <!--二维码 -->
                                 <li class="qtitem ">
@@ -534,24 +486,6 @@
 
                             <!--回到顶部 -->
                             <div id="quick_links_pop " class="quick_links_pop hide "></div>
-
-                        </div>
-
-                    </div>
-                    <div id="prof-content " class="nav-content ">
-                        <div class="nav-con-close ">
-                            <i class="am-icon-angle-right am-icon-fw "></i>
-                        </div>
-                        <div>
-                            我
-                        </div>
-                    </div>
-                    <div id="shopCart-content " class="nav-content ">
-                        <div class="nav-con-close ">
-                            <i class="am-icon-angle-right am-icon-fw "></i>
-                        </div>
-                        <div>
-                            购物车
                         </div>
                     </div>
                 </div>

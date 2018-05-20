@@ -5,11 +5,12 @@
         SELECT
         id,
         mingcheng,
-        tupian
-        FROM t_leibie WHERE del='no'
+        tupian,
+        tuijian
+        FROM t_leibie WHERE del='0'
     </select>
     <select id="findLeibieXshu" resultType="com.smj.entiy.goods.LeibieXiashu">
-        SELECT id,leibie_id AS leibieId,name FROM t_leibie_xiashu WHERE del='no' AND leibie_id=#{id}
+        SELECT id,leibie_id AS leibieId,name FROM t_leibie_xiashu WHERE del='0' AND leibie_id=#{id}
     </select>
     <select id="findCar" resultType="java.lang.String">
 SELECT sum(tc.num*tg.jiage) FROM t_car tc JOIN t_goods tg ON tc.goods_id = tg.id WHERE tc.huiyuan_id=#{id} and tc.del='0'

@@ -9,6 +9,15 @@ public class Leibie {
     private String mingcheng;
     List<LeibieXiashu> leibieXiashus=new ArrayList<LeibieXiashu>();
     private String tupian;
+    private String tuijian;
+
+    public String getTuijian() {
+        return tuijian;
+    }
+
+    public void setTuijian(String tuijian) {
+        this.tuijian = tuijian;
+    }
 
     public int getId() {
         return id;

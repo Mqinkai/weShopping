@@ -4,6 +4,7 @@ import com.smj.common.dto.ResultDto;
 import com.smj.entiy.Address;
 import com.smj.entiy.Notice;
 import com.smj.entiy.OrderDto;
+import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
@@ -292,15 +293,22 @@ public class PersonCenterController {
     }
 
     @RequestMapping(value = "save")
-    @ResponseBody
-    public ResultDto save(Huiyuan huiyuan) throws ParseException {
+    public String save(Huiyuan huiyuan,HttpServletRequest request) throws ParseException {
+        Huiyuan huiyuan1 = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        //拼接地址，省市区不做分开保存
+        huiyuan.setAddress(huiyuan.getProvince()+huiyuan.getCity()+huiyuan.getArea());
         ResultDto resultDto = new ResultDto();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         huiyuan.setSr(sdf.parse(huiyuan.getSrup()));
+        huiyuan1.setUserName(huiyuan.getUserName());
+        huiyuan1.setXingming(huiyuan.getXingming());
+        huiyuan1.setXingbie(huiyuan.getXingbie());
+        huiyuan1.setSr(huiyuan.getSr());
+        huiyuan1.setSchool(huiyuan.getSchool());
         //调用service保存，根据id修改
         huiyuanCenterService.save(huiyuan);
         resultDto.setCode("1");
-        return resultDto;
+        return  "redirect:/personCenter/PersonInformation";
     }
     //跳转到消息
     @RequestMapping(value = "fbsp")
@@ -311,7 +319,9 @@ public class PersonCenterController {
             String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
             huiyuan1.setCarNum(num);  //购物车金额
-
+            //获取分类
+            List<Leibie> leibieList=goodsService.getLeibie();
+            model.addAttribute("leibieList",leibieList);
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/fbsp";

@@ -21,6 +21,43 @@ public class Huiyuan {
     private String address;
     private String xingbie = "";
     private String csrq;
+    private String school;
+
+    private String province;
+    private String city;
+    private String area;
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
 
     public String getSrup() {
         return srup;

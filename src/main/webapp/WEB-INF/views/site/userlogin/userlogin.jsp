@@ -6,6 +6,7 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>登录</title>
+	<link href="/static/css/dlstyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div>

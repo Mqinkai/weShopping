@@ -7,6 +7,7 @@ import com.smj.entiy.OrderDto;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
+import com.smj.entiy.huiyuan.PingjiaDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -46,4 +47,6 @@ public interface HuiyuanCenterDao {
     TGoods getGoods(String goodsId);
 
     void updata(String id);
+
+    List<PingjiaDto> findPingjia(String id);
 }

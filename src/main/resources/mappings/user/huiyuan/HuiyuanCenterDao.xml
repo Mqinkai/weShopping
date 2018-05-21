@@ -127,4 +127,16 @@ WHERE id=#{id}
    <select id="getGoods" resultType="com.smj.entiy.goods.TGoods">
       SELECT * FROM t_goods where del='0' AND id=#{goodsId}
    </select>
+    <select id="findPingjia" resultType="com.smj.entiy.huiyuan.PingjiaDto">
+        SELECT
+        tp.id,
+        tp.neirong,
+        tp.pj_id AS pjId,
+        tp.sale_id AS saleId,
+        tp.shijian AS date,
+        concat(LEFT ((SELECT th.user_name FROM t_huiyuan th WHERE th.id=tp.pj_id),1),'***') AS pjName,
+        (SELECT  t.address FROM t_huiyuan t WHERE t.id=tp.pj_id) AS pjAdress
+        FROM t_pingjia tp
+        WHERE sale_id =#{id}
+    </select>
 </mapper>

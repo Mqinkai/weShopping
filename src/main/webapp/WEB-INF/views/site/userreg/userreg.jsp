@@ -30,8 +30,8 @@
 	<script src="/static/js/dialog.js"></script>
 </head>
 <body>
-<div class="login-boxtitle">
-	<a href="${ctx}/message/show"><img alt="" src="/static/images/logobig.png" /></a>
+<div>
+	<a href="${ctx}/message/show"><img alt="logo" style="height: 80px;width: 160px;" src="/static/images/logobig.png" /></a>
 </div>
 <div class="res-banner">
 	<div class="res-main">

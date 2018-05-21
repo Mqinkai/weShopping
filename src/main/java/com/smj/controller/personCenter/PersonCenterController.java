@@ -8,9 +8,9 @@ import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
+import com.smj.entiy.huiyuan.PingjiaDto;
 import com.smj.service.goods.GoodsService;
 import com.smj.service.huiyuan.HuiyuanCenterService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -256,10 +256,10 @@ public class PersonCenterController {
     public String tocomment(HttpServletRequest request, Model model){
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
+           //获取pingjia
+            List<PingjiaDto> list = huiyuanCenterService.getPingjia(huiyuan.getId());
+            model.addAttribute("pjlist",list);
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/comment";

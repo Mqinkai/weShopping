@@ -78,7 +78,7 @@
 
         </aside>
         <div class="main-wrap">
-            <div class="wrap-left" style="height: 800px;overflow:auto;!important;">
+            <div class="wrap-left">
                 <div class="wrap-list">
                     <div class="m-user">
                         <!--个人信息 -->
@@ -170,24 +170,25 @@
                     </div>
                 </div>
             </div>
-        <!--底部-->
-            <div class="footer"  style="margin-top: 800px">
-                <div class="footer-hd">
-                    <p>
-                        <a href="http://www.qtech.edu.cn/">青岛理工</a>
-                        <b>|</b>
-                        <a href="${ctx}/message/show">平台首页</a>
-                        <b>|</b>
-                        <a href="${ctx}/personCenter/">个人中心</a>
-                    </p>
-                </div>
-                <div class="footer-bd ">
-                    <p>
-                        <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
-                    </p>
-                </div>
-            </div>
+
      </div>
+        <!--底部-->
+        <div class="footer"  style="margin-top: 50px">
+            <div class="footer-hd">
+                <p>
+                    <a href="http://www.qtech.edu.cn/">青岛理工</a>
+                    <b>|</b>
+                    <a href="${ctx}/message/show">平台首页</a>
+                    <b>|</b>
+                    <a href="${ctx}/personCenter/">个人中心</a>
+                </p>
+            </div>
+            <div class="footer-bd ">
+                <p>
+                    <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 <script type="text/javascript">

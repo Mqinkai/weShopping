@@ -7,6 +7,7 @@ import com.smj.entiy.OrderDto;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
+import com.smj.entiy.huiyuan.PingjiaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -81,5 +82,10 @@ public class HuiyuanCenterService {
         }
         huiyuanCenterDao.updata(id); //把消息全部置已读
         return list;
+    }
+
+    public List<PingjiaDto> getPingjia(String id) {
+        List<PingjiaDto> list = huiyuanCenterDao.findPingjia(id);
+            return list;
     }
 }

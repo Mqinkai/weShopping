@@ -198,9 +198,9 @@
                         <div class="am-form-group">
                             <label class="am-form-label">所在地</label>
                             <div class="am-form-content address">
-                                <select name="province" id="province"></select>
-                                <select name="city" id="city"></select>
-                                <select name="area" id="area"></select>
+                                <select name="province" id="province" required></select>
+                                <select name="city" id="city" required></select>
+                                <select name="area" id="area" required></select>
                             </div>
                         </div>
 

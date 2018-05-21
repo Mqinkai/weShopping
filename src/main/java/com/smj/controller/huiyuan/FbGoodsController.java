@@ -52,7 +52,11 @@ public class FbGoodsController {
             return resultDto;
         } //图像数据为空
         BASE64Decoder decoder = new BASE64Decoder();
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");//从session获取会员信息
+        tGoods.setFbid(huiyuan.getId());
         try{
+            fbGoodsService.findSchool(tGoods);
+
             //Base64解码
             byte[] b = decoder.decodeBuffer(tGoods.getFujian());
 /*            for(int i=0;i<b.length;++i){
@@ -81,14 +85,12 @@ public class FbGoodsController {
             String rePath = "http://localhost:9999/fbgoods/readImage?name="+ uuid + ".jpg";
             tGoods.setFujian(rePath);//回填图片服务器地址
             //图片已经保存到本地，开始向数据库保存数据
-            Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");//从session获取会员信息
-            tGoods.setFbid(huiyuan.getId());
             fbGoodsService.updata(tGoods);
             resultDto.setCode("1");
                 return resultDto;
             }catch (Exception e){
             resultDto.setCode("-1");
-            resultDto.setMessage("上传失败");
+            resultDto.setMessage(e.getMessage());
                 return resultDto;
             }
 

@@ -21,6 +21,35 @@ public class TGoods implements java.io.Serializable
 	private String del;
 	private String fbid;
 	private String saleflag;
+	private String yuanjia;
+
+	//详情页面需要
+	private String address;
+	private String school;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public String getYuanjia() {
+		return yuanjia;
+	}
+
+	public void setYuanjia(String yuanjia) {
+		this.yuanjia = yuanjia;
+	}
 
 	public String getLeibiexiashuId() {
 		return leibiexiashuId;

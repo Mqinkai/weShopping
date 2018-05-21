@@ -247,7 +247,7 @@
             <c:forEach items="${goodslist}" var="goods" varStatus="var">
                 <li>
                     <div class="list ">
-                        <a href="# ">
+                        <a href="${ctx}/GoodsDetail/detail?id="+${goods.id}">
                             <img src="${goods.fujian} " />
                             <div class="pro-title ">${goods.mingcheng}</div>
                             <span class="e-price ">￥${goods.jiage}</span>

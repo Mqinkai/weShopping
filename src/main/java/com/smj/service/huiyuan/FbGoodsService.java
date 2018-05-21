@@ -22,4 +22,13 @@ public class FbGoodsService {
     public void updata(TGoods tGoods) {
         fbGoodsDao.updata(tGoods);
     }
+
+    public void findSchool(TGoods tGoods) throws Exception {
+      String i = fbGoodsDao.findaddress(tGoods.getFbid());
+        if (i!=null && !i.equals("")){
+
+        }else {
+            throw new Exception("个人信息为完善,不能发布商品！");
+        }
+    }
 }

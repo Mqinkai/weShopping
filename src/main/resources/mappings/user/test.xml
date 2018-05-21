@@ -7,6 +7,7 @@
         <if test="name != null and name != ''">
              AND mingcheng LIKE concat('%',#{name},'%')
         </if>
+        order by id desc
     </select>
     <select id="findSchool" resultType="java.lang.String">
         SELECT school FROM t_huiyuan WHERE id = #{id}

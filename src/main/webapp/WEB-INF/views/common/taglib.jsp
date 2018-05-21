@@ -36,8 +36,3 @@
 <script src="/static/Bootstrap/js/bootstrap-fileinput.js"></script>
 <script src="/static/js/My97DatePicker/WdatePicker.js"></script>
 <script src="/static/js/pcasunzip.js"></script>
-<script type="text/javascript" src="/static/basic/js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="/static/basic/js/quick_links.js"></script>
-<script type="text/javascript" src="/static/js/jquery.imagezoom.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.flexslider.js"></script>
-<script type="text/javascript" src="/static/js/list.js"></script>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smj.dao.goods.GoodsDetailDao">
+    <select id="findById" resultType="com.smj.entiy.goods.TGoods">
+        SELECT * FROM t_goods WHERE id=#{id}
+    </select>
+    <select id="findOther" resultType="com.smj.entiy.goods.TGoods">
+        SELECT address,school FROM t_huiyuan WHERE id=#{fbid}
+    </select>
+</mapper>

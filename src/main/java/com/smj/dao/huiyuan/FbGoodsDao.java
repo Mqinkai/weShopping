@@ -15,4 +15,6 @@ public interface FbGoodsDao {
     List<Leibie> findLbie(String leibieid);
 
     void updata(TGoods tGoods);
+
+    String findaddress(String fbid);
 }

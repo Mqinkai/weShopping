@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="/WEB-INF/views/common/taglib.jsp"%>
+<%--<%@ include file="/WEB-INF/views/common/taglib.jsp"%>--%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,7 +17,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>商品页面</title>
+    <link href="/static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+    <link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+    <link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="/static/css/optstyle.css" rel="stylesheet" />
+    <link type="text/css" href="/static/css/style.css" rel="stylesheet" />
 
+    <script type="text/javascript" src="/static/basic/js/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="/static/basic/js/quick_links.js"></script>
+
+    <script type="text/javascript" src="/static/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.imagezoom.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/static/js/list.js"></script>
 </head>
 <body>
 
@@ -31,10 +43,11 @@
     <div class="logoBig">
         <li><img src="/static/images/logobig.png" /></li>
     </div>
+
     <div class="search-bar pr">
         <a name="index_none_header_sysc" href="#"></a>
-        <form>
-            <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+        <form action="/message/search" method="get">
+            <input id="searchInput" name="name" type="text" placeholder="搜索" autocomplete="off">
             <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
         </form>
     </div>
@@ -49,17 +62,16 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="index"><a href="#">首页</a></li>
-                <li class="qc"><a href="#">闪购</a></li>
-                <li class="qc"><a href="#">限时抢</a></li>
-                <li class="qc"><a href="#">团购</a></li>
-                <li class="qc last"><a href="#">大包装</a></li>
+                <li class="index"><a href="${ctx}/message/search?type=0">首页</a></li>
+                <li class="qc"><a href="${ctx}/message/search?type=1">校园二手</a></li>
+                <li class="qc"><a href="${ctx}/message/search?type=2">同城交易</a></li>
+                <li class="qc last"><a href="${ctx}/message/search?type=3">超低价</a></li>
             </ul>
         </div>
     </div>
     <ol class="am-breadcrumb am-breadcrumb-slash">
-        <li><a href="#">首页</a></li>
-        <li><a href="#">分类</a></li>
+        <li><a>首页</a></li>
+        <li><a>分类</a></li>
         <li class="am-active">内容</li>
     </ol>
     <script type="text/javascript">
@@ -78,14 +90,9 @@
             <div class="flexslider">
                 <ul class="slides">
                     <li>
-                        <img src="../images/01.jpg" title="pic" />
+                        <img src="${goods.fujian}" title="pic" />
                     </li>
-                    <li>
-                        <img src="../images/02.jpg" />
-                    </li>
-                    <li>
-                        <img src="../images/03.jpg" />
-                    </li>
+
                 </ul>
             </div>
         </section>
@@ -109,25 +116,9 @@
                 </script>
 
                 <div class="tb-booth tb-pic tb-s310">
-                    <a href="../images/01.jpg"><img src="../images/01_mid.jpg" alt="细节展示放大镜特效" rel="../images/01.jpg" class="jqzoom" /></a>
+                    <a href="${goods.fujian}"><img src="${goods.fujian}" alt="细节展示放大镜特效" rel="${goods.fujian}" class="jqzoom" /></a>
                 </div>
-                <ul class="tb-thumb" id="thumblist">
-                    <li class="tb-selected">
-                        <div class="tb-pic tb-s40">
-                            <a href="#"><img src="../images/01_small.jpg" mid="../images/01_mid.jpg" big="../images/01.jpg"></a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tb-pic tb-s40">
-                            <a href="#"><img src="../images/02_small.jpg" mid="../images/02_mid.jpg" big="../images/02.jpg"></a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tb-pic tb-s40">
-                            <a href="#"><img src="../images/03_small.jpg" mid="../images/03_mid.jpg" big="../images/03.jpg"></a>
-                        </div>
-                    </li>
-                </ul>
+
             </div>
 
             <div class="clear"></div>
@@ -139,23 +130,33 @@
             <!--名称-->
             <div class="tb-detail-hd">
                 <h1>
-                    良品铺子 手剥松子218g 坚果炒货 巴西松子
+                    ${goods.mingcheng}
                 </h1>
             </div>
             <div class="tb-detail-list">
                 <!--价格-->
                 <div class="tb-detail-price">
                     <li class="price iteminfo_price">
-                        <dt>促销价</dt>
-                        <dd><em>yen</em><b class="sys_item_price">56.90</b>  </dd>
+                        <dt>现价</dt>
+                        <dd><b class="sys_item_price">${goods.jiage}</b> <em>￥</em> </dd>
                     </li>
                     <li class="price iteminfo_mktprice">
                         <dt>原价</dt>
-                        <dd><em>yen</em><b class="sys_item_mktprice">98.00</b></dd>
+                        <dd><b class="sys_item_mktprice">${goods.yuanjia}</b><em>￥</em></dd>
                     </li>
                     <div class="clear"></div>
                 </div>
-
+                <div class="tb-detail-price">
+                    <li >
+                        <dt>所在地</dt>
+                        <em>${goods.address}</em>
+                    </li>
+                    <li style="padding-top: 20px">
+                        <dt>学校</dt>
+                        <em>${goods.school}</em>
+                    </li>
+                    <div class="clear"></div>
+                </div>
 
              </div>
              </div>
@@ -173,7 +174,7 @@
     </li>
     <li>
         <div class="clearfix tb-btn tb-btn-basket theme-login">
-            <a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+            <a id="LikBasket" title="联系卖家" href="#"><i></i>联系卖家</a>
         </div>
     </li>
 </div>
@@ -203,42 +204,14 @@
             <div class="am-tabs-bd">
 
                 <div class="am-tab-panel am-fade am-in am-active">
-                    <div class="J_Brand">
-
-                        <div class="attr-list-hd tm-clear">
-                            <h4>产品参数：</h4></div>
-                        <div class="clear"></div>
-                        <ul id="J_AttrUL">
-                            <li title="">产品类型:&nbsp;烘炒类</li>
-                            <li title="">原料产地:&nbsp;巴基斯坦</li>
-                            <li title="">产地:&nbsp;湖北省武汉市</li>
-                            <li title="">配料表:&nbsp;进口松子、食用盐</li>
-                            <li title="">产品规格:&nbsp;210g</li>
-                            <li title="">保质期:&nbsp;180天</li>
-                            <li title="">产品标准号:&nbsp;GB/T 22165</li>
-                            <li title="">生产许可证编号：&nbsp;QS4201 1801 0226</li>
-                            <li title="">储存方法：&nbsp;请放置于常温、阴凉、通风、干燥处保存 </li>
-                            <li title="">食用方法：&nbsp;开袋去壳即食</li>
-                        </ul>
-                        <div class="clear"></div>
-                    </div>
 
                     <div class="details">
-                        <div class="attr-list-hd after-market-hd">
-                            <h4>商品细节</h4>
-                        </div>
-                        <div class="twlistNews">
-                            <img src="../images/tw1.jpg" />
-                            <img src="../images/tw2.jpg" />
-                            <img src="../images/tw3.jpg" />
-                            <img src="../images/tw4.jpg" />
-                            <img src="../images/tw5.jpg" />
-                            <img src="../images/tw6.jpg" />
-                            <img src="../images/tw7.jpg" />
+                        <div>
+                            ${goods.jieshao}
                         </div>
                     </div>
-                    <div class="clear"></div>
 
+                    <div class="clear"></div>
                 </div>
 
                 <div class="am-tab-panel am-fade">

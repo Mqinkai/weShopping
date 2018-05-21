@@ -371,7 +371,7 @@
                                                 </div>
                                                 <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                             </div>
-                                            <a href="# "><img src="${ctx}${goods.fujian}" /></a>
+                                            <a href="${ctx}/GoodsDetail/detail?id=${goods.id}"><img src="${ctx}${goods.fujian}" /></a>
                                         </div>
                                     </c:if>
 
@@ -386,7 +386,7 @@
                                                 </div>
                                                 <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                             </div>
-                                            <a href="# "><img src="${ctx}${goods.fujian}" /></a>
+                                            <a href="${ctx}/GoodsDetail/detail?id=${goods.id}"><img src="${ctx}${goods.fujian}" /></a>
                                         </div>
                                     </c:if>
                                     <c:if test="${i==3}">
@@ -400,7 +400,7 @@
                                                 </div>
                                                 <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                             </div>
-                                            <a href="# "><img src="${ctx}${goods.fujian}" /></a>
+                                            <a href="${ctx}/GoodsDetail/detail?id=${goods.id}"><img src="${ctx}${goods.fujian}" /></a>
                                         </div>
                                     </c:if>
                                     <c:if test="${i==4}">
@@ -414,7 +414,7 @@
                                                 </div>
                                                 <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                             </div>
-                                            <a href="# "><img src="${ctx}${goods.fujian}" /></a>
+                                            <a href="${ctx}/GoodsDetail/detail?id=${goods.id}"><img src="${ctx}${goods.fujian}" /></a>
                                         </div>
                                     </c:if>
                                     <c:if test="${i==5}">
@@ -428,7 +428,7 @@
                                                 </div>
                                                 <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                             </div>
-                                            <a href="# "><img src="${ctx}${goods.fujian}" /></a>
+                                            <a href="${ctx}/GoodsDetail/detail?id=${goods.id}"><img src="${ctx}${goods.fujian}" /></a>
                                         </div>
                                     </c:if>
                                     <c:if test="${i==6}">
@@ -442,7 +442,7 @@
                                                 </div>
                                                 <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                             </div>
-                                            <a href="# "><img src="${ctx}${goods.fujian}" /></a>
+                                            <a href="${ctx}/GoodsDetail/detail?id=${goods.id}"><img src="${ctx}${goods.fujian}" /></a>
                                         </div>
                                     </c:if>
                                 </c:if>

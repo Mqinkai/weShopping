@@ -13,7 +13,8 @@
         shifoutejia,
         del,
         saleflag,
-        fbid
+        fbid,
+        yuanjia
         )VALUES (
       #{leibiexiashuId},
       #{leibieId},
@@ -25,10 +26,14 @@
       'no',
       '0',
       '在售',
-      #{fbid}
+      #{fbid},
+      #{yuanjia}
         )
     </insert>
     <select id="findLbie" resultType="com.smj.entiy.goods.Leibie">
         SELECT id,name as mingcheng FROM t_leibie_xiashu WHERE leibie_id = #{leibieid} and del = '0'
+    </select>
+    <select id="findaddress" resultType="java.lang.String">
+        SELECT address FROM t_huiyuan WHERE id=#{fbid}
     </select>
 </mapper>

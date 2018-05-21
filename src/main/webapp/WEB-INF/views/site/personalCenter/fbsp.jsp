@@ -156,10 +156,15 @@
                       <script id="editor" type="text/plain" style="width:600px;height:500px;"></script>
                     </div>
                       <div style="padding: 20px">
-                          <span>物品价格：</span>
+                          <span>物品售价：</span>
 
                           <input  style="border:1px solid;width: 200px;" type="text" name="jiage" id="jiage" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>￥
                       </div>
+                     <div style="padding: 20px">
+                         <span>物品原价：</span>
+
+                         <input  style="border:1px solid;width: 200px;" type="text" name="yuanjia" id="yuanjia" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>￥
+                     </div>
 
                            <div style="padding: 20px;margin-left: 100px">
                                <button class="am-btn am-btn-danger" value="提交" onclick="check()">提交</button>&nbsp;
@@ -259,17 +264,19 @@
         //fujian
         var jieshao = UE.getEditor('editor').getContent();
         var jiage = $("#jiage").val();
+        var yuanjia = $("#yuanjia").val();
+
         $.ajax({
                     dataType: 'json', //服务器返回json格式数据
                     type: 'post', //HTTP请求类型
-                    data:{leibieId:leibieId,leibiexiashuId:leibiexiashuId,mingcheng:mingcheng,fujian:fujian,jieshao:jieshao,jiage:jiage},
+                    data:{leibieId:leibieId,leibiexiashuId:leibiexiashuId,mingcheng:mingcheng,fujian:fujian,jieshao:jieshao,jiage:jiage,yuanjia:yuanjia},
                     url: "${ctx}/fbgoods/updata",
                     success:function(data){
                       if(data.code == '1'){
-                          $('').dailog({type:'defalut',title:'提示',discription:'发布成功',showBoxShadow:true});
-                          setTimeout( window.location.reload(),2000);
+                          $('').dailog({type:'defalut',title:'提示',discription:'发布成功',bottons:['确定'],showBoxShadow:true},function(ret) {if(ret.index===0){window.location.reload()}});
+                          //setTimeout(window.location.reload(),3000);
                         } else {
-                          $('').dailog({type:'warning',title:'提示',discription:'发布失败，请稍候重试！',bottons: ['确定'],showBoxShadow:true});
+                          $('').dailog({type:'warning',title:'提示',discription:data.message,bottons: ['确定'],showBoxShadow:true});
                       }
                     }}
         )

@@ -127,7 +127,7 @@
                                  <c:forEach items="${orderList}" var="order" varStatus="sta">
                                          <li class="lg-item">
                                              <div class="item-info">
-                                                     <img src="${order.fujian}" alt="${order.jieshao}">
+                                                     <img src="${order.fujian}" alt="">
                                              </div>
                                              <div class="lg-info">
 

@@ -166,6 +166,16 @@
                          <input  style="border:1px solid;width: 200px;" type="text" name="yuanjia" id="yuanjia" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>￥
                      </div>
 
+            <div style="padding: 20px">
+                <span>支持付款方式：</span>
+
+                <input  style="border:1px solid;width: 200px;" type="text" name="fkfs" id="fkfs" />
+            </div>
+            <div style="padding: 20px">
+                <span>账号：</span>
+
+                <input  style="border:1px solid;width: 200px;" type="text" name="zh" id="zh"/>
+            </div>
                            <div style="padding: 20px;margin-left: 100px">
                                <button class="am-btn am-btn-danger" value="提交" onclick="check()">提交</button>&nbsp;
                            </div>
@@ -265,11 +275,12 @@
         var jieshao = UE.getEditor('editor').getContent();
         var jiage = $("#jiage").val();
         var yuanjia = $("#yuanjia").val();
-
+        var fkfs = $("#fkfs").val();
+        var zh =$("#zh").val();
         $.ajax({
                     dataType: 'json', //服务器返回json格式数据
                     type: 'post', //HTTP请求类型
-                    data:{leibieId:leibieId,leibiexiashuId:leibiexiashuId,mingcheng:mingcheng,fujian:fujian,jieshao:jieshao,jiage:jiage,yuanjia:yuanjia},
+                    data:{leibieId:leibieId,leibiexiashuId:leibiexiashuId,mingcheng:mingcheng,fujian:fujian,jieshao:jieshao,jiage:jiage,yuanjia:yuanjia,fkfs:fkfs,zh:zh},
                     url: "${ctx}/fbgoods/updata",
                     success:function(data){
                       if(data.code == '1'){

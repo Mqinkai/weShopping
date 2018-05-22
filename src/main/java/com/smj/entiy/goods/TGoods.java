@@ -22,7 +22,8 @@ public class TGoods implements java.io.Serializable
 	private String fbid;
 	private String saleflag;
 	private String yuanjia;
-
+private String fkfs;
+	private String zh;
 	//详情页面需要
 	private String address;
 	private String school;
@@ -165,4 +166,19 @@ public class TGoods implements java.io.Serializable
 		this.del = del;
 	}
 
+	public String getFkfs() {
+		return fkfs;
+	}
+
+	public void setFkfs(String fkfs) {
+		this.fkfs = fkfs;
+	}
+
+	public String getZh() {
+		return zh;
+	}
+
+	public void setZh(String zh) {
+		this.zh = zh;
+	}
 }

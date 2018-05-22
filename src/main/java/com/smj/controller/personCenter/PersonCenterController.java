@@ -68,6 +68,9 @@ public class PersonCenterController {
             //年月
             SimpleDateFormat dateny = new SimpleDateFormat("yyyy.MM");
             String ny=dateny.format(dt);
+            //获取未读消息条数
+            int noticeCount = huiyuanCenterService.getcount(huiyuan.getId());
+            model.addAttribute("noticeCount",noticeCount);
             model.addAttribute("day",day);
             model.addAttribute("ny",ny);
             model.addAttribute("week",week);

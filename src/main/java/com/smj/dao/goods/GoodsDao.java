@@ -3,6 +3,7 @@ package com.smj.dao.goods;
 import com.smj.common.config.MyBatisDao;
 import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.LeibieXiashu;
+import com.smj.entiy.goods.TGoods;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface GoodsDao {
     List<LeibieXiashu> findLeibieXshu(@Param("id") int id);
 
     String findCar(String id);
+
+    TGoods findByid(String id);
 }

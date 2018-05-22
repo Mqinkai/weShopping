@@ -121,7 +121,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <a class="i-btn-forkout" href="#"><i class="am-icon-close am-icon-fw"></i></a>
+                            <a class="i-btn-forkout" href="javascript:void(0);" onclick="del(notice.id)"><i class="am-icon-close am-icon-fw"></i></a>
                               </div>
                             </c:forEach>
 
@@ -186,6 +186,15 @@
 
         });
 
+    }
+    function del(id) {
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/notice/del?id="+id,
+            success:function(result){
+                window.location.reload();
+            }});
     }
 </script>
 </body>

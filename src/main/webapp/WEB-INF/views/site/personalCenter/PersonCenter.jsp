@@ -13,7 +13,25 @@
     <link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
     <link href="/static/css/personal.css" rel="stylesheet" type="text/css">
     <link href="/static/css/systyle.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    .span_position{
 
+        padding-top: 1px;
+        left: 65;
+        text-align: center;
+        position: absolute;
+        border-radius: 50%;
+        background-color: #ff2122;
+        color: #fff;
+        font-size: 1px;
+        width: 0.7rem;
+        height: 0.7rem;
+        line-height: 0.4rem;
+        top: -0.4rem;
+        right: -0.3rem;
+        z-index: 1;
+    }
+</style>
 </head>
 
 <body>
@@ -93,7 +111,7 @@
                             </div>
                             <div class="m-right">
                                 <div class="m-new">
-                                    <a href="${ctx}/personCenter/news"><i class="am-icon-bell-o"></i>消息</a>
+                                    <a href="${ctx}/personCenter/news"><i class="am-icon-bell-o"></i>消息<span style="display: none" class="span_position" id="cmporder"></span></a>
                                 </div>
                                 <div class="m-address">
                                     <a href="${ctx}/personCenter/address" class="i-trigger">我的收货地址</a>
@@ -192,6 +210,16 @@
     </div>
 </div>
 <script type="text/javascript">
+    $(function(){
+        //$("#cmporder").css("display","none");
+        var noticeCount = ${noticeCount}
+                $("#cmporder").css("display","block");
+        if(noticeCount<=0){
+            $("#cmporder").css("display","none");
+        }
+        $("#cmporder").html(noticeCount);
+
+    });
     function del(id) {
         $.ajax({
             dataType: 'json', //服务器返回json格式数据

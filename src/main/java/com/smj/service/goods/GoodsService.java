@@ -3,6 +3,7 @@ package com.smj.service.goods;
 import com.smj.dao.goods.GoodsDao;
 import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.LeibieXiashu;
+import com.smj.entiy.goods.TGoods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,9 @@ public class GoodsService {
 
     public String findCar(String id) {
             return goodsDao.findCar(id);
+    }
+
+    public TGoods findGoods(String id) {
+        return goodsDao.findByid(id);
     }
 }

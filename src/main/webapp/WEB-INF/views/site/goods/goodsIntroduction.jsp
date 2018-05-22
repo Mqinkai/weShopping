@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%--<%@ include file="/WEB-INF/views/common/taglib.jsp"%>--%>
 
 <!DOCTYPE html>
@@ -62,7 +64,7 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="index"><a href="${ctx}/message/search?type=0">首页</a></li>
+                <li class="index"><a href="${ctx}/message/show">首页</a></li>
                 <li class="qc"><a href="${ctx}/message/search?type=1">校园二手</a></li>
                 <li class="qc"><a href="${ctx}/message/search?type=2">同城交易</a></li>
                 <li class="qc last"><a href="${ctx}/message/search?type=3">超低价</a></li>
@@ -149,7 +151,7 @@
                 <div class="tb-detail-price">
                     <li >
                         <dt>所在地</dt>
-                        <em>${goods.address}</em>
+                         <em>${goods.address}</em>
                     </li>
                     <li style="padding-top: 20px">
                         <dt>学校</dt>
@@ -167,16 +169,33 @@
         <a><span class="am-icon-heart am-icon-fw">收藏</span></a>
 
     </div>
-    <li>
-        <div class="clearfix tb-btn tb-btn-buy theme-login">
-            <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
-        </div>
-    </li>
-    <li>
-        <div class="clearfix tb-btn tb-btn-basket theme-login">
-            <a id="LikBasket" title="联系卖家" href="#"><i></i>联系卖家</a>
-        </div>
-    </li>
+    <c:choose>
+        <c:when test="${login=='1'}">
+            <li>
+                <div class="clearfix tb-btn tb-btn-buy theme-login">
+                    <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="${ctx}/pay/pay?id=${goods.id}">立即购买</a>
+                </div>
+            </li>
+            <li>
+                <div class="clearfix tb-btn tb-btn-basket theme-login">
+                    <a id="LikBasket" title="联系卖家" href="javascript:void(0)" onclick="sendmessage(${goods.id},${goods.fbid})"><i></i>联系卖家</a>
+                </div>
+            </li>
+        </c:when>
+        <c:otherwise>
+            <li>
+                <div class="clearfix tb-btn tb-btn-buy theme-login">
+                    <a id="LikBuy"  title="点此按钮到下一步确认购买信息" href="javascript:void(0)" onclick="dl()">立即购买</a>
+                </div>
+            </li>
+            <li>
+                <div class="clearfix tb-btn tb-btn-basket theme-login">
+                    <a id="LikBasket"  title="联系卖家" href="javascript:void(0)" onclick="dl()"><i></i>联系卖家</a>
+                </div>
+            </li>
+        </c:otherwise>
+    </c:choose>
+
 </div>
 
 </div>
@@ -199,6 +218,13 @@
                         <span class="index-needs-dt-txt">宝贝详情</span></a>
 
                 </li>
+
+                <li>
+                    <a href="#">
+
+                        <span class="index-needs-dt-txt">对卖家的评价</span></a>
+
+                </li>
             </ul>
 
             <div class="am-tabs-bd">
@@ -214,7 +240,73 @@
 
                     <div class="clear"></div>
                 </div>
+                <div class="am-tab-panel am-fade">
 
+                    <div class="actor-new">
+                        <dl>
+                        </dl>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="tb-r-filter-bar">
+                        <ul class=" tb-taglist am-avg-sm-4">
+                            <li class="tb-taglist-li tb-taglist-li-current">
+                                <div class="comment-info">
+                                    <span>全部评价</span>
+                                    <span class="tb-tbcr-num">(<c:out value="${fn:length(pjlist)}"></c:out>)</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+
+                    <ul class="am-comments-list am-comments-list-flip">
+                        <c:forEach items="${pjlist}" var="pj" varStatus="var">
+                            <li class="am-comment">
+                                <!-- 评论容器 -->
+                                <a href="">
+                                    <img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+                                    <!-- 评论者头像 -->
+                                </a>
+
+                                <div class="am-comment-main">
+                                    <!-- 评论内容容器 -->
+                                    <header class="am-comment-hd">
+                                        <!--<h3 class="am-comment-title">评论标题</h3>-->
+                                        <div class="am-comment-meta">
+                                            <!-- 评论元数据 -->
+                                            <a href="#link-to-user" class="am-comment-author">${pj.pjName} (匿名)</a>
+                                            <!-- 评论者 -->
+                                            评论于
+                                            <time datetime="">${pj.date}</time>
+                                        </div>
+                                    </header>
+
+                                    <div class="am-comment-bd">
+                                        <div class="tb-rev-item " data-id="255776406962">
+                                            <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+                                                ${pj.neirong}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- 评论内容 -->
+                                </div>
+                            </li>
+                        </c:forEach>
+
+                    </ul>
+
+                    <div class="clear"></div>
+
+                    <!--分页 -->
+
+                    <div class="clear"></div>
+
+                    <div class="tb-reviewsft">
+                        <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -263,6 +355,47 @@
 </div>
 <script type="text/javascript">
    /* $("#contents").innerHTML=${goods.jieshao};*/
+   function sendmessage(id,fbid) {
+       var message ="";
+       $("").dailog({
+           type: 'defalut',
+           title:'输入内容.',
+           isInput:true
+       },function(ret){
+           if(ret.index===0){
+               message=ret.input.value;
+               if (pj != null && pj !=''){
+                   $.ajax({
+                       dataType: 'json', //服务器返回json格式数据
+                       type: 'get', //HTTP请求类型
+                       url: "${ctx}/order/sendmessage?goodId="+id+"&message="+message+"&fbid="+fbid,
+                       success:function(result){
+
+                       }});
+               }else {
+                   $("").dailog({
+                       type: 'danger',
+                       showBoxShadow: true,
+                       animateStyle: 'none',
+                       bottons: ['确定'],
+                       discription: '未填写评价内容'
+                   });
+               }
+
+           }
+
+       });
+   }
+    function dl() {
+        $("").dailog({
+            type: 'danger',
+            showBoxShadow: true,
+            animateStyle: 'none',
+            bottons: ['确定'],
+            discription: '请登录'
+        });
+    }
+
 </script>
 </body>
 

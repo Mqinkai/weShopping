@@ -139,4 +139,7 @@ WHERE id=#{id}
         FROM t_pingjia tp
         WHERE sale_id =#{id}
     </select>
+    <select id="getNoticeCount" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_xiaoxi WHERE sale_id = #{id} and code ='0'
+    </select>
 </mapper>

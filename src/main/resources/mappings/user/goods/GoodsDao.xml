@@ -15,4 +15,7 @@
     <select id="findCar" resultType="java.lang.String">
 SELECT sum(tc.num*tg.jiage) FROM t_car tc JOIN t_goods tg ON tc.goods_id = tg.id WHERE tc.huiyuan_id=#{id} and tc.del='0'
     </select>
+    <select id="findByid" resultType="com.smj.entiy.goods.TGoods">
+        SELECT * FROM t_goods where id=#{id}
+    </select>
 </mapper>

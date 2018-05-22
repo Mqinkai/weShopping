@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smj.dao.huiyuan.NoticeDao">
+    <select id="findNotice" resultType="com.smj.entiy.Notice">
+        SELECT
+        id,
+        sale_id AS buyId,
+        buy_name AS buyName,
+        message AS message,
+        code,
+        date,
+        del,
+        good_id AS goodsId,
+        buy_id AS saleid
+FROM t_xiaoxi
+WHERE id=#{id}
+    </select>
+</mapper>

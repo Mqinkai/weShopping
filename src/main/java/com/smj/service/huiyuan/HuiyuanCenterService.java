@@ -88,4 +88,8 @@ public class HuiyuanCenterService {
         List<PingjiaDto> list = huiyuanCenterDao.findPingjia(id);
             return list;
     }
+
+    public int getcount(String id) {
+        return huiyuanCenterDao.getNoticeCount(id);
+    }
 }

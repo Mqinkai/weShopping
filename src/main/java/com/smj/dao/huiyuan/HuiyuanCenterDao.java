@@ -49,4 +49,6 @@ public interface HuiyuanCenterDao {
     void updata(String id);
 
     List<PingjiaDto> findPingjia(String id);
+
+    int getNoticeCount(String id);
 }

@@ -54,7 +54,7 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="index"><a href="${ctx}/message/search?type=0">首页</a></li>
+                <li class="index"><a href="${ctx}/message/show">首页</a></li>
                 <li class="qc"><a href="${ctx}/message/search?type=1">校园二手</a></li>
                 <li class="qc"><a href="${ctx}/message/search?type=2">同城交易</a></li>
                 <li class="qc last"><a href="${ctx}/message/search?type=3">超低价</a></li>

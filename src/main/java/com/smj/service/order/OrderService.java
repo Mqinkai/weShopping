@@ -47,4 +47,20 @@ public class OrderService {
         notice.setBuyId(huiyuan.getId());
         orderDao.insertNotice(notice);
     }
+
+    public void sendmessage(String message, String goodId, String fbid) {
+        //准备消息数据
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
+        String name = huiyuan.getUserName(); //发送人姓名
+        Notice notice = new Notice();
+        notice.setSaleid(fbid);
+        notice.setCode("0");
+        notice.setMessage(message);
+        Date date = new Date();
+        notice.setDate(date);
+        notice.setBuyName(name);
+        notice.setBuyId(huiyuan.getId());
+        notice.setGoodsId(goodId);
+        orderDao.insertNotice(notice);
+    }
 }

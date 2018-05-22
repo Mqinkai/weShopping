@@ -52,4 +52,13 @@ public class OrderController {
         resultDto.setCode("1");
         return resultDto;
     }
+    @RequestMapping(value = "sendmessage",method = RequestMethod.GET)
+    @ResponseBody
+    public ResultDto sendmessage(@RequestParam("goodsId") String goodsId,@RequestParam("message") String message, @RequestParam("fbid") String fbid){
+        ResultDto resultDto = new ResultDto();
+        orderService.sendmessage(message,goodsId,fbid);
+        resultDto.setMessage("成功");
+        resultDto.setCode("1");
+        return resultDto;
+    }
 }

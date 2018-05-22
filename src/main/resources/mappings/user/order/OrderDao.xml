@@ -40,6 +40,9 @@ INSERT INTO t_xiaoxi(
     <delete id="delorder">
         UPDATE t_order SET zt='已删除', del= '1' WHERE id = #{id}
     </delete>
+    <delete id="del">
+        DELETE FROM t_xiaoxi WHERE id=#{id}
+    </delete>
     <select id="findname" resultType="com.smj.entiy.Notice">
         SELECT
         tg.fbid AS saleId,

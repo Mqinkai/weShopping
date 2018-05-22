@@ -18,4 +18,6 @@ public interface OrderDao {
     Notice findname(String id);
 
     void insertNotice(Notice notice);
+
+    void del(String id);
 }

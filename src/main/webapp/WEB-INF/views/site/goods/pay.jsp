@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page language="java" pageEncoding="UTF-8"%>
@@ -62,6 +63,7 @@
                 <c:forEach items="${address}" var="addresslist" varStatus="var">
                     <c:if test="${addresslist.moren == '1'}">
                         <div class="per-border"></div>
+                       <input type="hidden" value="${addresslist.addresslist}" id="addressId"/>
                         <li class="user-addresslist defaultAddr">
 
                             <div class="address-left">
@@ -89,18 +91,11 @@
                             </div>
                             <div class="clear"></div>
 
-                            <div class="new-addr-btn">
-                                <a href="javascript:void(0);" class="hidden" onclick="change(${addres.id})">设为默认</a>
-                                <span class="new-addr-bar hidden">|</span>
-                                <a href="javascript:void(0);" onclick="edit(${addresslist.id},'${addresslist.shName}','${addresslist.shTel}','${addresslist.xxdz}');">编辑</a>
-                                <span class="new-addr-bar">|</span>
-                                <a href="javascript:void(0);" onclick="delClick(${addresslist.id});">删除</a>
-                            </div>
-
                         </li>
                     </c:if>
                     <c:if test="${addresslist.moren != '1'}">
                         <div class="per-border"></div>
+                        <input type="hidden" value="${addresslist.addresslist}" id="addressId"/>
                         <li class="user-addresslist">
                             <div class="address-left">
                                 <div class="user DefaultAddr">
@@ -125,15 +120,6 @@
                                 <span class="am-icon-angle-right am-icon-lg"></span>
                             </div>
                             <div class="clear"></div>
-
-                            <div class="new-addr-btn">
-                                <a href="javascript:void(0);" onclick="change(${addresslist.id})">设为默认</a>
-                                <span class="new-addr-bar">|</span>
-                                <a href="javascript:void(0);" onclick="edit(${addresslist.id},'${addresslist.shName}','${addresslist.shTel}','${addresslist.xxdz}');">编辑</a>
-                                <span class="new-addr-bar">|</span>
-                                <a href="javascript:void(0);" onclick="delClick(${addresslist.id});">删除</a>
-                            </div>
-
                         </li>
                     </c:if>
 
@@ -149,8 +135,9 @@
         <!--支付方式-->
         <div class="logistics">
             <h3>选择支付方式</h3>
-            <ul class="pay-list" style="padding: 10px">
-                <li class="pay card"><img src="/static/images/fkfs.jpg" />${goods.fkfs}</li>
+            <ul class="pay-list" style="height: 80px; padding: 20px; line-height: 80px;">
+                <li class="pay card"><img src="/static/images/fkfs.jpg" />
+                   ${goods.fkfs}</li>
 
             </ul>
         </div>
@@ -264,36 +251,6 @@
 
             </div>
             <!--优惠券 -->
-            <div class="buy-agio">
-                <li class="td td-coupon">
-
-                    <span class="coupon-title">优惠券</span>
-                    <select data-am-selected>
-                        <option value="a">
-                            <div class="c-price">
-                            </div>
-                            <div class="c-limit">
-                                【无优惠】
-                            </div>
-                        </option>
-                    </select>
-                </li>
-
-                <li class="td td-bonus">
-
-                    <span class="bonus-title">红包</span>
-                    <select data-am-selected>
-                        <option value="a">
-                            <div class="item-info">
-                                无
-                            </div>
-
-                        </option>
-                    </select>
-
-                </li>
-
-            </div>
             <div class="clear"></div>
         </div>
         <!--含运费小计 -->
@@ -323,7 +280,7 @@
 
                 <div id="holyshit269" class="submitOrder">
                     <div class="go-btn-wrap">
-                        <a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                        <a id="J_Go" href="javascript:void(0);" class="btn-go" tabindex="0" title="点击此按钮，提交订单" onclick="pay(${goods.id})">提交订单</a>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -346,7 +303,7 @@
     </div>
     <div class="footer-bd ">
         <p>
-            <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
+            <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="javascript:void(0);" target="_blank" title="宋明杰">宋明杰</a> - </em>
         </p>
     </div>
 </div>
@@ -355,81 +312,20 @@
 
 <div class="clear"></div>
 <script type="text/javascript">
-    function save(){
-        var getpro=document.getElementById("province").value;
-        var getcity=document.getElementById("city").value;
-        var getarea=document.getElementById("area").value;
-        var ssq = getpro+getcity+getarea;
-        var sh_name = $("#user-name").val();
-        var sh_tel = $("#user-phone").val();
-        var xxdz = $("#user-intro").val();
-        var thisId = $("#thisId").val();
-        if (sh_name != '' && sh_tel != '' && xxdz!= ''){
-            $.ajax({
-                type: 'post',
-                url: '${ctx}/address/saveAddress',
-                data: {ssq: ssq, shName: sh_name,shTel:sh_tel,xxdz:xxdz,id:thisId},
-                dataType: 'json',
-                success: function(data){
-                    if (data.code =='1'){
-                        $("").dailog({
-                            type: 'success',
-                            showBoxShadow: true,
-                            animateStyle: 'none',
-                            bottons: ['确定'],
-                            discription: '保存成功'
-                        });
-                        window.location.reload();
-                    }
-                }
-            });
-        }
-    }
+function pay(id) {
+
+    $.ajax({
+        dataType: 'json', //服务器返回json格式数据
+        type: 'get', //HTTP请求类型
+        url: "${ctx}/pay/saveOrder?id="+id,
+        success:function(result){
+
+        }});
+}
     function shuaxin() {
         window.location.reload();
     }
-    function edit(id,name,tel,xxdz) {
-        $("#thisId").val(id);
-        $("#user-name").val(name);
-        $("#user-phone").val(tel);
-        $("#user-intro").val(xxdz);
-        document.getElementById('titl').innerHtml = '修改收货地址';
-        $("#titl").hide();
-        $("#titl2").show();
-    }
-    function delClick(id) {
-        $.ajax({
-            type: 'post',
-            url: '${ctx}/address/delAddress',
-            data: {id:id},
-            dataType: 'json',
-            success: function(data){
-                if (data.code =='1'){
-                    $("").dailog({
-                        type: 'success',
-                        showBoxShadow: true,
-                        animateStyle: 'none',
-                        bottons: ['确定'],
-                        discription: '删除成功'
-                    });
-                    window.location.reload();;
-                }
-            }
-        });
-    }
-    function change(id) {
-        $.ajax({
-            type: 'post',
-            url: '${ctx}/address/change',
-            data: {id:id},
-            dataType: 'json',
-            success: function(data){
-                if (data.code =='1'){
-                    window.location.reload();;
-                }
-            }
-        });
-    }
+
 </script>
 </body>
 

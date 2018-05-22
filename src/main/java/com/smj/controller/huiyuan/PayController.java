@@ -1,14 +1,17 @@
 package com.smj.controller.huiyuan;
 
+import com.smj.common.dto.ResultDto;
 import com.smj.entiy.Address;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.service.goods.GoodsService;
 import com.smj.service.huiyuan.HuiyuanCenterService;
+import com.smj.service.huiyuan.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -23,6 +26,8 @@ public class PayController {
     private GoodsService goodsService;
     @Autowired
     private HuiyuanCenterService huiyuanCenterService;
+    @Autowired
+    private PayService payService;
     //跳转到支付页面
     @RequestMapping(value = "pay")
     public String pay(HttpServletRequest request, Model model,String id){
@@ -43,5 +48,12 @@ public class PayController {
             model.addAttribute("message",message);
             return "common/fail";
         }
+    }
+    @RequestMapping(value = "saveOrder")
+    @ResponseBody
+    public ResultDto saveOrder(String id){
+        ResultDto resultDto = new ResultDto();
+       payService.saveOrder(id);
+        return resultDto;
     }
 }

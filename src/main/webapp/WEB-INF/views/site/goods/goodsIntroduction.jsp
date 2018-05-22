@@ -364,11 +364,11 @@
        },function(ret){
            if(ret.index===0){
                message=ret.input.value;
-               if (pj != null && pj !=''){
+               if (message != null && message !=''){
                    $.ajax({
                        dataType: 'json', //服务器返回json格式数据
                        type: 'get', //HTTP请求类型
-                       url: "${ctx}/order/sendmessage?goodId="+id+"&message="+message+"&fbid="+fbid,
+                       url: "${ctx}/order/sendmessage?goodsId="+id+"&message="+message+"&fbid="+fbid,
                        success:function(result){
 
                        }});

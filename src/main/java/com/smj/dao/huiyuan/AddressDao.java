@@ -20,4 +20,6 @@ public interface AddressDao {
     void ChangeMoren(String id);
 
     void updateUser(String userId);
+
+    Address findById(String addressId);
 }

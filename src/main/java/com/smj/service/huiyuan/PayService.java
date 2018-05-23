@@ -2,7 +2,9 @@ package com.smj.service.huiyuan;
 
 import com.smj.dao.goods.GoodsDao;
 import com.smj.dao.order.OrderDao;
+import com.smj.entiy.Address;
 import com.smj.entiy.OrderDto;
+import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.entiy.huiyuan.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,9 @@ public class PayService {
     private GoodsDao goodsDao;
     @Autowired
     private HttpServletRequest request;
-    public void saveOrder(String id) {
+    @Autowired
+    private AddressService addressService;
+    public void saveOrder (String id, String addressId) throws Exception {
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         //生成订单
         OrderDto order = new OrderDto();
@@ -34,6 +38,20 @@ public class PayService {
         SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         order.setXiadanshi(formatter2.format(date));
         order.setZt("待发货");
+        //根据id查询收货地址
+        Address address = addressService.findById(addressId);
+        order.setSonghuodizhi(address.getSsq()+address.getXxdz());
+        //查询商品信息
+        TGoods goods = goodsDao.findByid(id);
+        order.setFukuanfangshi(goods.getFkfs());
+        order.setZongjia(String.valueOf(goods.getJiage()));
+        order.setHuiyuanId(huiyuan.getId());
+        //插入订单
+        String orderId = orderDao.insertOrder(order);
+        //插入订单明细
+        orderDao.inserDetail(orderId,id);
+        //修改物品状态
+        goodsDao.updateGoods(id);
 
     }
 }

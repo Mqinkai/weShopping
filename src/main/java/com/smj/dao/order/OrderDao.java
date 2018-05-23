@@ -2,6 +2,7 @@ package com.smj.dao.order;
 
 import com.smj.common.config.MyBatisDao;
 import com.smj.entiy.Notice;
+import com.smj.entiy.OrderDto;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -20,4 +21,8 @@ public interface OrderDao {
     void insertNotice(Notice notice);
 
     void del(String id);
+
+    String insertOrder(OrderDto order);
+
+    void inserDetail(@Param("orderId") String orderId, @Param("id") String id);
 }

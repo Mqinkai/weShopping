@@ -14,7 +14,9 @@
         del,
         saleflag,
         fbid,
-        yuanjia
+        yuanjia,
+        fkfs,
+        zh
         )VALUES (
       #{leibiexiashuId},
       #{leibieId},
@@ -27,7 +29,9 @@
       '0',
       '在售',
       #{fbid},
-      #{yuanjia}
+      #{yuanjia},
+      #{fkfs},
+      #{zh}
         )
     </insert>
     <select id="findLbie" resultType="com.smj.entiy.goods.Leibie">

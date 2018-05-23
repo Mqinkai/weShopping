@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,9 +52,16 @@ public class PayController {
     }
     @RequestMapping(value = "saveOrder")
     @ResponseBody
-    public ResultDto saveOrder(String id){
+    public ResultDto saveOrder(@RequestParam("id") String id, @RequestParam("addressId") String addressId){
         ResultDto resultDto = new ResultDto();
-       payService.saveOrder(id);
+        try {
+            payService.saveOrder(id,addressId);
+            resultDto.setCode("1");
+        }catch (Exception e){
+            resultDto.setCode("1");
+            resultDto.setMessage(e.toString());
+        }
+
         return resultDto;
     }
 }

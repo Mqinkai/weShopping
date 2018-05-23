@@ -20,4 +20,6 @@ public interface GoodsDao {
     String findCar(String id);
 
     TGoods findByid(String id);
+
+    void updateGoods(String id);
 }

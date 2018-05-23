@@ -32,4 +32,8 @@ public class AddressService {
     public void updateUser(String userId) {
         addressDao.updateUser(userId);
     }
+
+    public Address findById(String addressId) {
+        return addressDao.findById(addressId);
+    }
 }

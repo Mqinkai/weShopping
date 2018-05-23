@@ -34,6 +34,36 @@ INSERT INTO t_xiaoxi(
              #{buyId}
           )
     </insert>
+    <insert id="insertOrder" useGeneratedKeys="true" keyProperty="orderId" keyColumn="id">
+
+        INSERT INTO t_order(
+
+          bianhao,
+          xiadanshi,
+          zt,
+          songhuodizhi,
+          fukuanfangshi,
+          zongjia,
+          huiyuan_id
+        )VALUES (
+        #{bianhao},
+        #{xiadanshi},
+        #{zt},
+        #{songhuodizhi},
+        #{fukuanfangshi},
+        #{zongjia},
+        #{huiyuanId}
+        )
+    </insert>
+    <insert id="inserDetail">
+        INSERT INTO t_order_detail(
+        order_id,
+        goods_id
+        )VALUES (
+        #{orderId},
+        #{id}
+        )
+    </insert>
     <update id="qrsh">
         UPDATE t_order SET zt='待评价' WHERE id = #{id}
     </update>

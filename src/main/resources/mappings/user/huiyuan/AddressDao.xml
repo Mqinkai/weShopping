@@ -31,4 +31,17 @@ INSERT INTO t_address(
     <update id="updateUser">
         UPDATE t_huiyuan set user_bz='1' WHERE id = #{userId}
     </update>
+    <select id="findById" resultType="com.smj.entiy.Address">
+        SELECT
+        id,
+        user_id AS userId,
+        sh_name AS shName,
+
+        sh_tel AS shTel,
+        ssq,
+        xxdz,
+        moren
+        WHERE id = #{addressId}
+
+    </select>
 </mapper>

@@ -63,8 +63,7 @@
                 <c:forEach items="${address}" var="addresslist" varStatus="var">
                     <c:if test="${addresslist.moren == '1'}">
                         <div class="per-border"></div>
-                       <input type="hidden" value="${addresslist.addresslist}" id="addressId"/>
-                        <li class="user-addresslist defaultAddr">
+                        <li class="user-addresslist defaultAddr" onclick="changeAddress(${addresslist.id})">
 
                             <div class="address-left">
                                 <div class="user DefaultAddr">
@@ -86,7 +85,7 @@
                                 <ins class="deftip">默认地址</ins>
                             </div>
                             <div class="address-right">
-                                <a href="javascript:void(0);" onclick="change(${addresslist.id})">
+                                <a href="javascript:void(0);">
                                     <span class="am-icon-angle-right am-icon-lg"></span></a>
                             </div>
                             <div class="clear"></div>
@@ -95,8 +94,8 @@
                     </c:if>
                     <c:if test="${addresslist.moren != '1'}">
                         <div class="per-border"></div>
-                        <input type="hidden" value="${addresslist.addresslist}" id="addressId"/>
-                        <li class="user-addresslist">
+
+                        <li class="user-addresslist" onclick="changeAddress(${addresslist.id})">
                             <div class="address-left">
                                 <div class="user DefaultAddr">
 
@@ -312,14 +311,28 @@
 
 <div class="clear"></div>
 <script type="text/javascript">
+    var addressId = '';
+    function changeAddress(id) {
+        addressId=id;
+    }
 function pay(id) {
 
     $.ajax({
         dataType: 'json', //服务器返回json格式数据
         type: 'get', //HTTP请求类型
-        url: "${ctx}/pay/saveOrder?id="+id,
+        url: "${ctx}/pay/saveOrder?id="+id+"&addressId="+addressId,
         success:function(result){
-
+if (result.code=='1'){
+    window.location.href='${ctx}/personCenter/order';
+}else {
+    $("").dailog({
+        type: 'danger',
+        showBoxShadow: true,
+        animateStyle: 'none',
+        bottons: ['确定'],
+        discription: result.message
+    });
+}
         }});
 }
     function shuaxin() {

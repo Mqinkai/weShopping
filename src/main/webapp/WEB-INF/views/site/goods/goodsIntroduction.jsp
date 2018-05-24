@@ -72,7 +72,7 @@
         </div>
     </div>
     <ol class="am-breadcrumb am-breadcrumb-slash">
-        <li><a>首页</a></li>
+        <li><a href="${ctx}/message/show">首页</a></li>
         <li><a>分类</a></li>
         <li class="am-active">内容</li>
     </ol>

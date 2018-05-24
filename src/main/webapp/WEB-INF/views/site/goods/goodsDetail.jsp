@@ -157,19 +157,18 @@
 
         <!--走马灯 -->
 
-        <div class="marqueen">
-            <span class="marqueen-title">低价出售</span>
+        <div class="marqueen" style="height: 300px;">
+            <span class="marqueen-title">公告栏</span>
             <div class="demo">
 
                 <ul>
-                    <li class="title-first"><a target="_blank" href="#">
+                    <li class="title-first"><a target="_blank">
                         <img src="/static/images/TJ2.jpg"></img>
-                        <span>[特惠]</span>
+                        <span>[公告]</span>用心打造美好生活细节
                     </a></li>
-                    <li class="title-first"><a target="_blank" href="#">
-                        <span>[公告]</span>
+                    <li class="title-first"><a target="_blank">
+                        <span>[公告]</span>闲置换钱，快速出手
                         <img src="/static/images/TJ.jpg"></img>
-                        <p>XXXXXXXXXXXXXXXXXX</p>
                     </a></li>
 
                     <div class="mod-vip">
@@ -207,12 +206,11 @@
                         <div class="clear"></div>
                     </div>
 
-                    <li><a target="_blank" href="#"><span>[特惠]</span></a></li>
-                    <li><a target="_blank" href="#"><span>[公告]</span></a></li>
-                    <li><a target="_blank" href="#"><span>[特惠]</span></a></li>
+                    <li><a target="_blank"><span>[公告]</span>客服工作时间：全天</a></li>
+                    <li><a target="_blank"><span>[公告]</span>平台将于******更新</a></li>
+                    <li><a target="_blank"><span>[公告]</span>请遵循本平台各项规定</a></li>
 
                 </ul>
-                <div class="advTip"><img src="/static/images/advTip.jpg"/></div>
             </div>
         </div>
         <div class="clear"></div>

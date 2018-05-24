@@ -1,6 +1,7 @@
 package com.smj.controller.goods;
 
 import com.smj.common.config.UserUtil;
+import com.smj.common.dto.ResultDto;
 import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
@@ -10,7 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 @Controller
 @RequestMapping("/message")
@@ -49,7 +54,7 @@ public class GoodsIndexController {
             return "site/goods/newGoods";
         }
     @RequestMapping(value = "/search")
-    public String search(HttpServletRequest request, Model model,String name,String type){
+    public String search(HttpServletRequest request, Model model,String name,String type,String leibieList,String leibieXiashus){
         String userid = "";
         //判断是否登录
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
@@ -64,13 +69,30 @@ public class GoodsIndexController {
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","0"); //未登录
         }
+        List<TGoods> list = new ArrayList<TGoods>();
         //获取类别list
-        List<Leibie> leibieList=goodsService.getLeibie();
-        List<TGoods> list=testService.find(name,type,userid);
+        List<Leibie> leibieLists=goodsService.getLeibie();
+        if (leibieList != null && !leibieList.equals("") ) {
+            list = testService.findByLeibie(leibieList);
+        }else if ( leibieXiashus != null && !leibieXiashus.equals("")){
+            //类别查询
+            list = testService.findByleibieXiashus(leibieXiashus);
+        }else {
+            list=testService.find(name,type,userid);
+        }
+
         model.addAttribute("name",name);
         model.addAttribute("goodslist",list);
-        model.addAttribute("leibieList",leibieList);
+        model.addAttribute("leibieList",leibieLists);
         return "site/goods/goodsDetail";
+    }
+    @RequestMapping(value = "delgoods")
+    @ResponseBody
+    public ResultDto delgoods(String id){
+        ResultDto resultDto = new ResultDto();
+        goodsService.del(id);
+        resultDto.setCode("1");
+        return resultDto;
     }
 
 }

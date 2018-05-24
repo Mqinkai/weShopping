@@ -28,7 +28,7 @@ INSERT INTO t_xiaoxi(
              #{saleid},
              #{buyName},
              #{message},
-             #{code},
+             '0',
              #{date},
              #{goodsId},
              #{buyId}
@@ -73,12 +73,50 @@ INSERT INTO t_xiaoxi(
     <delete id="del">
         DELETE FROM t_xiaoxi WHERE id=#{id}
     </delete>
+    <update id="delOrderByGoodsId">
+        UPDATE t_order SET del='1' WHERE id IN (SELECT order_id FROM t_order_detail WHERE goods_id = #{id})
+    </update>
+    <update id="uptata">
+        UPDATE t_goods SET saleflag='在售' WHERE id =#{id}
+    </update>
+    <update id="fahuo">
+        UPDATE t_order SET zt='已发货' WHERE  id = (SELECT order_id FROM t_order_detail WHERE goods_id = #{id})
+    </update>
+    <update id="upGoods"> UPDATE t_goods SET saleflag='待收货' WHERE id =#{id}</update>
     <select id="findname" resultType="com.smj.entiy.Notice">
         SELECT
         tg.fbid AS saleId,
         tg.id AS goodsId
         FROM t_goods tg
         LEFT JOIN t_order_detail tod ON tod.goods_id = tg.id
-        WHERE tod.order_id =#{id}
+        WHERE tod.order_id =#{id} and tg.del='0'
+    </select>
+    <select id="findId" resultType="java.lang.String">
+        SELECT max(id) FROM t_order WHERE del = '0'
+    </select>
+    <select id="findByid" resultType="com.smj.entiy.OrderDto">
+        SELECT
+      id
+      bianhao,
+      xiadanshi,
+      zt,
+      songhuodizhi,
+      fukuanfangshi,
+      zongjia,
+      huiyuan_id AS huiyuanId
+
+FROM t_order  WHERE id in (SELECT order_id FROM t_order_detail WHERE goods_id = #{id})
+    </select>
+    <select id="findAddressId" resultType="com.smj.entiy.Address">
+        SELECT
+        id,
+user_id AS userId,
+sh_name AS shName,
+sh_tel AS shName,
+ssq,
+xxdz
+FROM t_address
+WHERE id=#{songhuodizhi}
+
     </select>
 </mapper>

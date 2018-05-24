@@ -58,7 +58,7 @@ public class PayController {
             payService.saveOrder(id,addressId);
             resultDto.setCode("1");
         }catch (Exception e){
-            resultDto.setCode("1");
+            resultDto.setCode("-1");
             resultDto.setMessage(e.toString());
         }
 

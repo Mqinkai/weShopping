@@ -22,4 +22,6 @@ public interface GoodsDao {
     TGoods findByid(String id);
 
     void updateGoods(String id);
+
+    void del(String id);
 }

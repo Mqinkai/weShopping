@@ -34,4 +34,8 @@ public class GoodsService {
     public TGoods findGoods(String id) {
         return goodsDao.findByid(id);
     }
+
+    public void del(String id) {
+        goodsDao.del(id);
+    }
 }

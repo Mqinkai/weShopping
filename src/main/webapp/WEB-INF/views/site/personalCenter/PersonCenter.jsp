@@ -144,7 +144,7 @@
                             <ul class="lg-list">
                                  <c:forEach items="${orderList}" var="order" varStatus="sta">
                                          <li class="lg-item">
-                                             <div class="item-info">
+                                             <div class="item-info" onclick="findAddress(${order.id})">
                                                      <img src="${order.fujian}" alt="">
                                              </div>
                                              <div class="lg-info">
@@ -154,12 +154,18 @@
                                              </div>
                                              <c:if test="${order.saleflag == '已完成'}">
                                              <div class="lg-confirm">
-                                                 <a class="i-btn-typical"  href="javascript:void(0);" onclick="del(${order.id})">删除记录</a>
+                                                 <a class="i-btn-typical"  href="javascript:void(0);" onclick="delOrder(${order.id})">删除记录</a>
                                              </div>
                                              </c:if>
                                              <c:if test="${order.saleflag == '待发货'}">
                                                  <div class="lg-confirm">
-                                                     <a class="i-btn-typical"  href="javascript:void(0);" onclick="del(${order.id})">关闭交易</a>
+                                                     <a class="i-btn-typical"  href="javascript:void(0);" onclick="fahuo(${order.id})">确认发货</a>
+                                                     <a class="i-btn-typical"  href="javascript:void(0);" onclick="close(${order.id})">关闭交易</a>
+                                                 </div>
+                                             </c:if>
+                                             <c:if test="${order.saleflag == '在售'}">
+                                                 <div class="lg-confirm">
+                                                     <a class="i-btn-typical"  href="javascript:void(0);" onclick="delgoods(${order.id})">删除商品</a>
                                                  </div>
                                              </c:if>
                                          </li>
@@ -209,6 +215,22 @@
         </div>
     </div>
 </div>
+<%--模态框--%>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">订单地址</h4>
+            </div>
+            <div class="modal-body" id="atext1"></div>
+            <div class="modal-body" id="atext2"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <script type="text/javascript">
     $(function(){
         //$("#cmporder").css("display","none");
@@ -220,13 +242,51 @@
         $("#cmporder").html(noticeCount);
 
     });
-    function del(id) {
+    function delOrder(id) {
         $.ajax({
             dataType: 'json', //服务器返回json格式数据
             type: 'get', //HTTP请求类型
-            url: "${ctx}/order/delorder?id="+id,
+            url: "${ctx}/order/delOrderByGoodsId?id="+id,
             success:function(result){
                 window.location.reload();
+            }})
+    }
+    function close(id) {
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/order/closeOrderByGoodsId?id="+id,
+            success:function(result){
+                window.location.reload();
+            }})
+    }
+    function fahuo(id) {
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/order/fahuo?id="+id,
+            success:function(result){
+                window.location.reload();
+            }})
+    }
+    function delgoods(id) {
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/message/delgoods?id="+id,
+            success:function(result){
+                window.location.reload();
+            }})
+    }
+    function findAddress(id) {
+        $.ajax({
+            dataType: 'json', //服务器返回json格式数据
+            type: 'get', //HTTP请求类型
+            url: "${ctx}/order/findaddress?id="+id,
+            success:function(result){
+                $("#atext1").text(result.code);
+                $("#atext2").text(result.message);
+                $('#identifier').modal('show')
             }})
     }
 </script>

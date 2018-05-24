@@ -43,6 +43,34 @@ public class OrderController {
         resultDto.setCode("1");
         return resultDto;
     }
+    @RequestMapping(value = "fahuo",method = RequestMethod.GET)
+    @ResponseBody
+    public ResultDto fahuo(@RequestParam("id") String id){
+        ResultDto resultDto = new ResultDto();
+        orderService.fahuo(id);
+        resultDto.setMessage("成功");
+        resultDto.setCode("1");
+        return resultDto;
+    }
+    @RequestMapping(value = "delOrderByGoodsId")
+    @ResponseBody
+    public ResultDto delOrderByGoodsId(@RequestParam("id") String id){
+        ResultDto resultDto = new ResultDto();
+        orderService.delOrderByGoodsId(id);
+        resultDto.setMessage("成功");
+        resultDto.setCode("1");
+        return resultDto;
+    }
+    //关闭交易
+    @RequestMapping(value = "closeOrderByGoodsId")
+    @ResponseBody
+    public ResultDto closeOrderByGoodsId(@RequestParam("id") String id){
+        ResultDto resultDto = new ResultDto();
+        orderService.closeOrderByGoodsId(id);
+        resultDto.setMessage("成功");
+        resultDto.setCode("1");
+        return resultDto;
+    }
     @RequestMapping(value = "qxdd",method = RequestMethod.GET)
     @ResponseBody
     public ResultDto qxdd(@RequestParam("id") String id){
@@ -59,6 +87,14 @@ public class OrderController {
         orderService.sendmessage(message,goodsId,fbid);
         resultDto.setMessage("成功");
         resultDto.setCode("1");
+        return resultDto;
+    }
+    @RequestMapping(value = "findaddress",method = RequestMethod.GET)
+    @ResponseBody
+    public ResultDto findaddress(@RequestParam("id") String id){
+        ResultDto resultDto = new ResultDto();
+        resultDto =orderService.findaddress(id);
+
         return resultDto;
     }
 }

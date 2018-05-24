@@ -84,9 +84,9 @@
                                                     <div class="sort-side">
                                                         <dl class="dl-sort">
                                                             <dt><span title="类别">类别</span></dt>
-                                                            <dd><a title="全部" href="#"><span>全部</span></a></dd>
+                                                            <dd><a title="全部" href="${ctx}/message/search?leibieList=${leibieList.id}"><span>全部</span></a></dd>
                                                             <c:forEach items="${leibieList.leibieXiashus}" var="leibieXiashus" varStatus="stu">
-                                                                <dd><a title="${leibieXiashus.name}" href="#"><span>${leibieXiashus.name}</span></a></dd>
+                                                                <dd><a title="${leibieXiashus.name}" href="${ctx}/message/search?leibieXiashus=${leibieXiashus.id}"><span>${leibieXiashus.name}</span></a></dd>
                                                             </c:forEach>
                                                         </dl>
                                                     </div>
@@ -202,12 +202,12 @@
                         <div class="clear"></div>
                     </div>
 
-                    <li><a target="_blank" href="#"><span>[特惠]</span></a></li>
-                    <li><a target="_blank" href="#"><span>[公告]</span></a></li>
-                    <li><a target="_blank" href="#"><span>[特惠]</span></a></li>
+                    <li><a target="_blank" href="javascript:void(0);"><span>[特惠]</span></a></li>
+                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span></a></li>
+                    <li><a target="_blank" href="javascript:void(0);"><span>[特惠]</span></a></li>
 
                 </ul>
-                <div class="advTip"><img src="/static/images/advTip.jpg"/></div>
+                <div class="advTip"><img src="/static/images/005.jpg"/></div>
             </div>
         </div>
         <div class="clear"></div>
@@ -462,7 +462,7 @@
                             </div>
                             <div class="footer-bd ">
                                 <p>
-                                    <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
+                                    <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="javascript:void(0);" target="_blank" title="宋明杰">宋明杰</a> - </em>
                                 </p>
                             </div>
                         </div>

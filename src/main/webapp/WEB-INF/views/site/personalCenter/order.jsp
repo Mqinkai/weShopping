@@ -596,6 +596,7 @@
     </div>
 
 </div>
+
 <script type="text/javascript">
     var i = ${type};
     console.log(i)
@@ -667,6 +668,7 @@
                 });
             }})
     }
+
 </script>
 </body>
 

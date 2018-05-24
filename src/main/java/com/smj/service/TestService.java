@@ -46,4 +46,16 @@ public class TestService {
 
         return list;
     }
+
+    public List<TGoods> findByLeibie(String leibieList) {
+        List<TGoods> list = new ArrayList<TGoods>();
+        list = testDao.findByLeibie(leibieList);
+        return list;
+    }
+
+    public List<TGoods> findByleibieXiashus(String leibieXiashus) {
+        List<TGoods> list = new ArrayList<TGoods>();
+        list = testDao.findByleibieXiashus(leibieXiashus);
+        return list;
+    }
 }

@@ -1,6 +1,7 @@
 package com.smj.dao.order;
 
 import com.smj.common.config.MyBatisDao;
+import com.smj.entiy.Address;
 import com.smj.entiy.Notice;
 import com.smj.entiy.OrderDto;
 import org.apache.ibatis.annotations.Param;
@@ -22,7 +23,23 @@ public interface OrderDao {
 
     void del(String id);
 
-    String insertOrder(OrderDto order);
+    int insertOrder(OrderDto order);
 
     void inserDetail(@Param("orderId") String orderId, @Param("id") String id);
+
+    void delOrderByGoodsId(String id);
+
+    void uptata(String id);
+
+    String findId();
+
+    void fahuo(String id);
+
+    void upGoods(String id);
+
+    OrderDto findByid(String id);
+
+    Address findAddressId(String songhuodizhi);
+
+    String findOrderId(String id);
 }

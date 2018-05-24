@@ -4,6 +4,9 @@
     <update id="updateGoods">
         UPDATE t_goods SET saleflag='待发货' WHERE id = #{id}
     </update>
+    <update id="del">
+        UPDATE t_goods SET del = '1' WHERE id=#{id}
+    </update>
     <select id="getLeibie" resultType="com.smj.entiy.goods.Leibie">
         SELECT
         id,

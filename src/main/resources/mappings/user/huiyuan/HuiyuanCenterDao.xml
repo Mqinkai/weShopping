@@ -88,7 +88,7 @@ WHERE id=#{id}
         huiyuan_id AS huiyuanId
         FROM
         t_order
-        WHERE del = '0'
+        WHERE del = '0' AND huiyuan_id = #{id}
     </select>
     <select id="findOrderDetail" resultType="com.smj.entiy.goods.TGoods">
         SELECT

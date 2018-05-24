@@ -32,4 +32,10 @@
             and t.jiage &lt;= '10'
         </if>
     </select>
+    <select id="findByLeibie" resultType="com.smj.entiy.goods.TGoods">
+        SELECT * FROM t_goods WHERE leibieId = #{leibieList} and del = '0'
+    </select>
+    <select id="findByleibieXiashus" resultType="com.smj.entiy.goods.TGoods">
+        SELECT * FROM t_goods WHERE leibiexiashuId = #{leibieXiashus} and del = '0'
+    </select>
 </mapper>

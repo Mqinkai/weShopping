@@ -36,11 +36,11 @@ INSERT INTO t_address(
         id,
         user_id AS userId,
         sh_name AS shName,
-
         sh_tel AS shTel,
         ssq,
         xxdz,
         moren
+        FROM t_address
         WHERE id = #{addressId}
 
     </select>

@@ -39,17 +39,19 @@ public class PayService {
         order.setXiadanshi(formatter2.format(date));
         order.setZt("待发货");
         //根据id查询收货地址
-        Address address = addressService.findById(addressId);
-        order.setSonghuodizhi(address.getSsq()+address.getXxdz());
+        //Address address = addressService.findById(addressId);
+        //收货地址保存地址id
+        order.setSonghuodizhi(addressId);
         //查询商品信息
         TGoods goods = goodsDao.findByid(id);
         order.setFukuanfangshi(goods.getFkfs());
         order.setZongjia(String.valueOf(goods.getJiage()));
         order.setHuiyuanId(huiyuan.getId());
         //插入订单
-        String orderId = orderDao.insertOrder(order);
+         orderDao.insertOrder(order);
+        String orderId = orderDao.findId();
         //插入订单明细
-        orderDao.inserDetail(orderId,id);
+        orderDao.inserDetail(String.valueOf(orderId),id);
         //修改物品状态
         goodsDao.updateGoods(id);
 

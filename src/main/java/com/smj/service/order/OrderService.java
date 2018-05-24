@@ -1,7 +1,10 @@
 package com.smj.service.order;
 
+import com.smj.common.dto.ResultDto;
 import com.smj.dao.order.OrderDao;
+import com.smj.entiy.Address;
 import com.smj.entiy.Notice;
+import com.smj.entiy.OrderDto;
 import com.smj.entiy.huiyuan.Huiyuan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,5 +65,33 @@ public class OrderService {
         notice.setBuyId(huiyuan.getId());
         notice.setGoodsId(goodId);
         orderDao.insertNotice(notice);
+    }
+
+    public void delOrderByGoodsId(String id) {
+        orderDao.delOrderByGoodsId(id);
+    }
+
+    public void closeOrderByGoodsId(String id) {
+        orderDao.delOrderByGoodsId(id); //删除订单
+        //恢复商品状态
+        orderDao.uptata(id);
+    }
+
+    public void fahuo(String id) {
+        orderDao.fahuo(id);
+        orderDao.upGoods(id);
+    }
+
+    public ResultDto findaddress(String id) {
+       // String ordId = orderDao.findOrderId(id);
+        OrderDto orderDto = orderDao.findByid(id);
+        //根据id查询地址
+        Address address = orderDao.findAddressId(orderDto.getSonghuodizhi());
+        String str = "姓名："+address.getShName()+"    "+"电话："+address.getShTel()+"     ";
+        String str2 = "地址："+address.getSsq()+"    "+address.getXxdz();
+        ResultDto resultDto = new ResultDto();
+        resultDto.setCode(str);
+        resultDto.setMessage(str2);
+        return resultDto;
     }
 }

@@ -18,4 +18,8 @@ public interface TestDao {
     List<TGoods> findBySchool(@Param("name") String name, @Param("type") String type);
 
     List<TGoods> findByType(@Param("id") String id, @Param("name") String name, @Param("type") int type);
+
+    List<TGoods> findByLeibie(String leibieList);
+
+    List<TGoods> findByleibieXiashus(String leibieXiashus);
 }

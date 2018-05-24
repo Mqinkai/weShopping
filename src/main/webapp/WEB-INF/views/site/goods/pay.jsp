@@ -64,7 +64,7 @@
                     <c:if test="${addresslist.moren == '1'}">
                         <div class="per-border"></div>
                         <li class="user-addresslist defaultAddr" onclick="changeAddress(${addresslist.id})">
-
+                                 <input type="hidden" value="${addresslist.id}" id="addressId"/>
                             <div class="address-left">
                                 <div class="user DefaultAddr">
 
@@ -311,12 +311,22 @@
 
 <div class="clear"></div>
 <script type="text/javascript">
-    var addressId = '';
+    var huiyuanId = ${huiyuan.id};
+    var fbid = ${goods.fbid}
+    var addressId = $("#addressId").val();
     function changeAddress(id) {
         addressId=id;
     }
 function pay(id) {
-
+if (huiyuanId == fbid){
+    $("").dailog({
+        type: 'danger',
+        showBoxShadow: true,
+        animateStyle: 'none',
+        bottons: ['确定'],
+        discription: "不能购买自己的商品"
+    });
+}else {
     $.ajax({
         dataType: 'json', //服务器返回json格式数据
         type: 'get', //HTTP请求类型
@@ -333,7 +343,7 @@ if (result.code=='1'){
         discription: result.message
     });
 }
-        }});
+        }});}
 }
     function shuaxin() {
         window.location.reload();

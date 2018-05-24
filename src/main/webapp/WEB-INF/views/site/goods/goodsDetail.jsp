@@ -89,9 +89,9 @@
                                                     <div class="sort-side">
                                                         <dl class="dl-sort">
                                                             <dt><span title="类别">类别</span></dt>
-                                                            <dd><a title="全部" href="#"><span>全部</span></a></dd>
+                                                            <dd><a title="全部" href="${ctx}/message/search?leibieList=${leibieList.id}"><span>全部</span></a></dd>
                                                             <c:forEach items="${leibieList.leibieXiashus}" var="leibieXiashus" varStatus="stu">
-                                                                <dd><a title="${leibieXiashus.name}" href="#"><span>${leibieXiashus.name}</span></a></dd>
+                                                                <dd><a title="${leibieXiashus.name}" href="${ctx}/message/search?leibieXiashus=${leibieXiashus.id}"><span>${leibieXiashus.name}</span></a></dd>
                                                             </c:forEach>
                                                         </dl>
                                                     </div>

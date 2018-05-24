@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%
 String path = request.getContextPath();
 %>
@@ -12,19 +13,19 @@ String path = request.getContextPath();
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3"/>
 	<meta http-equiv="description" content="This is my page"/>
 	
-	<link rel="stylesheet" href="<%=path %>/css/reset.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<%=path %>/css/style.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<%=path %>/css/invalid.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/admincss/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/admincss/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/admincss/css/invalid.css" type="text/css" media="screen" />
 	
-	<script type="text/javascript" src="<%=path %>/js/jquery-1.3.2.min.js"></script>
-	<script type="text/javascript" src="<%=path %>/js/simpla.jquery.configuration.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/simpla.jquery.configuration.js"></script>
 	
 	<script type="text/javascript">
 	    function logout()
 		{
 		   if(confirm("确定要退出本系统吗??"))
 		   {
-			   window.parent.location="<%=path %>/login.jsp";
+
 		   }
 		}
 	</script>
@@ -40,21 +41,21 @@ String path = request.getContextPath();
 		           <a href="#" style="font-family: 微软雅黑;font-size: 15px;" onclick="logout()">注销退出</a> 
 		      </div>
 		      <ul id="main-nav">
-		           <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">修改登陆密码</a>
+		           <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">公告管理</a>
 			           <ul>
-			            <li><a href="<%=path %>/admin/userinfo/userPw.jsp" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">修改登陆密码</a></li>
+			            <li><a href="${ctx}/gonggao/list" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">删除新增公告</a></li>
 			           </ul>
 		           </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">物品类别管理</a>
 			          <ul>
 			            <li><a href="<%=path %>/leibieMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品类别管理</a></li>
 			            <li><a href="<%=path %>/admin/leibie/leibieAdd.jsp" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">添加物品类别</a></li>
+						  <li><a href="<%=path %>/leibieMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">类别推荐</a></li>
 			          </ul>
 			       </li>
-			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">物品信息管理</a>
+			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">商品信息管理</a>
 			          <ul>
 			            <li><a href="<%=path %>/goodsMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品信息管理</a></li>
-			            <li><a href="<%=path %>/admin/goods/goodsAdd.jsp" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">添加物品信息</a></li>
 			          </ul>
 			       </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">会员信息管理</a>
@@ -65,11 +66,6 @@ String path = request.getContextPath();
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">订单信息管理</a>
 			          <ul>
 			            <li><a href="<%=path %>/orderMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">订单信息管理</a></li>
-			          </ul>
-			       </li>
-			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">站内信管理</a>
-			          <ul>
-			            <li><a href="<%=path %>/liuyanMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">站内信管理</a></li>
 			          </ul>
 			       </li>
 	          </ul>    

@@ -51,6 +51,7 @@
         t_order
         WHERE del='0'
         AND huiyuan_id=#{id}
+
     </select>
  <select id="findUser" resultType="com.smj.entiy.huiyuan.Huiyuan">
  SELECT

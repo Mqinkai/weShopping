@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -15,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
 	  <frameset rows="*" cols="235,*" framespacing="0" frameborder="no" border="0">
-		    <frame src="<%=path %>/admin/left.jsp" name="leftFrame" scrolling="no" noresize="noresize" id="leftFrame" />
-			<frame src="<%=path %>/admin/right.jsp"  name="rightFrame"/>
+		    <frame src="${ctx}/admin/left" name="leftFrame" scrolling="no" noresize="noresize" id="leftFrame" />
+			<frame src="${ctx}/admin/right"  name="rightFrame"/>
 	  </frameset>
 </html>

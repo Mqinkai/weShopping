@@ -143,8 +143,8 @@
                         <div class="s-content">
                             <ul class="lg-list">
                                  <c:forEach items="${orderList}" var="order" varStatus="sta">
-                                         <li class="lg-item">
-                                             <div class="item-info" onclick="findAddress(${order.id})">
+                                         <li class="lg-item" onclick="findAddress(${order.id})">
+                                             <div class="item-info">
                                                      <img src="${order.fujian}" alt="">
                                              </div>
                                              <div class="lg-info">
@@ -286,7 +286,7 @@
             success:function(result){
                 $("#atext1").text(result.code);
                 $("#atext2").text(result.message);
-                $('#identifier').modal('show')
+                $('#myModal').modal('show')
             }})
     }
 </script>

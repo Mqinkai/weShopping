@@ -201,8 +201,8 @@
                         <div class="clear"></div>
                     </div>
 
-                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>客服工作时间：全天</a></li>
-                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>平台将于******更新</a></li>
+                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>客服工作时间：9:00-20:00</a></li>
+                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>平台将于2018.05.30凌晨更新</a></li>
                     <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>请遵循本平台各项规定</a></li>
 
                 </ul>
@@ -242,7 +242,7 @@
                     <h4>${leibieList.mingcheng}</h4>
                     <h3>每一件${leibieList.mingcheng}都有一个故事</h3>
 							<span class="more ">
-                    <a href="# ">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
+                    <a href="${ctx}/message/search?leibieList=${leibieList.id}">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
                         </span>
                 </div>
             </div>

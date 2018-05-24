@@ -33,7 +33,7 @@ String path = request.getContextPath();
                       <div class="menu-hd">
                           <a style="font: '微软雅黑', 'Microsoft Yahei';font-size: 14px;" href="${ctx}/login/" target="_top" class="h">亲，请登录</a>
                           <a style="font: '微软雅黑', 'Microsoft Yahei';font-size: 14px;" href="${ctx}/huiyuanreg/tz" target="_top">注册|</a>
-                          <a style="font: '微软雅黑', 'Microsoft Yahei';font-size: 14px;" href="#" target="_top"><i class="am-icon-unlock-alt am-icon-fw"></i>我是管理员</a>
+                          <a style="font: '微软雅黑', 'Microsoft Yahei';font-size: 14px;" href="<%=path %>/admin/adminLog" target="_top"><i class="am-icon-unlock-alt am-icon-fw"></i>我是管理员</a>
                       </div>
                   </c:otherwise>
               </c:choose>

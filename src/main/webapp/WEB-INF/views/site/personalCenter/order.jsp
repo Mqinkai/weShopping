@@ -641,7 +641,7 @@
             type: 'get', //HTTP请求类型
             url: "${ctx}/order/qrsh?id="+id,
             success:function(result){
-                window.location.reload();
+                window.location.href="${ctx}/personCenter/order";
             }})
     }
     function delorder(id) {

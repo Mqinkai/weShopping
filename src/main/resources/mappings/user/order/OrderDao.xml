@@ -73,6 +73,9 @@ INSERT INTO t_xiaoxi(
     <delete id="del">
         DELETE FROM t_xiaoxi WHERE id=#{id}
     </delete>
+    <delete id="delgoods">
+        UPDATE t_goods SET del = '1' WHERE id=#{id}
+    </delete>
     <update id="delOrderByGoodsId">
         UPDATE t_order SET del='1' WHERE id IN (SELECT order_id FROM t_order_detail WHERE goods_id = #{id})
     </update>
@@ -80,9 +83,18 @@ INSERT INTO t_xiaoxi(
         UPDATE t_goods SET saleflag='在售' WHERE id =#{id}
     </update>
     <update id="fahuo">
-        UPDATE t_order SET zt='已发货' WHERE  id = (SELECT order_id FROM t_order_detail WHERE goods_id = #{id})
+        UPDATE t_order SET zt='待收货' WHERE  id = (SELECT order_id FROM t_order_detail WHERE goods_id = #{id})
     </update>
     <update id="upGoods"> UPDATE t_goods SET saleflag='待收货' WHERE id =#{id}</update>
+    <update id="updateGoods">
+       UPDATE t_goods SET saleflag='待评价' WHERE id =(SELECT goods_id FROM t_order_detail WHERE order_id = #{id})
+    </update>
+    <update id="updataOrder">
+        UPDATE t_order SET zt ='已评价' WHERE id=#{id}
+    </update>
+    <update id="updataGoods">
+        UPDATE t_goods SET saleflag='已完成' WHERE id =(SELECT goods_id FROM t_order_detail WHERE order_id = #{id})
+    </update>
     <select id="findname" resultType="com.smj.entiy.Notice">
         SELECT
         tg.fbid AS saleId,
@@ -112,7 +124,7 @@ FROM t_order  WHERE id in (SELECT order_id FROM t_order_detail WHERE goods_id = 
         id,
 user_id AS userId,
 sh_name AS shName,
-sh_tel AS shName,
+sh_tel AS shTel,
 ssq,
 xxdz
 FROM t_address

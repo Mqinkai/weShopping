@@ -42,4 +42,12 @@ public interface OrderDao {
     Address findAddressId(String songhuodizhi);
 
     String findOrderId(String id);
+
+    void updateGoods(String id);
+
+    void updataOrder(String id);
+
+    void updataGoods(String id);
+
+    void delgoods(String id);
 }

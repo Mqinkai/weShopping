@@ -170,7 +170,7 @@
 
     </div>
     <c:choose>
-        <c:when test="${login=='1'}">
+        <c:when test="${login=='1' and huiyuan.id != goods.fbid and huiyuan.userBz != '1'}">
             <li>
                 <div class="clearfix tb-btn tb-btn-buy theme-login">
                     <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="${ctx}/pay/pay?id=${goods.id}">立即购买</a>
@@ -179,6 +179,30 @@
             <li>
                 <div class="clearfix tb-btn tb-btn-basket theme-login">
                     <a id="LikBasket" title="联系卖家" href="javascript:void(0)" onclick="sendmessage(${goods.id},${goods.fbid})"><i></i>联系卖家</a>
+                </div>
+            </li>
+        </c:when>
+        <c:when test="${login=='1' and huiyuan.id == goods.fbid}">
+            <li>
+                <div class="clearfix tb-btn tb-btn-buy theme-login">
+                    <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="javascript:void(0)" onclick="not()">立即购买</a>
+                </div>
+            </li>
+            <li>
+                <div class="clearfix tb-btn tb-btn-basket theme-login">
+                    <a id="LikBasket" title="联系卖家" href="javascript:void(0)" onclick="not()"><i></i>联系卖家</a>
+                </div>
+            </li>
+        </c:when>
+        <c:when test="${login=='1' and huiyuan.id != goods.fbid and huiyuan.userBz == '1'}">
+            <li>
+                <div class="clearfix tb-btn tb-btn-buy theme-login">
+                    <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="javascript:void(0)" onclick="grxx()">立即购买</a>
+                </div>
+            </li>
+            <li>
+                <div class="clearfix tb-btn tb-btn-basket theme-login">
+                    <a id="LikBasket" title="联系卖家" href="javascript:void(0)" onclick="grxx()"><i></i>联系卖家</a>
                 </div>
             </li>
         </c:when>
@@ -395,7 +419,24 @@
             discription: '请登录'
         });
     }
-
+   function not() {
+       $("").dailog({
+           type: 'danger',
+           showBoxShadow: true,
+           animateStyle: 'none',
+           bottons: ['确定'],
+           discription: "不能对自己发布的商品进行该操作！"
+       });
+   }
+   function grxx() {
+       $("").dailog({
+           type: 'danger',
+           showBoxShadow: true,
+           animateStyle: 'none',
+           bottons: ['确定'],
+           discription: "个人信息及收货地址为完善！"
+       });
+   }
 </script>
 </body>
 

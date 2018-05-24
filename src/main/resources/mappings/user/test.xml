@@ -3,7 +3,7 @@
 <mapper namespace="com.smj.dao.TestDao">
     <select id="find" resultType="com.smj.entiy.goods.TGoods">
         SELECT * FROM t_goods
-        WHERE saleflag = '在售'
+        WHERE saleflag = '在售' AND del='0'
         <if test="name != null and name != ''">
              AND mingcheng LIKE concat('%',#{name},'%')
         </if>
@@ -15,13 +15,14 @@
     <select id="findBySchool" resultType="com.smj.entiy.goods.TGoods">
         SELECT tg.* FROM t_goods tg
         WHERE (SELECT school FROM t_huiyuan th where th.id = tg.fbid ) LIKE concat('%',#{type},'%') and saleflag = '在售'
+        and tg.del='0'
         <if test="name != null and name != ''">
             AND mingcheng LIKE concat('%',#{name},'%')
         </if>
     </select>
     <select id="findByType" resultType="com.smj.entiy.goods.TGoods">
         SELECT t.* FROM t_goods t
-        WHERE 1=1 AND saleflag = '在售'
+        WHERE 1=1 AND saleflag = '在售' AND t.del ='0'
         <if test="name != null and name != ''">
             AND t.mingcheng LIKE concat('%',#{name},'%')
         </if>

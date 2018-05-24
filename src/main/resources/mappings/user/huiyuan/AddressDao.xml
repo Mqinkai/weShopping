@@ -26,10 +26,10 @@ INSERT INTO t_address(
         UPDATE t_address SET moren='0' WHERE moren='1'
     </update>
     <update id="ChangeMoren">
-          UPDATE t_address SET moren='2' WHERE id=#{id}
+          UPDATE t_address SET moren='1' WHERE id=#{id}
     </update>
     <update id="updateUser">
-        UPDATE t_huiyuan set user_bz='1' WHERE id = #{userId}
+        UPDATE t_huiyuan set user_bz='2' WHERE id = #{userId}
     </update>
     <select id="findById" resultType="com.smj.entiy.Address">
         SELECT

@@ -27,10 +27,15 @@ public class OrderService {
     private OrderDao orderDao;
     public void qrsh(String id) {
         orderDao.qrsh(id);
+        orderDao.updateGoods(id);
+
     }
 
     public void pj(String id, String pj) {
         orderDao.insert(id,pj);
+        //修改原订单及物品状态  orderid
+        orderDao.updataOrder(id);
+        orderDao.updataGoods(id);
     }
 
     public void delorder(String id) {
@@ -69,6 +74,8 @@ public class OrderService {
 
     public void delOrderByGoodsId(String id) {
         orderDao.delOrderByGoodsId(id);
+        //删除商品
+        orderDao.delgoods(id);
     }
 
     public void closeOrderByGoodsId(String id) {

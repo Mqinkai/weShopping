@@ -11,4 +11,8 @@ import java.util.List;
 @MyBatisDao
 public interface GonggaoDao {
     List<Gonggao> getList();
+
+    void delgonggao(String id);
+
+    void inset(Gonggao gonggao);
 }

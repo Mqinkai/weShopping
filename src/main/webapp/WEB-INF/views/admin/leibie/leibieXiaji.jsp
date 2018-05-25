@@ -18,45 +18,42 @@
 <body>
 <div><br></br></div>
 <table class="table table-hover">
-    <caption style="padding: 8px"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增公告</button></caption>
+    <caption style="padding: 8px"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增类别</button></caption>
     <thead>
     <tr align="center" bgcolor="#FAFAF1" height="22">
         <th width="5%">序号</th>
-        <th width="65%">内容</th>
-        <th width="20%">时间</th>
+        <th width="65%">名称</th>
+
         <th width="10%">操作</th>
     </tr>
     </thead>
-<tbody>
-<c:forEach items="${gonggaoList}" var="gonggao" varStatus="ss">
-    <tr>
-        <td>
-                ${gonggao.id}
-        </td>
-        <td>
-                ${gonggao.lable}
-        </td>
-        <td>
-                ${gonggao.date}
-        </td>
+    <tbody>
+    <c:forEach items="${xiajiList}" var="leibie" varStatus="ss">
+        <tr>
+            <td>
+                    ${leibie.id}
+            </td>
+            <td>
+                    ${leibie.mingcheng}
+            </td>
 
-        <td>
-            <input type="button" value="删除" onclick="delgonggao(${gonggao.id})"/>
-        </td>
-    </tr>
-</c:forEach>
-</tbody>
+            <td>
+                <a href="javascript: void(0)" onclick="del(${leibie.id})"><i class="fas fa-trash-alt"></i>删除</a>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
 </table>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">新增公告</h4>
+                <h4 class="modal-title" id="myModalLabel">新增类别</h4>
             </div>
             <div class="modal-body">
-                <span class="input-group-addon">公告</span>
-                <input type="text" class="form-control" placeholder="如[公告]已新增‘智能手表’分类" id="gonggao">
+                <span class="input-group-addon">名称</span>
+                <input type="text" class="form-control" placeholder="默认为不推荐，若要推荐请手动设置" id="mingcheng">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -66,10 +63,10 @@
     </div><!-- /.modal -->
 </div>
 <script type="text/javascript">
-    function delgonggao(id) {
+    function del(id) {
         $.ajax({
             type: 'get',
-            url: '${ctx}/gonggao/delgonggao?id='+id,
+            url: '${ctx}/leibie/delXs?id='+id,
             dataType: 'json',
             success: function(data){
                 if (data.code =='1'){
@@ -79,8 +76,9 @@
         });
     }
     function save() {
-        var gonggao = $("#gonggao").val();
-        if (gonggao ==null || gonggao ==''){
+        var mingcheng = $("#mingcheng").val();
+        var leibieId = ${leibieId};
+        if (mingcheng ==null || mingcheng ==''){
             $("").dailog({
                 type: 'warning',
                 showBoxShadow: true,
@@ -91,8 +89,8 @@
         }else {
             $.ajax({
                 type: 'post',
-                url: '${ctx}/gonggao/save',
-                data:{lable:gonggao},
+                url: '${ctx}/leibie/savexS',
+                data:{mingcheng:mingcheng,id:leibieId},
                 dataType: 'json',
                 success: function(data){
                     if (data.code =='1'){
@@ -102,6 +100,7 @@
             });
         }
     }
+
 </script>
 </body>
 </html>

@@ -1,21 +1,50 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%
-String path = request.getContextPath();
-%>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="/static/holle/css/index.css">
+</head>
+<body>
+<div class="roate-container" style="margin-top: 100px">
+    <div class="screen-bg"></div>
+    <div id="roate1">
+        <div class="roate-item icon-roate-1"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item icon-roate-2"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item icon-roate-3"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item icon-roate-4"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+    </div>
+    <div id="roate2">
+        <div class="roate-item icon-sq-1"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item icon-sq-2"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+        <div class="roate-item"></div>
+    </div>
+</div>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
+<script src="/static/holle/js/jquery.min.js"></script>
+<script src="/static/holle/js/index.js"></script>
+</body>
 </html>

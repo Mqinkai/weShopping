@@ -1,5 +1,7 @@
 package com.smj.entiy.admin;
 
+import java.util.Date;
+
 /**
  * Created by Qinkai on 2018/5/24.
  */
@@ -8,6 +10,15 @@ public class Gonggao {
     private String lable;
     private String del;
     private String date;
+    private Date saveDate;
+
+    public Date getSaveDate() {
+        return saveDate;
+    }
+
+    public void setSaveDate(Date saveDate) {
+        this.saveDate = saveDate;
+    }
 
     public String getId() {
         return id;

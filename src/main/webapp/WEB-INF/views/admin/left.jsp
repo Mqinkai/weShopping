@@ -41,31 +41,29 @@ String path = request.getContextPath();
 		           <a href="#" style="font-family: 微软雅黑;font-size: 15px;" onclick="logout()">注销退出</a> 
 		      </div>
 		      <ul id="main-nav">
-		           <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">公告管理</a>
+		           <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">公告</a>
 			           <ul>
 			            <li><a href="${ctx}/gonggao/list" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">删除新增公告</a></li>
 			           </ul>
 		           </li>
-			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">物品类别管理</a>
+			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">物品类别</a>
 			          <ul>
-			            <li><a href="<%=path %>/leibieMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品类别管理</a></li>
-			            <li><a href="<%=path %>/admin/leibie/leibieAdd.jsp" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">添加物品类别</a></li>
-						  <li><a href="<%=path %>/leibieMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">类别推荐</a></li>
+			            <li><a href="${ctx}/leibie/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品类别管理</a></li>
 			          </ul>
 			       </li>
-			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">商品信息管理</a>
+			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">商品信息</a>
 			          <ul>
-			            <li><a href="<%=path %>/goodsMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品信息管理</a></li>
+			            <li><a href="${ctx}/goods/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品信息管理</a></li>
 			          </ul>
 			       </li>
-			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">会员信息管理</a>
+			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">会员信息</a>
 			          <ul>
-			            <li><a href="<%=path %>/huiyuanMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">会员信息管理</a></li>
+			            <li><a href="${ctx}/huiyuan/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">会员信息管理</a></li>
 			          </ul>
 			       </li>
-			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">订单信息管理</a>
+			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">订单信息</a>
 			          <ul>
-			            <li><a href="<%=path %>/orderMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">订单信息管理</a></li>
+			            <li><a href="${ctx}/order/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">订单信息管理</a></li>
 			          </ul>
 			       </li>
 	          </ul>    

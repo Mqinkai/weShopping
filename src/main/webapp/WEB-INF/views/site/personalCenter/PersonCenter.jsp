@@ -106,7 +106,7 @@
                                 <a href="${ctx}/personCenter/PersonInformation">
                                    <img src="${huiyuan.tx}">
                                 </a>
-                                <em class="s-name">${huiyuan.userName}<span class="vip2"></span></em>
+                                <em class="s-name" style="line-height: 50px;left: 80px;">${huiyuan.userName}<span class="vip2"></span></em>
 
                             </div>
                             <div class="m-right">

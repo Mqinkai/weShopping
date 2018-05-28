@@ -24,14 +24,22 @@
     <link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />
     <link type="text/css" href="/static/css/optstyle.css" rel="stylesheet" />
     <link type="text/css" href="/static/css/style.css" rel="stylesheet" />
-
     <script type="text/javascript" src="/static/basic/js/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="/static/basic/js/quick_links.js"></script>
-
     <script type="text/javascript" src="/static/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
     <script type="text/javascript" src="/static/js/jquery.imagezoom.min.js"></script>
     <script type="text/javascript" src="/static/js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="/static/js/list.js"></script>
+    <style>
+        .am-popover-inner {
+            margin-left: 50px;
+            width: 90%;
+            position: relative;
+            background: #333333;
+            padding: 8px;
+            z-index: 110;
+        }
+    </style>
 </head>
 <body>
 
@@ -327,7 +335,9 @@
                     <div class="clear"></div>
 
                     <div class="tb-reviewsft">
-                        <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
+                        <div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="javascript:void(0);" type="button"data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 800, height:500}">
+                            购物保障
+                        </a>，明确您的售后保障权益。</div>
                     </div>
 
                 </div>
@@ -377,8 +387,30 @@
         </div>
     </div>
 </div>
+
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">购物保障
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <p style="text-align: left">目前消费者保障服务分为：消费者保障服务、交易约定类服务。其中，消费者保障服务为基础消保服务，交易约定是指卖家在加入消费者保障服务的基础上，就其经营的商品或其服务自愿为买家提供的承诺服务。</p>
+           <h3>一、消费者保障服务</h3>
+            <p style="text-align: left">指在按本协议提出申请、并经mingjie二手交易平台接受其申请后，用户根据本协议及mingjie二手交易平台网其他公示规范的规定，按其选择参加的消费者保障服务项目（以下称“服务项目”），就其通过mingjie二手交易平台这一电子商务平台发布出售信息并利用支付宝服务向其他mingjie二手交易平台用户（下称“买家”）出售的商品，向买家提供的相应的售后服务。消费者保障服务是用户向买家提供的服务，用户是该服务责任者，mingjie二手交易平台不是相关的责任者。除本协议另有规定外，用户可根据其销售的商品种类及意愿选择参与特定的服务项目。mingjie二手交易平台可在mingjie二手交易平台网不时公示新增的服务项目或服务项目修改。</p>
+            <h3>二、交易约定</h3>
+            <p style="text-align: left">指用户（下称“卖家”）使用mingjie二手交易平台提供的技术支持及服务就其店铺经营的商品或服务自愿为买家提供的承诺服务。交易约定服务的类型包括但不限于发货时间承诺服务、品质承诺服务、破损补寄承诺服务、退货承诺服务等。使用交易约定服务的会员均应遵守《mingjie二手交易平台服务协议》及《mingjie二手交易平台规则》，如交易约定服务有特殊规定的应从其规定。
+                （1）发货时间服务：卖家自主承诺向买家提供的特色服务之一。卖家就商品发货时间向买家作出承诺，在买家付款后，按照约定时间内完成发货；若未按约定时间发货，则按照该商品实际成交金额的5%给予赔付，且金额最低不少于1元，最高不超过30元
+                （2）退货承诺服务：卖家自主承诺向买家提供的特色服务之一。卖家就该商品向买家作出承诺，自商品签收之日起至卖家承诺保障时间内，商品符合约定状态，如买家对购买的商品不满意可无理由申请退货，退货和第一次发货时产生的邮费，按照承诺约定的承担方来承担。
+                （3）破损补寄服务：卖家自主承诺向买家提供的特色服务之一。卖家就该商品签收状态作出承诺，自商品签收之日起至卖家承诺保障时间内，如发现商品在运输途中出现破损，买家可申请破损部分商品补寄；卖家承诺提供1次补寄服务，补寄物流费由约定承担方承担；若补寄后的商品仍出现破损，卖家将提供退货退款服务。
+                （4）品质承诺服务：卖家自主承诺向买家提供的特色服务之一。卖家就该商品质量作出承诺，自商品签收之日起至确认收货前，如买家发现商品材质或质量与网上描述不符，且与卖家协商未果，买家有权在mingjie二手交易平台指定期限内发起维权。mingjie二手交易平台网根据商品质检结果进行判定，如判定买家赔付申请成立，卖家应向买家退回其实际支付的商品价款，并补偿约定赔偿金。</p>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
-   /* $("#contents").innerHTML=${goods.jieshao};*/
+
+
+   /*$("#contents").innerHTML=${goods.jieshao};*/
    function sendmessage(id,fbid) {
        var message ="";
        $("").dailog({

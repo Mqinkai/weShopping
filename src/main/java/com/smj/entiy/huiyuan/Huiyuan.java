@@ -22,10 +22,18 @@ public class Huiyuan {
     private String xingbie = "";
     private String csrq;
     private String school;
-
+    private String del;
     private String province;
     private String city;
     private String area;
+
+    public String getDel() {
+        return del;
+    }
+
+    public void setDel(String del) {
+        this.del = del;
+    }
 
     public String getProvince() {
         return province;

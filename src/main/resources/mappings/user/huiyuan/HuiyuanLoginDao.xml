@@ -12,6 +12,6 @@ SELECT
 WHERE
 password=#{password} and
   (user_name=#{userName} or email=#{userName} or tel=#{userName})
-
+and del ='0'
     </select>
 </mapper>

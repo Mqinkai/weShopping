@@ -9,6 +9,7 @@ public class TGoods implements java.io.Serializable
 
 	private Integer id;
 	private Integer leibieId;
+	private String leibieName;
 	private String leibiexiashuId;
 	private String mingcheng;
 	private String jieshao;
@@ -27,6 +28,14 @@ private String fkfs;
 	//详情页面需要
 	private String address;
 	private String school;
+
+	public String getLeibieName() {
+		return leibieName;
+	}
+
+	public void setLeibieName(String leibieName) {
+		this.leibieName = leibieName;
+	}
 
 	public String getAddress() {
 		return address;

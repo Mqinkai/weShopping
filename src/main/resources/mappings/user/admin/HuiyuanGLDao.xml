@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smj.dao.admin.HuiyuanGLDao">
+    <update id="open">
+        UPDATE t_huiyuan SET del='0' where id=#{id}
+    </update>
+    <update id="close">
+        UPDATE t_huiyuan SET del='1' where id=#{id}
+    </update>
+    <update id="admin">
+         UPDATE t_huiyuan SET code='管理员' where id=#{id}
+    </update>
+    <update id="qxadmin">
+         UPDATE t_huiyuan SET code='普通会员' where id=#{id}
+    </update>
+    <select id="getList" resultType="com.smj.entiy.huiyuan.Huiyuan">
+       SELECT * FROM t_huiyuan
+    </select>
+</mapper>

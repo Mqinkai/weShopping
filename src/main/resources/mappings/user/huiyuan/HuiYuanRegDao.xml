@@ -28,12 +28,12 @@ NOW(),
         UPDATE t_huiyuan SET password = #{password} where id=#{id}
     </update>
     <select id="findByEmail" resultType="java.lang.Integer">
-        SELECT count(id) FROM t_huiyuan WHERE email=#{email}
+        SELECT count(id) FROM t_huiyuan WHERE email=#{email} and del ='0'
     </select>
     <select id="findByTel" resultType="java.lang.Integer">
-      SELECT count(id) FROM t_huiyuan WHERE tel=#{tel}
+      SELECT count(id) FROM t_huiyuan WHERE tel=#{tel} and del ='0'
     </select>
     <select id="findByEorT" resultType="java.lang.String">
-        SELECT id FROM t_huiyuan WHERE user_name =#{userName} and ( tel=#{tel} or email = #{tel})
+        SELECT id FROM t_huiyuan WHERE user_name =#{userName} and ( tel=#{tel} or email = #{tel}) and del ='0'
     </select>
 </mapper>

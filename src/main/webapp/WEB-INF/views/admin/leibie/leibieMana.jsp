@@ -21,10 +21,10 @@
 	<caption style="padding: 8px"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增类别</button></caption>
 	<thead>
 	<tr align="center" bgcolor="#FAFAF1" height="22">
-		<th width="5%">序号</th>
-		<th width="65%">名称</th>
-		<th width="20%">是否推荐</th>
-		<th width="10%">操作</th>
+		<th width="10%">序号</th>
+		<th width="50%">名称</th>
+		<th width="10%">是否推荐</th>
+		<th width="30%">操作</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -49,16 +49,16 @@
 
 			<td>
 				<c:choose>
-					<c:when test="${leibie.tuijian} =='1'">
-						<a href="javascript: void(0)" onclick="qxtj(${leibie.id})"><i class="far fa-thumbs-down"></i>取消推荐 </a>|
+					<c:when test='${leibie.tuijian eq "1"}'>
+						<a href="javascript: void(0)" onclick="qxtj(${leibie.id})"><i class="am-icon-thumbs-o-down"></i>取消推荐 </a>|
 					</c:when>
 					<c:otherwise>
-						<a href="javascript: void(0)" onclick="tuijian(${leibie.id})"><i class="far fa-thumbs-up"></i>推荐 </a>|
+						<a href="javascript: void(0)" onclick="tuijian(${leibie.id})"><i class="am-icon-thumbs-o-up"></i>推荐 </a>|
 					</c:otherwise>
 				</c:choose>
 
-				<a href="${ctx}/leibie/xiaji?id=${leibie.id}"><i class="fas fa-bars"></i>查看下级</a> |
-				<a href="javascript: void(0)" onclick="del(${leibie.id})"><i class="fas fa-trash-alt"></i>删除</a>
+				<a href="${ctx}/leibie/xiaji?id=${leibie.id}"><i class="am-icon-navicon"></i>查看下级</a> |
+				<a href="javascript: void(0)" onclick="del(${leibie.id})"><i class="am-icon-trash"></i>删除</a>
 			</td>
 		</tr>
 	</c:forEach>

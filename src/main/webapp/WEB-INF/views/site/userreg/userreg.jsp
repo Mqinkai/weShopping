@@ -69,7 +69,7 @@
 
 						<div class="login-links">
 							<label for="reader-me">
-								<input id="reader-me" type="checkbox"> 点击表示您同意mingjie平台<a href="javascript:void(0);" type="button"data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 800, height:500}" style="color: blue">《服务协议》</a>
+								<input id="reader-me" type="checkbox"> 点击表示您同意mingjie平台<a href="javascript:void(0);" id="xieyi">《服务协议》</a>
 							</label>
 						</div>
 						<div class="am-cf">
@@ -99,7 +99,7 @@
 						</form>
 						<div class="login-links">
 							<label for="reader-me1">
-								<input id="reader-me1" type="checkbox"> 点击表示您同意mingjie平台<a href="javascript:void(0);" type="button"data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 800, height:500}" style="color: blue">《服务协议》</a>
+								<input id="reader-me1" type="checkbox"> 点击表示您同意mingjie平台<a href="javascript: void(0)" id="xieyi2">《服务协议》</a>
 							</label>
 						</div>
 
@@ -134,14 +134,14 @@
 		</div>
 		<div class="footer-bd ">
 			<p>
-				<em>(c) 2014-2018 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
+				<em>(c) 2014-2018 青岛理工毕设 版权所有. <a href="javascript: void(0)" target="_blank" title="宋明杰">宋明杰</a> - </em>
 			</p>
 		</div>
 	</div>
-
-	<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
-		<div class="am-modal-dialog">
-			<div class="am-modal-hd">《服务协议》
+</div>
+	<div class="am-popup" tabindex="-1" id="doc-modal-2">
+		<div class="am-popup-inner">
+			<div class="am-popup-title">《服务协议》
 				<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
 			</div>
 			<div class="am-modal-bd">
@@ -177,7 +177,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 <script type="text/javascript">
 	var yzm="";
 	var isEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //邮箱格式校验
@@ -433,6 +433,13 @@
 		}
 
 	}
+	$("#xieyi").click(function () {
+		$("#doc-modal-2").modal('open');
+	})
+	$("#xieyi2").click(function () {
+		$("#doc-modal-2").modal('open');
+	})
+
 </script>
 </body>
 

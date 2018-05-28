@@ -1,5 +1,6 @@
 package com.smj.service.goods;
 
+import com.smj.common.dto.ResultDto;
 import com.smj.dao.goods.GoodsDao;
 import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.LeibieXiashu;
@@ -37,5 +38,13 @@ public class GoodsService {
 
     public void del(String id) {
         goodsDao.del(id);
+    }
+
+    public List<TGoods> getlist() {
+        return goodsDao.getList();
+    }
+
+    public ResultDto getDetail(String id) {
+        return goodsDao.getDetail(id);
     }
 }

@@ -196,47 +196,48 @@
                         //console.log(result);
                         if (result.code == '1'){
                             url = "Ajax/Login";
-                            AjaxPost(url, JsonData,
-                                    function () {
-                                        //ajax加载中
-                                    },
-                                    function (data) {
-                                        console.log(data);
-                                        //ajax返回
-                                        //认证完成
-                                        setTimeout(function () {
-                                            $('.authent').show().animate({ right: 90 }, {
-                                                easing: 'easeOutQuint',
-                                                duration: 600,
-                                                queue: false
-                                            });
-                                            $('.authent').animate({ opacity: 0 }, {
-                                                duration: 200,
-                                                queue: false
-                                            }).addClass('visible');
-                                            $('.login').removeClass('testtwo'); //平移特效
-                                        }, 2000);
-                                        setTimeout(function () {
-                                            $('.authent').hide();
-                                            $('.login').removeClass('test');
-                                            if (data.Status == 'ok') {
-                                                //登录成功
-                                                $('.login div').fadeOut(100);
-                                                $('.success').fadeIn(1000);
-                                                $('.success').html(data.Text);
-                                                //跳转操作
-                                                setTimeout(function(){ window.location.href="${ctx}/admin/index"; }, 2000);
-                                                //setTimeout(,3000);
 
-                                            } else {
-                                                AjaxErro(data);
-                                            }
-                                        }, 2400);
-                                    })
                         }
                         else {
                             url = "Ajax/LoginFalse";
                         }
+                        AjaxPost(url, JsonData,
+                                function () {
+                                    //ajax加载中
+                                },
+                                function (data) {
+                                    console.log(data);
+                                    //ajax返回
+                                    //认证完成
+                                    setTimeout(function () {
+                                        $('.authent').show().animate({ right: 90 }, {
+                                            easing: 'easeOutQuint',
+                                            duration: 600,
+                                            queue: false
+                                        });
+                                        $('.authent').animate({ opacity: 0 }, {
+                                            duration: 200,
+                                            queue: false
+                                        }).addClass('visible');
+                                        $('.login').removeClass('testtwo'); //平移特效
+                                    }, 2000);
+                                    setTimeout(function () {
+                                        $('.authent').hide();
+                                        $('.login').removeClass('test');
+                                        if (data.Status == 'ok') {
+                                            //登录成功
+                                            $('.login div').fadeOut(100);
+                                            $('.success').fadeIn(1000);
+                                            $('.success').html(data.Text);
+                                            //跳转操作
+                                            setTimeout(function(){ window.location.href="${ctx}/admin/index"; }, 2000);
+                                            //setTimeout(,3000);
+
+                                        } else {
+                                            AjaxErro(data);
+                                        }
+                                    }, 2400);
+                                })
                     }});
 
 /*

@@ -12,6 +12,6 @@
 WHERE
 password=#{password} and
   (user_name=#{userName} or email=#{userName} or tel=#{userName})
-   and code = '管理员'
+   and (code = '管理员' or code = '最高管理员' ) and del ='0'
     </select>
 </mapper>

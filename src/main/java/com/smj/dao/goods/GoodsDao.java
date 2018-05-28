@@ -1,6 +1,7 @@
 package com.smj.dao.goods;
 
 import com.smj.common.config.MyBatisDao;
+import com.smj.common.dto.ResultDto;
 import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.LeibieXiashu;
 import com.smj.entiy.goods.TGoods;
@@ -24,4 +25,8 @@ public interface GoodsDao {
     void updateGoods(String id);
 
     void del(String id);
+
+    List<TGoods> getList();
+
+    ResultDto getDetail(String id);
 }

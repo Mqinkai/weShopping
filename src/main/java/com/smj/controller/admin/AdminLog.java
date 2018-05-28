@@ -1,5 +1,6 @@
 package com.smj.controller.admin;
 
+import com.smj.common.BaseController;
 import com.smj.common.dto.ResultDto;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.service.admin.AdminService;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpSession;
  */
 @RequestMapping(value = "/admin/")
 @Controller
-public class AdminLog {
+public class AdminLog extends BaseController{
     @Autowired
     private AdminService adminService;
     @RequestMapping("adminLog")
@@ -25,8 +26,15 @@ public class AdminLog {
         return "admin/adminLog";
     }
     @RequestMapping(value = "index")
-    public String index(){
-        return "admin/index";
+    public String index(HttpServletRequest request) throws Exception {
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("admin");//从session获取信息
+        if (huiyuan != null){
+            return "admin/index";
+        }
+        else{
+            throw new Exception("找不到您的管理员信息,请重新登陆");
+        }
+
     }
     @RequestMapping(value = "left")
     public String left(){

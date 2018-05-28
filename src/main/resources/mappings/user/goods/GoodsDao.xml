@@ -24,4 +24,21 @@ SELECT sum(tc.num*tg.jiage) FROM t_car tc JOIN t_goods tg ON tc.goods_id = tg.id
     <select id="findByid" resultType="com.smj.entiy.goods.TGoods">
         SELECT * FROM t_goods where id=#{id}
     </select>
+    <select id="getList" resultType="com.smj.entiy.goods.TGoods">
+        SELECT
+        tg.id,
+        (SELECT th.user_name FROM t_huiyuan th WHERE th.id=tg.fbid) AS fbid,
+        tg.mingcheng,
+        (SELECT tl.mingcheng FROM t_leibie tl WHERE tl.id =tg.leibieId) AS leibieName,
+        (SELECT tlx.name FROM t_leibie_xiashu tlx WHERE tlx.id=tg.leibiexiashuId) AS leibiexiashuId,
+        tg.jiage,
+        tg.saleflag,
+        tg.yuanjia,
+        tg.fkfs
+
+         FROM t_goods tg where del= '0'
+    </select>
+    <select id="getDetail" resultType="com.smj.common.dto.ResultDto">
+        SELECT jieshao AS message FROM t_goods WHERE id=#{id}
+    </select>
 </mapper>

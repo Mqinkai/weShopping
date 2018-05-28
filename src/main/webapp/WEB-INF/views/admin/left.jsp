@@ -25,7 +25,7 @@ String path = request.getContextPath();
 		{
 		   if(confirm("确定要退出本系统吗??"))
 		   {
-
+			   window.parent.location="${ctx}/huiyuanreg/leave";
 		   }
 		}
 	</script>
@@ -53,12 +53,12 @@ String path = request.getContextPath();
 			       </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">商品信息</a>
 			          <ul>
-			            <li><a href="${ctx}/goods/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品信息管理</a></li>
+			            <li><a href="${ctx}/goods/goodsList"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品信息管理</a></li>
 			          </ul>
 			       </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">会员信息</a>
 			          <ul>
-			            <li><a href="${ctx}/huiyuan/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">会员信息管理</a></li>
+			            <li><a href="${ctx}/huiyuanGL/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">会员信息管理</a></li>
 			          </ul>
 			       </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">订单信息</a>

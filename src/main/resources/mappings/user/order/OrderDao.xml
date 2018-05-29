@@ -133,19 +133,19 @@ WHERE id=#{songhuodizhi}
     </select>
     <select id="findList" resultType="com.smj.entiy.OrderDto">
    SELECT
-         to.id
-         to.bianhao,
-         to.xiadanshi,
-         to.zt,
-         to.songhuodizhi,
-         to.fukuanfangshi,
-         to.zongjia,
-         (SELECT user_name FROM t_huiyuan WHERE id=to.huiyuan_id) AS huiyuanId,
-         to.del,
+         tor.id,
+         tor.bianhao,
+         tor.xiadanshi,
+         tor.zt,
+         tor.songhuodizhi,
+         tor.fukuanfangshi,
+         tor.zongjia,
+         (SELECT user_name FROM t_huiyuan WHERE id=tor.huiyuan_id) AS huiyuanId,
+         tor.del,
          concat('(',tg.id,')' ,tg.mingcheng) AS mingcheng
 
-FROM t_order to
-LEFT JOIN t_order_detail tod ON tod.order_id=to.id
-LEFT JOIN t_good tg ON tg.id = tod.goods_id
+FROM t_order tor
+LEFT JOIN t_order_detail tod ON tod.order_id=tor.id
+LEFT JOIN t_goods tg ON tg.id = tod.goods_id
     </select>
 </mapper>

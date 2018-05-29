@@ -88,42 +88,7 @@
 	</div><!-- /.modal -->
 </div>
 <script type="text/javascript">
-	function delgonggao(id) {
-		$.ajax({
-			type: 'get',
-			url: '${ctx}/gonggao/delgonggao?id='+id,
-			dataType: 'json',
-			success: function(data){
-				if (data.code =='1'){
-					window.location.reload();;
-				}
-			}
-		});
-	}
-	function save() {
-		var gonggao = $("#gonggao").val();
-		if (gonggao ==null || gonggao ==''){
-			$("").dailog({
-				type: 'warning',
-				showBoxShadow: true,
-				animateStyle: 'none',
-				bottons: ['确定'],
-				discription: '请填写内容'
-			});
-		}else {
-			$.ajax({
-				type: 'post',
-				url: '${ctx}/gonggao/save',
-				data:{lable:gonggao},
-				dataType: 'json',
-				success: function(data){
-					if (data.code =='1'){
-						window.location.reload();;
-					}
-				}
-			});
-		}
-	}
+
 	function openmodel(id) {
 		$.ajax({
 			type: 'get',

@@ -29,4 +29,8 @@ public class GonggaoService {
 
         gonggaoDao.inset(gonggao);
     }
+
+    public List<Gonggao> findList() {
+            return gonggaoDao.getList();
+    }
 }

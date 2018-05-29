@@ -10,6 +10,9 @@
     .member-logout .btn{
         line-height:10px;!important;
     }
+    .popover-content{
+        color: black;
+    }
 </style>
 
 </head>
@@ -152,17 +155,18 @@
 
         <!--走马灯 -->
 
-        <div class="marqueen" style="height: 300px;">
+        <div class="marqueen">
             <span class="marqueen-title">公告栏</span>
             <div class="demo">
 
                 <ul>
-                    <li class="title-first"><a target="_blank">
+                   <%-- <c:forEach items="${gonggaoList}" var="gonggao" begin="0" end="1" varStatus="st"></c:forEach>--%>
+                    <li id="gonggao1" class="title-first"><a target="_blank">
                         <img src="/static/images/TJ2.jpg"></img>
-                        <span>[公告]</span>用心打造美好生活细节
+                        <span >${gonggaoList[0].lable}</span>
                     </a></li>
-                    <li class="title-first"><a target="_blank">
-                        <span>[公告]</span>闲置换钱，快速出手
+                    <li id="gonggao2" class="title-first"><a target="_blank">
+                        <span >${gonggaoList[1].lable}</span>
                         <img src="/static/images/TJ.jpg"></img>
                     </a></li>
 
@@ -201,9 +205,9 @@
                         <div class="clear"></div>
                     </div>
 
-                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>客服工作时间：9:00-20:00</a></li>
-                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>平台将于2018.05.30凌晨更新</a></li>
-                    <li><a target="_blank" href="javascript:void(0);"><span>[公告]</span>请遵循本平台各项规定</a></li>
+                    <li id="gonggao3"><a target="_blank" href="javascript:void(0);">${gonggaoList[2].lable}</a></li>
+                    <li id="gonggao4"><a target="_blank" href="javascript:void(0);">${gonggaoList[3].lable}</a></li>
+                    <li id="gonggao5"><a target="_blank" href="javascript:void(0);">${gonggaoList[4].lable}</a></li>
 
                 </ul>
             </div>
@@ -485,6 +489,48 @@
                     window.jQuery || document.write('<script src="/static/basic/js/jquery-1.9.min.js "><\/script>');
                 </script>
                 <script type="text/javascript " src="/static/basic/js/quick_links.js "></script>
+                    <script type="text/javascript">
+                        $("#gonggao2").
+                        tooltip({
+                            trigger:'hover',
+                            html:true,
+                            title:'点击显示全部'}).popover({
+                            trigger:'click',
+                            placement:'bottom',
+                            content:'${gonggaoList[1].lable}'});
+                        $("#gonggao1").
+                        tooltip({
+                            trigger:'hover',
+                            html:true,
+                            title:'点击显示全部'}).popover({
+                            trigger:'click',
+                            placement:'bottom',
+                            content:'${gonggaoList[0].lable}'});
+                        $("#gonggao3").
+                        tooltip({
+                            trigger:'hover',
+                            html:true,
+                            title:'点击显示全部'}).popover({
+                            trigger:'click',
+                            placement:'bottom',
+                            content:'${gonggaoList[2].lable}'});
+                        $("#gonggao4").
+                        tooltip({
+                            trigger:'hover',
+                            html:true,
+                            title:'点击显示全部'}).popover({
+                            trigger:'click',
+                            placement:'bottom',
+                            content:'${gonggaoList[3].lable}'});
+                        $("#gonggao5").
+                        tooltip({
+                            trigger:'hover',
+                            html:true,
+                            title:'点击显示全部'}).popover({
+                            trigger:'click',
+                            placement:'bottom',
+                            content:'${gonggaoList[4].lable}'});
+                    </script>
 </body>
 
 </html>

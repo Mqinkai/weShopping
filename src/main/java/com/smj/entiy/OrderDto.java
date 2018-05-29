@@ -20,6 +20,17 @@ public class OrderDto {
     private String del;
     private List<TGoods> goodsList = new ArrayList<TGoods>();
 
+    //商品
+    private String mingcheng;
+
+    public String getMingcheng() {
+        return mingcheng;
+    }
+
+    public void setMingcheng(String mingcheng) {
+        this.mingcheng = mingcheng;
+    }
+
     public String getId() {
         return id;
     }

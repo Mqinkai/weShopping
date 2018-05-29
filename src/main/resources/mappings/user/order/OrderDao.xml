@@ -117,7 +117,7 @@ INSERT INTO t_xiaoxi(
       zongjia,
       huiyuan_id AS huiyuanId
 
-FROM t_order  WHERE id in (SELECT order_id FROM t_order_detail WHERE goods_id = #{id})
+FROM t_order  WHERE id in (SELECT order_id FROM t_order_detail WHERE goods_id = #{id}) and del='0'
     </select>
     <select id="findAddressId" resultType="com.smj.entiy.Address">
         SELECT
@@ -130,5 +130,22 @@ xxdz
 FROM t_address
 WHERE id=#{songhuodizhi}
 
+    </select>
+    <select id="findList" resultType="com.smj.entiy.OrderDto">
+   SELECT
+         to.id
+         to.bianhao,
+         to.xiadanshi,
+         to.zt,
+         to.songhuodizhi,
+         to.fukuanfangshi,
+         to.zongjia,
+         (SELECT user_name FROM t_huiyuan WHERE id=to.huiyuan_id) AS huiyuanId,
+         to.del,
+         concat('(',tg.id,')' ,tg.mingcheng) AS mingcheng
+
+FROM t_order to
+LEFT JOIN t_order_detail tod ON tod.order_id=to.id
+LEFT JOIN t_good tg ON tg.id = tod.goods_id
     </select>
 </mapper>

@@ -63,7 +63,7 @@ String path = request.getContextPath();
 			       </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">订单信息</a>
 			          <ul>
-			            <li><a href="${ctx}/order/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">订单信息管理</a></li>
+			            <li><a href="${ctx}/orders/list"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">订单信息管理</a></li>
 			          </ul>
 			       </li>
 	          </ul>    

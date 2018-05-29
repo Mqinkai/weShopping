@@ -2,10 +2,12 @@ package com.smj.controller.goods;
 
 import com.smj.common.config.UserUtil;
 import com.smj.common.dto.ResultDto;
+import com.smj.entiy.admin.Gonggao;
 import com.smj.entiy.goods.Leibie;
 import com.smj.entiy.goods.TGoods;
 import com.smj.entiy.huiyuan.Huiyuan;
 import com.smj.service.TestService;
+import com.smj.service.admin.GonggaoService;
 import com.smj.service.goods.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,8 @@ public class GoodsIndexController {
     private TestService testService;
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private GonggaoService gonggaoService;
       /*  @Resource
         private MessageService messageService;*/
         @RequestMapping(value = "/show")
@@ -45,9 +49,12 @@ public class GoodsIndexController {
                 model.addAttribute("huiyuan",huiyuan1);
                 model.addAttribute("login","0"); //未登录
             }
+            //获取公告
+            List<Gonggao> gonggaoList = gonggaoService.findList();
             //获取类别list
            List<Leibie> leibieList=goodsService.getLeibie();
             List<TGoods> list=testService.find(name,type,userid);
+            model.addAttribute("gonggaoList",gonggaoList);
             model.addAttribute("name",name);
             model.addAttribute("goodslist",list);
             model.addAttribute("leibieList",leibieList);

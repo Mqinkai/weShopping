@@ -48,7 +48,17 @@
 					${huiyuan.xingming}
 			</td>
 			<td>
-					${huiyuan.xingbie}
+				<c:choose>
+					<c:when test="${huiyuan.xingbie == '1'}">
+						男
+					</c:when>
+					<c:when test="${huiyuan.xingbie == '2'}">
+						女
+					</c:when>
+					<c:when test="${huiyuan.xingbie == '3'}">
+						保密
+					</c:when>
+				</c:choose>
 			</td>
 			<td>
 					${huiyuan.address}

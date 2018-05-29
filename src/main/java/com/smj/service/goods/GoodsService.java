@@ -47,4 +47,11 @@ public class GoodsService {
     public ResultDto getDetail(String id) {
         return goodsDao.getDetail(id);
     }
+
+    public void delgoods(String id) {
+        //删除商品
+        goodsDao.del(id);
+        //若有订单，根据商品id删除订单
+        goodsDao.delorder(id);
+    }
 }

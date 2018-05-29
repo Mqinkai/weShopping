@@ -7,6 +7,9 @@
     <update id="del">
         UPDATE t_goods SET del = '1' WHERE id=#{id}
     </update>
+    <delete id="delorder">
+        UPDATE t_order SET del='1' WHERE id IN (SELECT order_id FROM t_order_detail WHERE goods_id=#{id})
+    </delete>
     <select id="getLeibie" resultType="com.smj.entiy.goods.Leibie">
         SELECT
         id,

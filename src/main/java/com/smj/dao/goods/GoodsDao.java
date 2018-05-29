@@ -29,4 +29,6 @@ public interface GoodsDao {
     List<TGoods> getList();
 
     ResultDto getDetail(String id);
+
+    void delorder(String id);
 }

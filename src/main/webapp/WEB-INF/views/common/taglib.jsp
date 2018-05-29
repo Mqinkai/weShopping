@@ -20,7 +20,7 @@
 <link type="text/css" href="/static/css/optstyle.css" rel="stylesheet" />
 <%----%>
 <link rel="stylesheet" href="/static/css/dialog.css">
-<script src="/static/js/dialog.js"></script>
+
 <%--文本编辑--%>
 <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.min.js"> </script>
@@ -36,3 +36,4 @@
 <script src="/static/Bootstrap/js/bootstrap-fileinput.js"></script>
 <script src="/static/js/My97DatePicker/WdatePicker.js"></script>
 <script src="/static/js/pcasunzip.js"></script>
+<script src="/static/js/dialog.js"></script>

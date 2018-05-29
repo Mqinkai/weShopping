@@ -37,7 +37,7 @@ String path = request.getContextPath();
 	    <div id="sidebar-wrapper">
 		      <div id="profile-links">
 		           <br /><br /><br />
-		           <a href="#" style="font-family: 微软雅黑;font-size: 15px;">你好：管理员</a>&nbsp;&nbsp;&nbsp;
+		           <a href="#" style="font-family: 微软雅黑;font-size: 15px;">你好：${admin.userName}</a><br/>
 		           <a href="#" style="font-family: 微软雅黑;font-size: 15px;" onclick="logout()">注销退出</a> 
 		      </div>
 		      <ul id="main-nav">

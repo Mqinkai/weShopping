@@ -50,4 +50,12 @@ public class GoodsController extends BaseController {
         resultDto.setCode("1");
         return resultDto;
     }
+    @RequestMapping("del")
+    @ResponseBody
+    public ResultDto del(String id){
+            ResultDto resultDto = new ResultDto();
+       goodsService.delgoods(id);
+        resultDto.setCode("1");
+        return resultDto;
+    }
 }

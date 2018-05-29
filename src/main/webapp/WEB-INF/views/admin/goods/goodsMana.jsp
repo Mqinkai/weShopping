@@ -1,9 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/WEB-INF/views/common/taglib.jsp"%>
 <%
 	String path = request.getContextPath();
 %>
-<%@ include file="/WEB-INF/views/common/taglib.jsp"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -65,7 +67,8 @@
 			</td>
 
 			<td>
-				<a href="javascript: void(0)" onclick="openmodel(${goods.id})"><i class="am-icon-eye"></i>查看商品详情</a>
+				<a href="javascript: void(0)" onclick="openmodel(${goods.id})"><i class="am-icon-eye"></i>查看商品详情</a>|
+				<a href="javascript: void(0)" onclick="delgoods(${goods.id})"><i class="am-icon-trash"></i>删除商品</a>
 			</td>
 		</tr>
 	</c:forEach>
@@ -102,6 +105,29 @@
 				}
 			}
 		});
+	}
+	function delgoods(id) {
+		$("").dailog(
+				{type:'warning',
+					title:'提示.'
+					,discription:'商品删除后将无法恢复且相应订单一并删除，继续吗？'
+
+				},function(ret)
+				{if(ret.index===0)
+				{
+					$.ajax({
+						type: 'get',
+						url: '${ctx}/goods/del?id='+id,
+						dataType: 'json',
+						success: function(data){
+							if (data.code =='1'){
+								window.location.reload();;
+
+							}
+						}
+					});
+				};})
+
 	}
 </script>
 </body>

@@ -1,9 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/WEB-INF/views/common/taglib.jsp"%>
 <%
 	String path = request.getContextPath();
 %>
-<%@ include file="/WEB-INF/views/common/taglib.jsp"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -80,8 +82,7 @@
 		$("").dailog(
 				{type:'warning',
 				 title:'提示.'
-				 ,discription:'订单删除后将无法恢复，继续吗？',
-				isInput:true
+				 ,discription:'订单删除后将无法恢复，继续吗？'
 				},function(ret)
 				{if(ret.index===0)
 				{

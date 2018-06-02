@@ -106,7 +106,7 @@
 						<div class="am-cf">
 							<input type="submit" name="submit" id="submit" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
 						</div>
-						<a style="color: red">${message}</a>
+						<%--<a style="color: red">${message}</a>--%>
 						<hr>
 					</div>
 
@@ -118,7 +118,7 @@
 
 				</div>
 			</div>
-
+			<a style="color: red">${message}</a>
 		</div>
 	</div>
 
@@ -183,6 +183,7 @@
 	var isEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //邮箱格式校验
 	var isTel = /^1[3|4|5|8|9][0-9]\d{8}$/;
 	$('#esubmit').click(function () {
+
 		var email = $("#email").val();
 		var password = $("#password").val();
 		var passwordRepeat = $("#passwordRepeat").val();

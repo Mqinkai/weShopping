@@ -36,16 +36,12 @@ public class GoodsIndexController {
             //判断是否登录
           Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
             if (huiyuan!=null){
-                //查询购物车
-                String num = goodsService.findCar(huiyuan.getId());
-                huiyuan.setCarNum(num);  //购物车金额
                 model.addAttribute("huiyuan",huiyuan);
                 model.addAttribute("login","1");
                 userid = huiyuan.getId();
             }
             else {
                 Huiyuan huiyuan1 = new Huiyuan();
-                huiyuan1.setCarNum("0");
                 model.addAttribute("huiyuan",huiyuan1);
                 model.addAttribute("login","0"); //未登录
             }
@@ -79,6 +75,8 @@ public class GoodsIndexController {
         List<TGoods> list = new ArrayList<TGoods>();
         //获取类别list
         List<Leibie> leibieLists=goodsService.getLeibie();
+        //获取公告
+        List<Gonggao> gonggaoList = gonggaoService.findList();
         if (leibieList != null && !leibieList.equals("") ) {
             list = testService.findByLeibie(leibieList);
         }else if ( leibieXiashus != null && !leibieXiashus.equals("")){
@@ -87,7 +85,7 @@ public class GoodsIndexController {
         }else {
             list=testService.find(name,type,userid);
         }
-
+        model.addAttribute("gonggaoList",gonggaoList);
         model.addAttribute("name",name);
         model.addAttribute("goodslist",list);
         model.addAttribute("leibieList",leibieLists);

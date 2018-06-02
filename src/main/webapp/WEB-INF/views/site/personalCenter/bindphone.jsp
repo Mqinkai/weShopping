@@ -124,7 +124,7 @@
                <div class="am-form-group code">
                    <label id="yzm" for="user-code" class="am-form-label">验证码</label>
                    <div class="am-form-content">
-                       <input type="tel" id="user-code" readonly="readonly" placeholder="短信验证码">
+                       <input type="tel" id="user-code" readonly="readonly" placeholder="验证码">
                    </div>
                    <a class="btn" href="javascript:void(0);" onclick="sendOldMobileCode();" id="sendOldMobileCode">
                        <div class="am-btn am-btn-danger">验证码</div>
@@ -176,12 +176,13 @@
 
 </div>
 <script type="text/javascript">
+    var isEmail = false;
     var oldCode ='';
     var newCode ='';
     var flag = '${huiyuan.tel}';
     var isTel = /^1[3|4|5|8|9][0-9]\d{8}$/;
     function sendNewMobileCode() {
-        if (oldCode == '' && flag !=''){
+if        if (oldCode == '' && flag !=''){
             $("").dailog({
                 type: 'danger',
                 showBoxShadow: true,
@@ -242,6 +243,17 @@
 
     }
     function sendOldMobileCode() {
+        var tel = '${huiyuan.email}';
+        if (tel == ''){
+            $("").dailog({
+                type: 'danger',
+                showBoxShadow: true,
+                animateStyle: 'none',
+                bottons: ['确定'],
+                discription: '未绑定邮箱'
+            });
+            return false;
+        }else {
         $.ajax({
             dataType: 'json', //服务器返回json格式数据
             type: 'post', //HTTP请求类型
@@ -269,6 +281,7 @@
                 });
             }
         });
+    }
     }
     function save() {
         var tel = $("#user-new-phone").val();
@@ -307,6 +320,7 @@
     }
     function change() {
         $("#yzm").html("邮箱验证码");
+        isEmail=true;
     }
 </script>
 </body>

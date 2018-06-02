@@ -83,9 +83,11 @@ public class SafetyController {
     //保存手机号
     @RequestMapping(value = "savePhone")
     @ResponseBody
-    public ResultDto savePhone (@RequestParam String id, @RequestParam String tel){
+    public ResultDto savePhone (HttpServletRequest request,@RequestParam String id, @RequestParam String tel){
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         ResultDto resultDto = new ResultDto();
         huiyuanCenterService.savePhone(id,tel);
+        huiyuan.setTel(tel);
         resultDto.setCode("1");
         return resultDto;
     }
@@ -108,9 +110,11 @@ public class SafetyController {
     }
     @RequestMapping(value = "saveEmail")
     @ResponseBody
-    public ResultDto saveEmail (@RequestParam String id, @RequestParam String email){
+    public ResultDto saveEmail (HttpServletRequest request,@RequestParam String id, @RequestParam String email){
+        Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         ResultDto resultDto = new ResultDto();
         huiyuanCenterService.saveEmail(id,email);
+        huiyuan.setEmail(email);
         resultDto.setCode("1");
         return resultDto;
     }

@@ -114,7 +114,7 @@
             </div>
             <div id="secc" style="display:none; margin-left: 400px; margin-top: 100px;"><span>修改成功</span></div>
             <div id="form_save" class="am-form am-form-horizontal">
-                <c:if test="${huiyuan.tel !=null and huiyuan.tel != ''}">
+                <c:if test="${huiyuan.email !=null and huiyuan.email != ''}">
                     <div class="am-form-group bind">
                         <label for="user-phone" class="am-form-label">验证邮箱</label>
                         <div class="am-form-content">
@@ -181,7 +181,7 @@
     var flag = '${huiyuan.tel}';
     var isEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //邮箱格式校验
     function sendNewMobileCode() {
-        if (oldCode == '' && flag !=''){
+/*        if (oldCode == '' && flag !=''){
             $("").dailog({
                 type: 'danger',
                 showBoxShadow: true,
@@ -190,7 +190,7 @@
                 discription: '请先输入旧邮箱验证码'
             });
             return false;
-        }
+        }*/
         var newPhone = $("#user-new-phone").val();
         if (!isEmail.test(newPhone)){
             $("").dailog({
@@ -242,6 +242,17 @@
 
     }
     function sendOldMobileCode() {
+        var tel = '${huiyuan.tel}';
+        if (tel == ''){
+            $("").dailog({
+                type: 'danger',
+                showBoxShadow: true,
+                animateStyle: 'none',
+                bottons: ['确定'],
+                discription: '未绑定手机'
+            });
+            return false;
+        }else {
         $.ajax({
             dataType: 'json', //服务器返回json格式数据
             type: 'post', //HTTP请求类型
@@ -269,7 +280,7 @@
                 });
             }
         });
-    }
+    }}
     function save() {
         var tel = $("#user-new-phone").val();
         if (tel != ''){

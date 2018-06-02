@@ -32,15 +32,15 @@ public class HuiyuanRegController {
             if (huiyuan.getEmail()!=null){//邮箱注册
                huiyuan.setUserName(huiyuan.getEmail()); //用户名默认为邮箱
                huiyuan.setUserBz("1");
-               huiyuan.setCode("黄金会员");//
+               huiyuan.setCode("普通会员");//
                 huiyuan.setTx("/static/images/mytx.jpg");
                //查询邮箱是否被注册
                huiYuanRegService.findByEmail(huiyuan);
              }else {
                 //手机号注册
-                huiyuan.setUserName(huiyuan.getTel()); //用户名默认为邮箱
+                huiyuan.setUserName(huiyuan.getTel()); //用户名默认为手机号
                 huiyuan.setUserBz("1");
-                huiyuan.setCode("黄金会员");
+                huiyuan.setCode("普通会员");
                 huiyuan.setTx("/static/images/mytx.jpg");
                 //查询手机是否被注册
                 huiYuanRegService.findeByTel(huiyuan);
@@ -74,7 +74,7 @@ public class HuiyuanRegController {
         String b="";
         for(int i=0;i<4;i++)
         {
-            int n=r.nextInt(62);
+            int n=r.nextInt(62); //nextInt(n)将返回一个大于等于0小于n的随机数
             arr[i]=str.substring(n,n+1);
             b+=arr[i];
         }

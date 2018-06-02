@@ -37,6 +37,6 @@
         SELECT * FROM t_goods WHERE leibieId = #{leibieList} and del = '0' and saleflag = '在售'
     </select>
     <select id="findByleibieXiashus" resultType="com.smj.entiy.goods.TGoods">
-        SELECT * FROM t_goods WHERE leibiexiashuId = #{leibieXiashus} and del = '0'
+        SELECT * FROM t_goods WHERE leibiexiashuId = #{leibieXiashus} and del = '0' and saleflag = '在售'
     </select>
 </mapper>

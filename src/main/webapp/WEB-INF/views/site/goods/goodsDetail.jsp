@@ -59,7 +59,7 @@
         <div class="long-title"><span class="all-goods">全部分类</span></div>
         <div class="nav-cont">
             <ul>
-                <li class="index"><a href="${ctx}/message/search?type=0">首页</a></li>
+                <li class="index"><a href="${ctx}/message/show">首页</a></li>
                 <li class="qc"><a href="${ctx}/message/search?type=1">校园二手</a></li>
                 <li class="qc"><a href="${ctx}/message/search?type=2">同城交易</a></li>
                 <li class="qc last"><a href="${ctx}/message/search?type=3">超低价</a></li>
@@ -80,7 +80,7 @@
                             <c:forEach items="${leibieList}" var="leibieList" varStatus="status">
                                 <li class="appliance js_toggle relative first">
                                     <div class="category-info">
-                                        <h3 class="category-name b-category-name"><i><img src="${leibieList.tupian}"></i><a class="ml-22" title="${leibieList.mingcheng}">${leibieList.mingcheng}</a></h3>
+                                        <h3 class="category-name b-category-name"><i></i><a class="ml-22" title="${leibieList.mingcheng}">${leibieList.mingcheng}</a></h3>
                                         <em>&gt;</em></div>
                                     <div class="menu-item menu-in top">
                                         <div class="area-in">
@@ -162,12 +162,13 @@
             <div class="demo">
 
                 <ul>
-                    <li class="title-first"><a target="_blank">
+                    <%-- <c:forEach items="${gonggaoList}" var="gonggao" begin="0" end="1" varStatus="st"></c:forEach>--%>
+                    <li id="gonggao1" class="title-first"><a target="_blank">
                         <img src="/static/images/TJ2.jpg"></img>
-                        <span>[公告]</span>用心打造美好生活细节
+                        <span >${gonggaoList[0].lable}</span>
                     </a></li>
-                    <li class="title-first"><a target="_blank">
-                        <span>[公告]</span>闲置换钱，快速出手
+                    <li id="gonggao2" class="title-first"><a target="_blank">
+                        <span >${gonggaoList[1].lable}</span>
                         <img src="/static/images/TJ.jpg"></img>
                     </a></li>
 
@@ -206,9 +207,9 @@
                         <div class="clear"></div>
                     </div>
 
-                    <li><a target="_blank"><span>[公告]</span>客服工作时间：全天</a></li>
-                    <li><a target="_blank"><span>[公告]</span>平台将于******更新</a></li>
-                    <li><a target="_blank"><span>[公告]</span>请遵循本平台各项规定</a></li>
+                    <li id="gonggao3"><a target="_blank" href="javascript:void(0);">${gonggaoList[2].lable}</a></li>
+                    <li id="gonggao4"><a target="_blank" href="javascript:void(0);">${gonggaoList[3].lable}</a></li>
+                    <li id="gonggao5"><a target="_blank" href="javascript:void(0);">${gonggaoList[4].lable}</a></li>
 
                 </ul>
             </div>
@@ -245,7 +246,7 @@
             <c:forEach items="${goodslist}" var="goods" varStatus="var">
                 <li>
                     <div class="list ">
-                        <a href="${ctx}/GoodsDetail/detail?id="+${goods.id}">
+                        <a href="${ctx}/GoodsDetail/detail?id=${goods.id}">
                             <img src="${goods.fujian} " />
                             <div class="pro-title ">${goods.mingcheng}</div>
                             <span class="e-price ">￥${goods.jiage}</span>

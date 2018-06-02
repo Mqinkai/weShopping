@@ -78,7 +78,7 @@
                             <c:forEach items="${leibieList}" var="leibieList" varStatus="status">
                                 <li class="appliance js_toggle relative first">
                                     <div class="category-info">
-                                        <h3 class="category-name b-category-name"><i><img src="${leibieList.tupian}"></i><a class="ml-22" title="${leibieList.mingcheng}">${leibieList.mingcheng}</a></h3>
+                                        <h3 class="category-name b-category-name"><i></i><a class="ml-22" title="${leibieList.mingcheng}">${leibieList.mingcheng}</a></h3>
                                         <em>&gt;</em></div>
                                     <div class="menu-item menu-in top">
                                         <div class="area-in">
@@ -276,7 +276,7 @@
                         <h4>${leibieList.mingcheng}</h4>
                         <h3>每一种物品包含一种情怀</h3>
 							<span class="more ">
-                    <a href="# ">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
+                    <a href="${ctx}/message/search?leibieList=${leibieList.id}">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
                         </span>
                     </div>
                 </div>
@@ -306,7 +306,7 @@
                             <h4>${leibieList.mingcheng}</h4>
                             <h3>每一笔交易都是一种信任</h3>
 							<span class="more ">
-                    <a href="# ">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
+                    <a href="${ctx}/message/search?leibieList=${leibieList.id}">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
                         </span>
                         </div>
                     </div>
@@ -335,7 +335,7 @@
                                 <h4>${leibieList.mingcheng}</h4>
                                 <h3>每次一浏览都代表一种节俭</h3>
 							<span class="more ">
-                    <a href="# ">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
+                    <a href="${ctx}/message/search?leibieList=${leibieList.id}">更多<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
                         </span>
                             </div>
                         </div>

@@ -45,9 +45,6 @@ public class PersonCenterController {
         //判断是否登录
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
-            huiyuan.setCarNum(num);  //购物车金额
             //获取订单信息
             Order order = huiyuanCenterService.findOrder(huiyuan.getId());
             // 获取订单
@@ -93,9 +90,6 @@ public class PersonCenterController {
     Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
     if (huiyuan!=null){
         Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-        //查询购物车
-        String num = goodsService.findCar(huiyuan.getId());
-        huiyuan1.setCarNum(num);  //购物车金额
         Date date = new Date();
         if (huiyuan1.getSr() ==null || huiyuan1.getSr().equals("")){
             huiyuan1.setSr(date);
@@ -119,7 +113,7 @@ public class PersonCenterController {
         int pos = originalFilename.lastIndexOf(".");
         //原文件后缀名
         String suffix1 = originalFilename.substring(pos);
-        String suffix= suffix1.toLowerCase();
+        String suffix= suffix1.toLowerCase(); //小写
         //保存文件
         //ServletContext application = session.getServletContext();
         //String realPath = application.getRealPath("D:\\workspace111\\ycpolice-web\\web\\static\\updownload");
@@ -129,6 +123,7 @@ public class PersonCenterController {
         String uuid = UUID.randomUUID().toString();
         String fullPath = realPath + File.separator + uuid + suffix;
         InputStream in = null;
+        //文件输出
         try {
             in = file.getInputStream();
             OutputStream out = new FileOutputStream(new File(fullPath));
@@ -144,7 +139,8 @@ public class PersonCenterController {
 
             e.printStackTrace();
         }
-        //获取修改后头像地址
+
+        //获取修改后头像地址  数据库
         String rePath = "http://localhost:9999/personCenter/readImage?name="+ uuid + suffix;
         //保存
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
@@ -189,10 +185,7 @@ public class PersonCenterController {
     public String toSafety(HttpServletRequest request, Model model){
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/Safety";
@@ -209,10 +202,7 @@ public class PersonCenterController {
     public String toaddress(HttpServletRequest request, Model model){
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             //获取收货地址
@@ -232,10 +222,7 @@ public class PersonCenterController {
     public String toorder(HttpServletRequest request, Model model,String type){
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
             // 获取订单
            List<OrderDto> orderList = huiyuanCenterService.findOrderList(huiyuan1.getId());
             model.addAttribute("orderList",orderList);
@@ -278,10 +265,7 @@ public class PersonCenterController {
     public String tonews(HttpServletRequest request, Model model) {
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
             //查询消息内容
           List<Notice> noticeList = huiyuanCenterService.getNotice(huiyuan1.getId());
             model.addAttribute("noticeList",noticeList);
@@ -318,10 +302,7 @@ public class PersonCenterController {
     public String fbsp(HttpServletRequest request, Model model) {
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
             //获取分类
             List<Leibie> leibieList=goodsService.getLeibie();
             model.addAttribute("leibieList",leibieList);

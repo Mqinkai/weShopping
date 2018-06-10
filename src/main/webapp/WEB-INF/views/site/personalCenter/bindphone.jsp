@@ -182,7 +182,7 @@
     var flag = '${huiyuan.tel}';
     var isTel = /^1[3|4|5|8|9][0-9]\d{8}$/;
     function sendNewMobileCode() {
-if        if (oldCode == '' && flag !=''){
+        if (oldCode == '' && flag !=''){
             $("").dailog({
                 type: 'danger',
                 showBoxShadow: true,

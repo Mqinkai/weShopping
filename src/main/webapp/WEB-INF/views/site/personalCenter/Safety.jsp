@@ -106,7 +106,7 @@
                             <a href="safety.html">
                                 账户安全
                                 <c:choose>
-                                    <c:when test="${ huiyuan.email != null && huiyuan.tel != null }">
+                                    <c:when test="${ huiyuan.email != null && huiyuan.tel != null && huiyuan.email != '' && huiyuan.tel !='' }">
                                         <span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">100分</i></span>
                                     </c:when>
                                     <c:otherwise>

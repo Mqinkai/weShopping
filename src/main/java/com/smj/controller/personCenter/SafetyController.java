@@ -27,10 +27,9 @@ public class SafetyController {
     public String topassword(HttpServletRequest request, Model model) {
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
+
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
+
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/password";
@@ -67,10 +66,9 @@ public class SafetyController {
     public String tobindphone(HttpServletRequest request, Model model) {
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
+
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
+
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/bindphone";
@@ -95,10 +93,9 @@ public class SafetyController {
     public String email(HttpServletRequest request, Model model) {
         Huiyuan huiyuan = (Huiyuan) request.getSession().getAttribute("huiyuan");
         if (huiyuan!=null){
-            //查询购物车
-            String num = goodsService.findCar(huiyuan.getId());
+
             Huiyuan huiyuan1 = huiyuanCenterService.findUser(huiyuan.getId());
-            huiyuan1.setCarNum(num);  //购物车金额
+
             model.addAttribute("huiyuan",huiyuan1);
             model.addAttribute("login","1");
             return "site/personalCenter/email";

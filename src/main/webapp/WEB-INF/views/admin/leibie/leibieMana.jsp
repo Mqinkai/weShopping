@@ -38,7 +38,7 @@
 			</td>
 			<td>
 				<c:choose>
-					<c:when test="${leibie.tuijian} =='1'">
+					<c:when test="${leibie.tuijian =='1'}">
 						是
 					</c:when>
 					<c:otherwise>
@@ -104,9 +104,14 @@
 				if (data.code =='1'){
 					window.location.reload();
 				}else {
-					setTimeout(function () {
-						window.location.reload();
-					}, 3000);
+						$("").dailog({
+							type: 'danger',
+							showBoxShadow: true,
+							animateStyle: 'none',
+							bottons: ['确定'],
+							discription: '推荐类别不能小于2'
+						});
+
 				}
 			}
 		});

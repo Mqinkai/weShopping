@@ -162,19 +162,17 @@
                 <ul>
                    <%-- <c:forEach items="${gonggaoList}" var="gonggao" begin="0" end="1" varStatus="st"></c:forEach>--%>
                     <li id="gonggao1" class="title-first"><a target="_blank">
-                        <img src="/static/images/TJ2.jpg"></img>
                         <span >${gonggaoList[0].lable}</span>
                     </a></li>
                     <li id="gonggao2" class="title-first"><a target="_blank">
                         <span >${gonggaoList[1].lable}</span>
-                        <img src="/static/images/TJ.jpg"></img>
                     </a></li>
 
                     <div class="mod-vip">
                         <c:choose>
                             <c:when test="${login=='1'}">
                             <div class="m-baseinfo">
-                                <a href="/static/person/index.html">
+                                <a>
                                     <img src="${huiyuan.tx}"/>
                                 </a>
                                 <em><span>Hi,${huiyuan.userName}</span>

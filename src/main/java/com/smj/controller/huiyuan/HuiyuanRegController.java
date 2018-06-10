@@ -70,13 +70,12 @@ public class HuiyuanRegController {
         ResultDto resultDto = new ResultDto();
         String str="abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789";
         Random r=new Random();
-        String arr[]=new String [4];
         String b="";
         for(int i=0;i<4;i++)
         {
             int n=r.nextInt(62); //nextInt(n)将返回一个大于等于0小于n的随机数
-            arr[i]=str.substring(n,n+1);
-            b+=arr[i];
+            b+=str.substring(n,n+1);
+            //b+=arr[i];
         }
         resultDto.setMessage(b);
         return resultDto;

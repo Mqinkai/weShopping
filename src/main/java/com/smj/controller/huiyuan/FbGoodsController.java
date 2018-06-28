@@ -59,11 +59,8 @@ public class FbGoodsController {
 
             //Base64解码
             byte[] b = decoder.decodeBuffer(tGoods.getFujian());
-/*            for(int i=0;i<b.length;++i){
-                if(b[i]<0){//调整异常数据
-                    b[i]+=256;
-                     }
-                }*/
+
+            //异常处理
             for(int i = 0; i < b.length; ++i) {
                 if (b[i] < 0) {
                    b[i] += 256;
@@ -79,7 +76,7 @@ public class FbGoodsController {
                 String imgFilePath = imgPath+"/"+uuid+".jpg";
                 //新生成的图片
                 OutputStream out = new FileOutputStream(imgFilePath);
-                out.write(b);
+            out.write(b);
                 out.flush();
                 out.close();
             String rePath = "http://localhost:9999/fbgoods/readImage?name="+ uuid + ".jpg";

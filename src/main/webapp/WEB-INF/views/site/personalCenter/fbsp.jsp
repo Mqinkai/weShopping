@@ -87,7 +87,7 @@
                     <a>个人资料</a>
                     <ul>
                         <li> <a href="${ctx}/personCenter/PersonInformation">个人信息</a></li>
-                        <li> <a href="${ctx}/personCenter/Safety">安全设置</a></li>
+                        <li> <a href="${ctx}/personCenter/safety">安全设置</a></li>
                         <li> <a href="${ctx}/personCenter/address">收货地址</a></li>
                     </ul>
                 </li>
@@ -205,7 +205,7 @@
 
 <script language="javascript">
     var fujian = '';  //封面地址
-    var ue = UE.getEditor('editor',{toolbars: [
+    var ue = UE.getEditor('editor',{toolbars: [//初始化
         ['fullscreen', 'source', 'undo', 'redo'],
         ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'forecolor', 'fontsize', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'simpleupload', 'cleardoc']
     ]});

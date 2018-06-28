@@ -60,7 +60,7 @@
                     <a>个人资料</a>
                     <ul>
                         <li> <a href="${ctx}/personCenter/PersonInformation">个人信息</a></li>
-                        <li> <a href="${ctx}/personCenter/Safety">安全设置</a></li>
+                        <li> <a href="${ctx}/personCenter/safety">安全设置</a></li>
                         <li> <a href="${ctx}/personCenter/address">收货地址</a></li>
                     </ul>
                 </li>

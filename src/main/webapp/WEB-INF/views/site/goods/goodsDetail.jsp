@@ -16,6 +16,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>物品搜索</title>
+    <style type="text/css">
+        .member-logout .btn{
+            line-height:10px;!important;
+        }
+        .popover-content{
+            color: black;
+        }
+    </style>
 </head>
 
 <body>
@@ -176,7 +184,7 @@
                         <c:choose>
                             <c:when test="${login=='1'}">
                                 <div class="m-baseinfo">
-                                    <a href="/static/person/index.html">
+                                    <a href="${ctx}/personCenter/PersonInformation">
                                         <img src="${huiyuan.tx}"/>
                                     </a>
                                     <em><span>Hi,${huiyuan.userName}</span>
@@ -301,6 +309,48 @@
     window.jQuery || document.write('<script src="/static/basic/js/jquery-1.9.min.js "><\/script>');
 </script>
 <script type="text/javascript " src="/static/basic/js/quick_links.js "></script>
+<script type="text/javascript">
+    $("#gonggao2").
+    tooltip({
+        trigger:'hover',
+        html:true,
+        title:'点击显示全部'}).popover({
+        trigger:'click',
+        placement:'bottom',
+        content:'${gonggaoList[1].lable}'});
+    $("#gonggao1").
+    tooltip({
+        trigger:'hover',
+        html:true,
+        title:'点击显示全部'}).popover({
+        trigger:'click',
+        placement:'bottom',
+        content:'${gonggaoList[0].lable}'});
+    $("#gonggao3").
+    tooltip({
+        trigger:'hover',
+        html:true,
+        title:'点击显示全部'}).popover({
+        trigger:'click',
+        placement:'bottom',
+        content:'${gonggaoList[2].lable}'});
+    $("#gonggao4").
+    tooltip({
+        trigger:'hover',
+        html:true,
+        title:'点击显示全部'}).popover({
+        trigger:'click',
+        placement:'bottom',
+        content:'${gonggaoList[3].lable}'});
+    $("#gonggao5").
+    tooltip({
+        trigger:'hover',
+        html:true,
+        title:'点击显示全部'}).popover({
+        trigger:'click',
+        placement:'bottom',
+        content:'${gonggaoList[4].lable}'});
+</script>
 </body>
 
 </html>

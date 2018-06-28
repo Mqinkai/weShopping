@@ -89,7 +89,7 @@
         }else {
             $.ajax({
                 type: 'post',
-                url: '${ctx}/leibie/savexS',
+                url: '${ctx}/leibie/saveXs',
                 data:{mingcheng:mingcheng,id:leibieId},
                 dataType: 'json',
                 success: function(data){

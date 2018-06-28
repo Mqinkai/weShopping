@@ -42,7 +42,7 @@ public class LeibieService {
         ResultDto resultDto = new ResultDto();
         //推荐数不能低于3条
         int num = leibieDao.findCount();
-        if (num<3){
+        if (num<4){
             resultDto.setCode("-1");
             resultDto.setMessage("已推荐类别不能小于3条");
         }else {

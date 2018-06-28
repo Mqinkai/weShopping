@@ -116,7 +116,7 @@
 		var code = $("#code2").val();
 		var yzm1 = $("code").val();
 		if (code != null && code != ''){
-			if (yzm1 != yzm){
+			if (yzm1 != yzm1){
 				$("").dailog({
 					type: 'danger',
 					showBoxShadow: true,

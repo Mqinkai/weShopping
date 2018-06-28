@@ -104,13 +104,8 @@
 				if (data.code =='1'){
 					window.location.reload();
 				}else {
-						$("").dailog({
-							type: 'danger',
-							showBoxShadow: true,
-							animateStyle: 'none',
-							bottons: ['确定'],
-							discription: '推荐类别不能小于2'
-						});
+					$("").dailog({type:'warning',title:'提示.',bottons: ['确定'],discription:data.message},function(ret)
+					{if(ret.index===0){window.location.reload();};})
 
 				}
 			}
@@ -123,7 +118,15 @@
 			dataType: 'json',
 			success: function(data){
 				if (data.code =='1'){
-					window.location.reload();;
+					window.location.reload();
+				}else {
+					$("").dailog({
+						type: 'warning',
+						showBoxShadow: true,
+						animateStyle: 'none',
+						bottons: ['确定'],
+						discription: data.message,
+					});
 				}
 			}
 		});

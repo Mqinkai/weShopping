@@ -121,9 +121,9 @@ public class PersonCenterController {
         String realPath = "E:\\touxiang";
         //产生一个uuid随机文件名
         String uuid = UUID.randomUUID().toString();
-        String fullPath = realPath + File.separator + uuid + suffix;
+        String fullPath = realPath + File.separator + uuid + suffix;//地址+文件名+后缀
         InputStream in = null;
-        //文件输出
+        //文件输出，保存到本地
         try {
             in = file.getInputStream();
             OutputStream out = new FileOutputStream(new File(fullPath));

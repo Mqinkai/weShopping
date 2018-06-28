@@ -420,6 +420,7 @@
        },function(ret){
            if(ret.index===0){
                message=ret.input.value;
+               console.log(message)
                if (message != null && message !=''){
                    $.ajax({
                        dataType: 'json', //服务器返回json格式数据
@@ -428,14 +429,6 @@
                        success:function(result){
 
                        }});
-               }else {
-                   $("").dailog({
-                       type: 'danger',
-                       showBoxShadow: true,
-                       animateStyle: 'none',
-                       bottons: ['确定'],
-                       discription: '未填写评价内容'
-                   });
                }
 
            }

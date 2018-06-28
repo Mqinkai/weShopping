@@ -155,7 +155,7 @@
 
         <!--走马灯 -->
 
-        <div class="marqueen">
+        <div class="marqueen" style="height: 350px;">
             <span class="marqueen-title">公告栏</span>
             <div class="demo">
 
@@ -172,7 +172,7 @@
                         <c:choose>
                             <c:when test="${login=='1'}">
                             <div class="m-baseinfo">
-                                <a>
+                                < <a href="${ctx}/personCenter/PersonInformation">
                                     <img src="${huiyuan.tx}"/>
                                 </a>
                                 <em><span>Hi,${huiyuan.userName}</span>
@@ -234,10 +234,11 @@
 
 
             <!--物品展示-->
-
-            <c:forEach items="${leibieList}" var="leibieList" begin="0" end="3" varStatus="status">
+        <c:set var="cont" value="0"/>
+            <c:forEach items="${leibieList}" var="leibieList" varStatus="status">
         <c:if test="${leibieList.tuijian== '1'}">
-            <c:if test="${status.count==1}">
+            <c:set var="cont" value="${cont+1}"/>
+            <c:if test="${cont==1}">
             <div id="f1">
             <div class="am-container ">
                 <div class="shopTitle ">
@@ -267,7 +268,7 @@
                     <div class="triangle-topright"></div>
                 </div>
                 </c:if>
-                <c:if test="${status.count==2}">
+                <c:if test="${cont==2}">
                 <div id="f2">
                 <div class="am-container ">
                     <div class="shopTitle ">
@@ -297,7 +298,7 @@
                         <div class="triangle-topright"></div>
                     </div>
                     </c:if>
-                    <c:if test="${status.count==3}">
+                    <c:if test="${cont==3}">
                     <div id="f3">
                     <div class="am-container ">
                         <div class="shopTitle ">
@@ -327,7 +328,7 @@
                             <div class="triangle-topright"></div>
                         </div>
                         </c:if>
-                        <c:if test="${status.count==4}">
+                        <c:if test="${cont==4}">
                         <div class="am-container ">
                             <div class="shopTitle ">
                                 <h4>${leibieList.mingcheng}</h4>
@@ -338,7 +339,7 @@
                             </div>
                         </div>
                         <div class="am-g am-g-fixed floodFour">
-                            <div class="am-u-sm-5 am-u-md-4 text-one list" >
+                            <div class="am-u-sm-5 am-u-md-4 text-one list" style="margin-left: 27px;background-color: #3cdcdc;">
                                 <div class="word">
 
                                 </div>

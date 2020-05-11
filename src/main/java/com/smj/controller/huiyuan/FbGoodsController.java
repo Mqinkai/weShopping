@@ -66,7 +66,7 @@ public class FbGoodsController {
                    b[i] += 256;
                     }
                 }
-            String imgPath ="E:/static";
+            String imgPath ="/Users/qinkai/Desktop/file/shop";
                 File headPath = new File(imgPath);//获取文件夹路径
                 if(!headPath.exists()){//判断文件夹是否创建，没有创建则创建新文件夹
                     headPath.mkdirs();
@@ -99,7 +99,7 @@ public class FbGoodsController {
         //读取本地图片输入流
         FileInputStream inputStream = null;
         try {
-            inputStream = new FileInputStream("E:/static/"+name);
+            inputStream = new FileInputStream("/Users/qinkai/Desktop/file/shop/"+name);
 
             int i = inputStream.available();
             //byte数组用于存放图片字节数据

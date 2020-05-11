@@ -27,7 +27,7 @@ public class OpenImgController {
         //读取本地图片输入流
         FileInputStream inputStream = null;
         try {
-            inputStream = new FileInputStream("E:/static/"+imgName);
+            inputStream = new FileInputStream("/Users/qinkai/Desktop/file/shop/"+imgName);
 
             int i = inputStream.available();
             //byte数组用于存放图片字节数据

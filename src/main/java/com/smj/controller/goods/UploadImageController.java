@@ -49,7 +49,7 @@ import org.springframework.web.multipart.MultipartFile;
                 String basePath = LoadPropertiesDataUtils.getValue("lyz.uploading.url");
                 String visitUrl = LoadPropertiesDataUtils.getValue("lyz.visit.url");
                 if(basePath == null || "".equals(basePath)){
-                    basePath = "E:/static";  //与properties文件中lyz.uploading.url相同，未读取到文件数据时为basePath赋默认值
+                    basePath = "/Users/qinkai/Desktop/file/shop";  //与properties文件中lyz.uploading.url相同，未读取到文件数据时为basePath赋默认值
                 }
                 if(visitUrl == null || "".equals(visitUrl)){
                     visitUrl = "/upload?imgName"; //与properties文件中lyz.visit.url相同，未读取到文件数据时为visitUrl赋默认值

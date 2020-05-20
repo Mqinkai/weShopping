@@ -134,7 +134,7 @@
 		</div>
 		<div class="footer-bd ">
 			<p>
-				<em>(c) 2014-2018 青岛理工毕设 版权所有. <a href="javascript: void(0)" target="_blank" title="宋明杰">宋明杰</a> - </em>
+				<em>(c) 2014-2018  版权所有. <a href="javascript: void(0)" target="_blank" title="****">****</a> - </em>
 			</p>
 		</div>
 	</div>

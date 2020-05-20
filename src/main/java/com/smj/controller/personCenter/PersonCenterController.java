@@ -118,7 +118,7 @@ public class PersonCenterController {
         //ServletContext application = session.getServletContext();
         //String realPath = application.getRealPath("D:\\workspace111\\ycpolice-web\\web\\static\\updownload");
         //String realPath = "E:\\my_project\\weShopping\\src\\main\\webapp\\static\\images";
-        String realPath = "E:\\touxiang";
+        String realPath = "/Users/qinkai/Desktop/file/shop";
         //产生一个uuid随机文件名
         String uuid = UUID.randomUUID().toString();
         String fullPath = realPath + File.separator + uuid + suffix;//地址+文件名+后缀
@@ -160,7 +160,7 @@ public class PersonCenterController {
         //读取本地图片输入流
         FileInputStream inputStream = null;
         try {
-            inputStream = new FileInputStream("E:/touxiang/"+name);
+            inputStream = new FileInputStream("/Users/qinkai/Desktop/file/shop/"+name);
 
         int i = inputStream.available();
         //byte数组用于存放图片字节数据

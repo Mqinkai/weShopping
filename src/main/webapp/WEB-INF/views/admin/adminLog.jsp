@@ -75,7 +75,9 @@
 </div>
 <div class="OverWindows"></div>
 <link href="/static/login/layui/css/layui.css" rel="stylesheet" type="text/css" />
-<script src="http://img.htmlsucai.com/cdn/jquery/jquery-1.10.2.js"></script>
+<%--<script src="http://img.htmlsucai.com/cdn/jquery/jquery-1.10.2.js"></script>--%>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
 <script type="text/javascript" src="/static/login/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src='/static/login/js/stopExecutionOnTimeout.js?t=1'></script>
 <script src="/static/login/layui/layui.js" type="text/javascript"></script>
@@ -146,11 +148,6 @@
     });
     var open = 0;
     layui.use('layer', function () {
-/*        var msgalert = '默认账号:' + truelogin + '<br/> 默认密码:' + truepwd;
-        var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: '友情提示', btn: [], anim: 2, shade: 0 });
-        layer.style(index, {
-            color: '#777'
-        });*/
         //非空验证
         $('input[type="button"]').click(function () {
             var login = $('input[name="login"]').val();
@@ -240,12 +237,6 @@
                                 })
                     }});
 
-/*
-                if(JsonData.userName == truelogin && JsonData.password == truepwd){
-                    url = "Ajax/Login";
-                }else{
-                    url = "Ajax/LoginFalse";
-                }*/
 
             }
         })

@@ -359,7 +359,7 @@
             </div>
             <div class="footer-bd ">
                 <p>
-                    <em>(c) 2015-2025 青岛理工毕设 版权所有. <a href="" target="_blank" title="宋明杰">宋明杰</a> - </em>
+                    <em>(c) 2015-2025 版权所有. <a href="" target="_blank" title="****">****</a> - </em>
                 </p>
             </div>
         </div>
